@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Lab Assistant</string>
+    <string-array name="resistor_colors">
+        <item>Black</item>
+        <item>Brown</item>
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Violet</item>
+        <item>Grey</item>
+        <item>White</item>
+        <item>Gold</item>
+        <item>Silver</item>
+    </string-array>
+</resources>

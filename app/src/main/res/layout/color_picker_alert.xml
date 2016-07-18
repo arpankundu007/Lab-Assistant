@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Choose the desired color"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="37dp" />
+
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/color_spinner"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:entries="@array/resistor_colors"
+        android:background="@drawable/border"
+        android:padding="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:id="@+id/confirmColor"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/color_spinner"
+        android:layout_alignLeft="@+id/color_spinner"
+        android:layout_alignStart="@+id/color_spinner"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancelColor"
+        android:background="@drawable/border"
+        android:layout_alignTop="@+id/confirmColor"
+        android:layout_alignRight="@+id/color_spinner"
+        android:layout_alignEnd="@+id/color_spinner"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="20dp" />
+
+</RelativeLayout>
