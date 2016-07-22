@@ -3,15 +3,20 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:gravity="fill">
+    android:gravity="fill"
+    android:fillViewport="false"
+    android:scrollbars="none"
+    android:background="#ffffff">
 
     <RelativeLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
     <View android:layout_width="0dp"
         android:layout_height="0dp"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:focusableInTouchMode="true"
+        android:id="@+id/view" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -22,7 +27,7 @@
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="30dp" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -77,9 +82,10 @@
         android:id="@+id/show_resistance"
         android:background="@drawable/border"
         android:padding="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:layout_below="@+id/second"
-        android:layout_centerHorizontal="true" />
+        android:layout_toLeftOf="@+id/resistance_power"
+        android:layout_toStartOf="@+id/resistance_power" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,8 +96,8 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_toRightOf="@+id/view"
+        android:layout_toEndOf="@+id/view" />
 
     <View
         android:id="@+id/line"
@@ -130,54 +136,16 @@
         android:layout_toRightOf="@+id/fourth"
         android:layout_toEndOf="@+id/fourth" />
 
-    <View
-        android:id="@+id/line5"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
-        android:background="#8c8c8c"
-        android:layout_alignBottom="@+id/converted_first"
-        android:layout_toRightOf="@+id/converted_first"
-        android:layout_toEndOf="@+id/converted_first"
-        android:layout_marginBottom="19dp" />
 
-    <View
-        android:id="@+id/line6"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
-        android:background="#8c8c8c"
-        android:layout_alignTop="@+id/line5"
-        android:layout_toLeftOf="@+id/converted_third"
-        android:layout_toStartOf="@+id/converted_third" />
-
-    <View
-        android:id="@+id/line7"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
-        android:background="#8c8c8c"
-        android:layout_alignTop="@+id/line6"
-        android:layout_toRightOf="@+id/converted_third"
-        android:layout_toEndOf="@+id/converted_third" />
-
-    <View
-        android:id="@+id/line8"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
-        android:background="#8c8c8c"
-        android:layout_alignTop="@+id/line7"
-        android:layout_toLeftOf="@+id/converted_tolerance"
-        android:layout_toStartOf="@+id/converted_tolerance" />
-
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Resistance : "
         android:id="@+id/resistance_text_view"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/show_resistance"
-        android:layout_toLeftOf="@+id/converted_third"
-        android:layout_toStartOf="@+id/converted_third"
+        android:layout_alignLeft="@+id/first"
         android:textSize="20dp" />
 
     <TextView
@@ -187,8 +155,8 @@
         android:id="@+id/resistance_value"
         android:textSize="20dp"
         android:layout_alignTop="@+id/resistance_text_view"
-        android:layout_toRightOf="@+id/resistance_text_view"
-        android:layout_toEndOf="@+id/resistance_text_view" />
+        android:layout_alignLeft="@+id/resistance_entered"
+        android:layout_alignStart="@+id/resistance_entered" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -196,13 +164,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Or enter reistance to get color code"
         android:id="@+id/textView4"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="55dp"
         android:textSize="20dp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:layout_below="@+id/resistance_text_view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/textView3"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -210,23 +177,23 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Resistance:"
         android:id="@+id/enter_resistance"
-        android:layout_marginTop="41dp"
+        android:textSize="20dp"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/converted_first"
-        android:layout_alignStart="@+id/converted_first"
-        android:textSize="20dp" />
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/resistance_entered"
         android:maxLength="5"
         android:layout_alignBottom="@+id/enter_resistance"
-        android:layout_toRightOf="@+id/converted_second"
-        android:layout_alignRight="@+id/converted_third"
-        android:layout_alignEnd="@+id/converted_third" />
+        android:layout_toRightOf="@+id/resistance_text_view"
+        android:layout_alignRight="@+id/line3"
+        android:layout_alignEnd="@+id/line3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -234,73 +201,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ohms"
         android:id="@+id/ohms_text_view"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_toRightOf="@+id/resistance_conversion"
-        android:layout_toEndOf="@+id/resistance_conversion"
-        android:textSize="20dp" />
+        android:textSize="18dp"
+        android:layout_above="@+id/parse_resistance"
+        android:layout_toRightOf="@+id/resistance_power"
+        android:layout_toEndOf="@+id/resistance_power" />
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/converted_first"
-        android:background="#ffffff"
-        android:src="@drawable/border"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/enter_resistance"
-        android:layout_alignLeft="@+id/first"
-        android:layout_alignStart="@+id/first" />
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/converted_second"
-        android:background="#ffffff"
-        android:src="@drawable/border"
-        android:layout_alignTop="@+id/converted_first"
-        android:layout_toLeftOf="@+id/third"
-        android:layout_toStartOf="@+id/third" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/converted_third"
-        android:background="#ffffff"
-        android:src="@drawable/border"
-        android:layout_alignTop="@+id/converted_second"
-        android:layout_toRightOf="@+id/line2"
-        android:layout_toEndOf="@+id/line2" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/converted_fourth"
-        android:background="#ffffff"
-        android:src="@drawable/border"
-        android:layout_alignBottom="@+id/converted_third"
-        android:layout_alignLeft="@+id/fourth"
-        android:layout_alignStart="@+id/fourth" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/converted_tolerance"
-        android:background="#ffffff"
-        android:src="@drawable/border"
-        android:layout_alignBottom="@+id/converted_fourth"
-        android:layout_alignLeft="@+id/tolerance"
-        android:layout_alignStart="@+id/tolerance" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Conversion Chart"
-        android:padding="8dp"
-        android:id="@+id/resistance_conversion"
-        android:background="@drawable/border"
-        android:layout_below="@+id/converted_third"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -309,15 +215,16 @@
             android:text="x 10"
             android:id="@+id/textView5"
             android:layout_alignTop="@+id/enter_resistance"
-            android:layout_toRightOf="@+id/editText"
-            android:layout_toEndOf="@+id/editText" />
+            android:layout_toRightOf="@+id/resistance_entered"
+            android:layout_toEndOf="@+id/resistance_entered"
+            android:layout_marginLeft="5dp" />
 
         <EditText
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/resistance_power"
             android:layout_below="@+id/textView4"
             android:layout_above="@+id/textView5"
             android:layout_toRightOf="@+id/textView5"
@@ -330,10 +237,11 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Tolerance :"
             android:id="@+id/tolerance_textview"
-            android:layout_centerVertical="true"
+            android:textSize="20dp"
+            android:layout_below="@+id/resistance_text_view"
             android:layout_alignLeft="@+id/resistance_text_view"
             android:layout_alignStart="@+id/resistance_text_view"
-            android:textSize="20dp" />
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -344,6 +252,139 @@
             android:layout_toRightOf="@+id/resistance_text_view"
             android:layout_toEndOf="@+id/resistance_text_view"
             android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Convert"
+            android:id="@+id/parse_resistance"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:layout_below="@+id/enter_resistance"
+            android:layout_alignRight="@+id/color4_space"
+            android:layout_alignEnd="@+id/color4_space"
+            android:layout_marginTop="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/res_left"
+            android:layout_below="@+id/parse_resistance"
+            android:layout_alignLeft="@+id/enter_resistance"
+            android:layout_marginTop="20dp"
+            android:layout_alignStart="@+id/enter_resistance" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@drawable/res_right"
+            android:layout_alignTop="@+id/color4_space"
+            android:layout_toEndOf="@+id/converted_fourth"
+            android:layout_toRightOf="@+id/converted_fourth" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_first"
+            android:background="@drawable/spacer"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toRightOf="@+id/imageView3"
+            android:layout_toEndOf="@+id/imageView3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color1_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_first"
+            android:layout_toRightOf="@+id/converted_first"
+            android:layout_toEndOf="@+id/converted_first" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_second"
+            android:layout_alignTop="@+id/color1_space"
+            android:layout_toRightOf="@+id/color1_space"
+            android:layout_toEndOf="@+id/color1_space"
+            android:background="@drawable/spacer" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color2_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_second"
+            android:layout_toRightOf="@+id/converted_second"
+            android:layout_toEndOf="@+id/converted_second" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_third"
+            android:layout_alignTop="@+id/color2_space"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/color2_space"
+            android:background="@drawable/spacer" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color3_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_third"
+            android:layout_toRightOf="@+id/converted_third"
+            android:layout_toEndOf="@+id/converted_third" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_fourth"
+            android:layout_alignTop="@+id/color3_space"
+            android:layout_toRightOf="@+id/color3_space"
+            android:layout_toEndOf="@+id/color3_space"
+            android:background="@drawable/spacer" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color4_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_fourth"
+            android:layout_toRightOf="@+id/converted_fourth"
+            android:layout_toEndOf="@+id/converted_fourth" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_tolerance"
+            android:layout_alignTop="@+id/color4_space"
+            android:layout_toRightOf="@+id/color4_space"
+            android:layout_toEndOf="@+id/color4_space"
+            android:background="@drawable/spacer" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tolerance_color_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_tolerance"
+            android:layout_toRightOf="@+id/converted_tolerance"
+            android:layout_toEndOf="@+id/converted_tolerance" />
+
+        <Button android:id="@+id/resistance_conversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Conversion"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toRightOf="@+id/tolerance_textview"
+            android:layout_toEndOf="@+id/tolerance_textview"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:layout_marginBottom="10dp" />
 
     </RelativeLayout>
 
