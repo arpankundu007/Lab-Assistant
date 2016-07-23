@@ -3,9 +3,7 @@ package com.labmate.warmach.labmate;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,8 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.text.DecimalFormat;
 
 /**
@@ -27,20 +23,36 @@ import java.text.DecimalFormat;
  */
 public class ResistorActivity extends Activity {
     ImageButton firstColor, secondColor, thirdColor, fourthColor, toleranceColor;
-    ImageView  convertedFirstColor, convertedSecondColor, convertedThirdColor, convertedFourthColor, convertedToleranceColor;
+    ImageView convertedFirstColor, convertedSecondColor, convertedThirdColor, convertedFourthColor, convertedToleranceColor;
     Button convertResistance, getResistance, parseResistance;
-    int firstValue = 0, secondValue = 0, thirdValue = 0, fourthValue = 0, toleranceValue = 0;
+    int firstValue = 0, secondValue = 0, thirdValue = 0, fourthValue = 0;
+    String toleranceValue;
     TextView resistanceTextView, toleranceTextView;
     EditText enteredResistanceValue, enteredResistancePower;
     int[] colorArray = {R.drawable.black, R.drawable.brown, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.green, R.drawable.blue, R.drawable.violet,
             R.drawable.gray, R.drawable.white, R.drawable.gold};
+    int[] tolColorArray = {R.drawable.brown, R.drawable.red, R.drawable.green, R.drawable.blue, R.drawable.violet, R.drawable.gray, R.drawable.gold, R.drawable.silver};
+    Spinner toleranceSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor);
         bindViews();
+        setDefaults();
         setListeners();
+    }
+
+    public void setDefaults() {
+        firstColor.setBackgroundColor(Color.parseColor("#a52a2a"));
+        firstValue = 1;
+        secondColor.setBackgroundColor(Color.BLACK);
+        secondValue = 0;
+        thirdColor.setBackgroundColor(Color.BLACK);
+        thirdValue = 0;
+        fourthColor.setBackgroundColor(Color.BLACK);
+        fourthValue = 0;
+        toleranceColor.setBackgroundColor(Color.WHITE);
     }
 
     public void bindViews() {
@@ -60,38 +72,39 @@ public class ResistorActivity extends Activity {
         convertedSecondColor = (ImageView) findViewById(R.id.converted_second);
         convertedThirdColor = (ImageView) findViewById(R.id.converted_third);
         convertedFourthColor = (ImageView) findViewById(R.id.converted_fourth);
-        convertedToleranceColor = (ImageView) findViewById(R.id.converted_tolerance);
+        convertedToleranceColor = (ImageView) findViewById(R.id.converted_tolerance_space);
+        toleranceSpinner = (Spinner) findViewById(R.id.tol_spinner);
     }
 
     public void setListeners() {
         firstColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(firstColor);
+                showResistanceDialog(firstColor);
             }
         });
         secondColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(secondColor);
+                showResistanceDialog(secondColor);
             }
         });
         thirdColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(thirdColor);
+                showResistanceDialog(thirdColor);
             }
         });
         fourthColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(fourthColor);
+                showResistanceDialog(fourthColor);
             }
         });
         toleranceColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(toleranceColor);
+                showToleranceDialog();
             }
         });
         convertResistance.setOnClickListener(new View.OnClickListener() {
@@ -103,18 +116,50 @@ public class ResistorActivity extends Activity {
         getResistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculateResistance();
+                setResistance();
             }
         });
         parseResistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 parseResistance();
+                setToleranceColor();
             }
         });
     }
 
-    public void showDialog(final ImageButton imageButton) {
+    public void setToleranceColor() {
+        int value = toleranceSpinner.getSelectedItemPosition();
+        Log.v("Tolerance position", ""+ value);
+        switch(value){
+            case 0:
+                convertedToleranceColor.setImageResource(tolColorArray[0]);
+                break;
+            case 1:
+                convertedToleranceColor.setImageResource(tolColorArray[1]);
+                break;
+            case 2:
+                convertedToleranceColor.setImageResource(tolColorArray[2]);
+                break;
+            case 3:
+                convertedToleranceColor.setImageResource(tolColorArray[3]);
+                break;
+            case 4:
+                convertedToleranceColor.setImageResource(tolColorArray[4]);
+                break;
+            case 5:
+                convertedToleranceColor.setImageResource(tolColorArray[5]);
+                break;
+            case 6:
+                convertedToleranceColor.setImageResource(tolColorArray[6]);
+                break;
+            case 7:
+                convertedToleranceColor.setImageResource(tolColorArray[7]);
+                break;
+        }
+    }
+
+    public void showResistanceDialog(final ImageButton imageButton) {
         LayoutInflater inflater = getLayoutInflater();
         final View colorPopup = inflater.inflate(R.layout.color_picker_alert, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
@@ -124,12 +169,11 @@ public class ResistorActivity extends Activity {
             public void onShow(DialogInterface dialogInterface) {
                 Button positive = (Button) colorPopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) colorPopup.findViewById(R.id.cancelColor);
-                final Spinner colorSpinner = (Spinner) colorPopup.findViewById(R.id.color_spinner);
+                final Spinner colorSpinner = (Spinner) colorPopup.findViewById(R.id.tolerance_color_spinner);
                 positive.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        setColor(color, imageButton);
                         if (imageButton == firstColor)
                             firstValue = color;
                         else if (imageButton == secondColor)
@@ -138,8 +182,7 @@ public class ResistorActivity extends Activity {
                             thirdValue = color;
                         else if (imageButton == fourthColor)
                             fourthValue = color;
-                        else if (imageButton == toleranceColor)
-                            toleranceValue = color;
+                        setColor(color, imageButton);
                         alertDialog.dismiss();
                     }
                 });
@@ -152,6 +195,72 @@ public class ResistorActivity extends Activity {
             }
         });
         alertDialog.show();
+    }
+
+    public void showToleranceDialog() {
+        LayoutInflater layoutInflater = getLayoutInflater();
+        final View tolerancePopup = layoutInflater.inflate(R.layout.tolerance_alert, null);
+        final AlertDialog toleranceDialog = new AlertDialog.Builder(this).setView(tolerancePopup).setCancelable(true).create();
+        toleranceDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button positive = (Button) tolerancePopup.findViewById(R.id.confirmColor);
+                Button negative = (Button) tolerancePopup.findViewById(R.id.cancelColor);
+                final Spinner colorSpinner = (Spinner) tolerancePopup.findViewById(R.id.tolerance_color_spinner);
+                positive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int color = colorSpinner.getSelectedItemPosition();
+                        setTolerance(color);
+                        toleranceDialog.dismiss();
+                    }
+                });
+                negative.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        toleranceDialog.dismiss();
+                    }
+                });
+            }
+        });
+        toleranceDialog.show();
+    }
+
+    public void setTolerance(int color) {
+        switch (color){
+            case 0:
+                toleranceColor.setBackgroundColor(Color.parseColor("#a52a2a"));
+                toleranceValue = "1%";
+                break;
+            case 1:
+                toleranceColor.setBackgroundColor(Color.RED);
+                toleranceValue = "2%";
+                break;
+            case 2:
+                toleranceColor.setBackgroundColor(Color.parseColor("#006600"));
+                toleranceValue = "0.5%";
+                break;
+            case 3:
+                toleranceColor.setBackgroundColor(Color.BLUE);
+                toleranceValue = "0.25%";
+                break;
+            case 4:
+                toleranceColor.setBackgroundColor(Color.parseColor("#ca1cca"));
+                toleranceValue = "0.1%";
+                break;
+            case 5:
+                toleranceColor.setBackgroundColor(Color.GRAY);
+                toleranceValue = "0.05%";
+                break;
+            case 6:
+                toleranceColor.setBackgroundColor(Color.parseColor("#ffd700"));
+                toleranceValue = "5%";
+                break;
+            case 7:
+                toleranceColor.setBackgroundColor(Color.parseColor("#c0c0c0"));
+                toleranceValue = "10%";
+                break;
+        }
     }
 
     public void setColor(int color, ImageButton imageButton) {
@@ -175,7 +284,7 @@ public class ResistorActivity extends Activity {
                 imageButton.setBackgroundColor(Color.YELLOW);
                 break;
             case 5:
-                imageButton.setBackgroundColor(Color.GREEN);
+                imageButton.setBackgroundColor(Color.parseColor("#006600"));
                 break;
             case 6:
                 imageButton.setBackgroundColor(Color.BLUE);
@@ -189,11 +298,6 @@ public class ResistorActivity extends Activity {
             case 9:
                 imageButton.setBackgroundColor(Color.WHITE);
                 break;
-            case 10:
-                imageButton.setBackgroundColor(Color.parseColor("#ffd700"));
-                break;
-
-
         }
     }
 
@@ -217,34 +321,36 @@ public class ResistorActivity extends Activity {
         alertDialog.show();
     }
 
-    public void calculateResistance() {
+    public void setResistance() {
         String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10^" + fourthValue + " Ohms";
-        String tolerance = " " + toleranceValue + " % Tol";
+        String tolerance = toleranceValue + " Tol";
         resistanceTextView.setText(resistance);
         toleranceTextView.setText(tolerance);
     }
 
     public void parseResistance() {
-        String resistance = enteredResistanceValue.getText().toString();
-        String power = enteredResistancePower.getText().toString();
-        float resistanceFloat = Float.parseFloat(resistance);
-        float powerFloat = Float.parseFloat(power);
-        String parsedResistance;
-        int zerosLeft;
-        if(powerFloat >= 3) {
-            parsedResistance = new DecimalFormat("##").format((float) (resistanceFloat * Math.pow(10, 3)));
-            zerosLeft = (int) (powerFloat - 3);
+        if (setValidations() == true) {
+            String resistance = enteredResistanceValue.getText().toString();
+            String power = enteredResistancePower.getText().toString();
+            float resistanceFloat = Float.parseFloat(resistance);
+            float powerFloat = Float.parseFloat(power);
+            String parsedResistance;
+            int zerosLeft;
+            if (powerFloat >= 3) {
+                parsedResistance = new DecimalFormat("##").format((float) (resistanceFloat * Math.pow(10, 3)));
+                zerosLeft = (int) (powerFloat - 3);
+            } else {
+                parsedResistance = new DecimalFormat("##").format((float) (resistanceFloat * Math.pow(10, powerFloat)));
+                zerosLeft = 0;
+            }
+            while (zerosLeft > 0) {
+                parsedResistance = parsedResistance + "0";
+                zerosLeft--;
+            }
+            parsedResistance = parsedResistance.replace(".", "");
+            Log.v("Parsed res: ", parsedResistance);
+            setResistanceColors(parsedResistance);
         }
-        else {
-            parsedResistance = new DecimalFormat("##").format((float) (resistanceFloat * Math.pow(10, powerFloat)));
-            zerosLeft = 0;
-        }
-        while(zerosLeft > 1){
-            parsedResistance = parsedResistance + "0";
-            zerosLeft -- ;
-        }
-        parsedResistance = parsedResistance.replace(".","");
-        setResistanceColors(parsedResistance);
     }
 
     public void setResistanceColors(String resistanceValue) {
@@ -252,7 +358,7 @@ public class ResistorActivity extends Activity {
         int col_2 = Integer.parseInt(String.valueOf(resistanceValue.charAt(1)));
         int col_3 = Integer.parseInt(String.valueOf(resistanceValue.charAt(2)));
         int col_4 = resistanceValue.length() - 3;
-        if(col_4 > 11)
+        if (col_4 > 11)
             Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
         convertedFirstColor.setImageResource(colorArray[col_1]);
         convertedSecondColor.setImageResource(colorArray[col_2]);
@@ -260,4 +366,11 @@ public class ResistorActivity extends Activity {
         convertedFourthColor.setImageResource(colorArray[col_4]);
     }
 
+    public boolean setValidations() {
+        if (enteredResistanceValue.getText().toString().length() < 3 || enteredResistancePower.getText().toString().equals("")) {
+            Toast.makeText(getBaseContext(), "Invalid data entered", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
 }

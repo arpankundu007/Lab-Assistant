@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="5dp"
     android:gravity="fill"
     android:fillViewport="false"
     android:scrollbars="none"
@@ -189,7 +189,7 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/resistance_entered"
-        android:maxLength="5"
+        android:maxLength="4"
         android:layout_alignBottom="@+id/enter_resistance"
         android:layout_toRightOf="@+id/resistance_text_view"
         android:layout_alignRight="@+id/line3"
@@ -248,10 +248,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tolerance_value"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/resistance_text_view"
-            android:layout_toEndOf="@+id/resistance_text_view"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:layout_alignTop="@+id/tolerance_textview"
+            android:layout_alignLeft="@+id/resistance_value"
+            android:layout_alignStart="@+id/resistance_value" />
 
         <Button
             android:layout_width="wrap_content"
@@ -263,7 +263,7 @@
             android:layout_below="@+id/enter_resistance"
             android:layout_alignRight="@+id/color4_space"
             android:layout_alignEnd="@+id/color4_space"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="70dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -359,7 +359,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/converted_tolerance"
+            android:id="@+id/converted_tolerance_space"
             android:layout_alignTop="@+id/color4_space"
             android:layout_toRightOf="@+id/color4_space"
             android:layout_toEndOf="@+id/color4_space"
@@ -368,11 +368,11 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tolerance_color_space"
+            android:id="@+id/tolerance_color"
             android:src="@drawable/spacer"
-            android:layout_alignTop="@+id/converted_tolerance"
-            android:layout_toRightOf="@+id/converted_tolerance"
-            android:layout_toEndOf="@+id/converted_tolerance" />
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_toRightOf="@+id/converted_tolerance_space"
+            android:layout_toEndOf="@+id/converted_tolerance_space" />
 
         <Button android:id="@+id/resistance_conversion"
             android:layout_width="wrap_content"
@@ -381,10 +381,35 @@
             android:layout_alignTop="@+id/imageView3"
             android:layout_toRightOf="@+id/tolerance_textview"
             android:layout_toEndOf="@+id/tolerance_textview"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="90dp"
             android:background="@drawable/border"
             android:padding="8dp"
             android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Tolerance:"
+            android:id="@+id/textView8"
+            android:textSize="20dp"
+            android:layout_below="@+id/enter_resistance"
+            android:layout_toRightOf="@+id/view"
+            android:layout_toEndOf="@+id/view"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/tol_spinner"
+            android:layout_alignTop="@+id/textView8"
+            android:background="@drawable/border_thin"
+            android:padding="4dp"
+            android:entries="@array/tolerance_values"
+            android:layout_alignRight="@+id/tolerance_color"
+            android:layout_alignEnd="@+id/tolerance_color"
+            android:layout_toRightOf="@+id/resistance_text_view"
+            android:layout_toEndOf="@+id/resistance_text_view" />
 
     </RelativeLayout>
 
