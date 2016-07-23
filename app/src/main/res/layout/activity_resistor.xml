@@ -202,7 +202,7 @@
         android:text="Ohms"
         android:id="@+id/ohms_text_view"
         android:textSize="18dp"
-        android:layout_above="@+id/parse_resistance"
+        android:layout_above="@+id/textView8"
         android:layout_toRightOf="@+id/resistance_power"
         android:layout_toEndOf="@+id/resistance_power" />
 
@@ -260,10 +260,10 @@
             android:id="@+id/parse_resistance"
             android:background="@drawable/border"
             android:padding="8dp"
-            android:layout_below="@+id/enter_resistance"
-            android:layout_alignRight="@+id/color4_space"
-            android:layout_alignEnd="@+id/color4_space"
-            android:layout_marginTop="70dp" />
+            android:layout_below="@+id/tol_spinner"
+            android:layout_alignRight="@+id/tolerance_color"
+            android:layout_alignEnd="@+id/tolerance_color"
+            android:layout_marginTop="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -280,9 +280,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
             android:src="@drawable/res_right"
-            android:layout_alignTop="@+id/color4_space"
-            android:layout_toEndOf="@+id/converted_fourth"
-            android:layout_toRightOf="@+id/converted_fourth" />
+            android:layout_alignTop="@+id/converted_tolerance_space"
+            android:layout_alignRight="@+id/tolerance"
+            android:layout_alignEnd="@+id/tolerance" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -290,8 +290,8 @@
             android:id="@+id/converted_first"
             android:background="@drawable/spacer"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_toRightOf="@+id/imageView3"
-            android:layout_toEndOf="@+id/imageView3" />
+            android:layout_alignLeft="@+id/resistance_entered"
+            android:layout_alignStart="@+id/resistance_entered" />
 
         <ImageView
             android:layout_width="wrap_content"

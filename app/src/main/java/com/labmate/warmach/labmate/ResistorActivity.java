@@ -52,7 +52,8 @@ public class ResistorActivity extends Activity {
         thirdValue = 0;
         fourthColor.setBackgroundColor(Color.BLACK);
         fourthValue = 0;
-        toleranceColor.setBackgroundColor(Color.WHITE);
+        toleranceColor.setBackgroundColor(Color.BLUE);
+        toleranceValue = "0.25%";
     }
 
     public void bindViews() {
@@ -72,7 +73,7 @@ public class ResistorActivity extends Activity {
         convertedSecondColor = (ImageView) findViewById(R.id.converted_second);
         convertedThirdColor = (ImageView) findViewById(R.id.converted_third);
         convertedFourthColor = (ImageView) findViewById(R.id.converted_fourth);
-        convertedToleranceColor = (ImageView) findViewById(R.id.converted_tolerance_space);
+        convertedToleranceColor = (ImageView) findViewById(R.id.tolerance_color);
         toleranceSpinner = (Spinner) findViewById(R.id.tol_spinner);
     }
 
