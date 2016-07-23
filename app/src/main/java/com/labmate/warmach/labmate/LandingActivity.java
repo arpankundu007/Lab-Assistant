@@ -32,5 +32,20 @@ public class LandingActivity extends Activity {
                 startActivity(intent);
             }
         });
+        capacitorImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingActivity.this, CapacitorActivity.class);
+                startActivity(intent);
+            }
+        });
+        inductorImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingActivity.this, InductorActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
