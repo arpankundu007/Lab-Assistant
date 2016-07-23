@@ -11,7 +11,27 @@
         <item>Violet</item>
         <item>Grey</item>
         <item>White</item>
+    </string-array>
+
+    <string-array name="tolerance_colors">
+        <item>Brown</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Violet</item>
+        <item>Grey</item>
         <item>Gold</item>
         <item>Silver</item>
+    </string-array>
+
+    <string-array name="tolerance_values">
+        <item>1 %</item>
+        <item>2 %</item>
+        <item>0.5 %</item>
+        <item>0.25 %</item>
+        <item>0.1 %</item>
+        <item>0.05 %</item>
+        <item>5 %</item>
+        <item>10 %</item>
     </string-array>
 </resources>
