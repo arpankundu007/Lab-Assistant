@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/bands_radiogroup"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/border_thin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingBottom="15dp">
+
+        <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 Bands"
+        android:id="@+id/band_4"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="32dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Bands"
+        android:id="@+id/band_5"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="32dp" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:id="@+id/bands_button"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/bands_radiogroup"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/border_thin"
+        android:padding="8dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Select the number of bands"
+        android:id="@+id/textView9"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

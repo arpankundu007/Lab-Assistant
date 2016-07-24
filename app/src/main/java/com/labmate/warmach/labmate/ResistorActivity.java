@@ -63,8 +63,8 @@ public class ResistorActivity extends Activity {
         fourthColor = (ImageButton) findViewById(R.id.fourth);
         toleranceColor = (ImageButton) findViewById(R.id.tolerance);
         convertResistance = (Button) findViewById(R.id.resistance_conversion);
-        getResistance = (Button) findViewById(R.id.show_resistance);
-        resistanceTextView = (TextView) findViewById(R.id.resistance_value);
+        getResistance = (Button) findViewById(R.id.show_inductance);
+        resistanceTextView = (TextView) findViewById(R.id.inductance_value);
         toleranceTextView = (TextView) findViewById(R.id.tolerance_value);
         enteredResistanceValue = (EditText) findViewById(R.id.resistance_entered);
         enteredResistancePower = (EditText) findViewById(R.id.resistance_power);
@@ -170,7 +170,7 @@ public class ResistorActivity extends Activity {
             public void onShow(DialogInterface dialogInterface) {
                 Button positive = (Button) colorPopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) colorPopup.findViewById(R.id.cancelColor);
-                final Spinner colorSpinner = (Spinner) colorPopup.findViewById(R.id.tolerance_color_spinner);
+                final Spinner colorSpinner = (Spinner) colorPopup.findViewById(R.id.multiplier_color_spinner);
                 positive.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -207,7 +207,7 @@ public class ResistorActivity extends Activity {
             public void onShow(DialogInterface dialogInterface) {
                 Button positive = (Button) tolerancePopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) tolerancePopup.findViewById(R.id.cancelColor);
-                final Spinner colorSpinner = (Spinner) tolerancePopup.findViewById(R.id.tolerance_color_spinner);
+                final Spinner colorSpinner = (Spinner) tolerancePopup.findViewById(R.id.multiplier_color_spinner);
                 positive.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -323,7 +323,7 @@ public class ResistorActivity extends Activity {
     }
 
     public void setResistance() {
-        String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10^" + fourthValue + " Ohms";
+        String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10 ^" + fourthValue + " Ohms";
         String tolerance = toleranceValue + " Tol";
         resistanceTextView.setText(resistance);
         toleranceTextView.setText(tolerance);
