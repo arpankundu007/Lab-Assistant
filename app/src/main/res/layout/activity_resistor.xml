@@ -6,7 +6,7 @@
     android:gravity="fill"
     android:fillViewport="false"
     android:scrollbars="none"
-    android:background="#ffffff">
+    android:background="@drawable/loginbackground">
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp" />
 
     <ImageButton
         android:layout_width="50dp"
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Resistance"
-        android:id="@+id/show_resistance"
+        android:id="@+id/show_inductance"
         android:background="@drawable/border"
         android:padding="8dp"
         android:layout_marginTop="28dp"
@@ -144,7 +144,7 @@
         android:text="Resistance : "
         android:id="@+id/resistance_text_view"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/show_resistance"
+        android:layout_below="@+id/show_inductance"
         android:layout_alignLeft="@+id/first"
         android:textSize="20dp" />
 
@@ -152,7 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/resistance_value"
+        android:id="@+id/inductance_value"
         android:textSize="20dp"
         android:layout_alignTop="@+id/resistance_text_view"
         android:layout_alignLeft="@+id/resistance_entered"
@@ -250,8 +250,8 @@
             android:id="@+id/tolerance_value"
             android:textSize="20dp"
             android:layout_alignTop="@+id/tolerance_textview"
-            android:layout_alignLeft="@+id/resistance_value"
-            android:layout_alignStart="@+id/resistance_value" />
+            android:layout_alignLeft="@+id/inductance_value"
+            android:layout_alignStart="@+id/inductance_value" />
 
         <Button
             android:layout_width="wrap_content"

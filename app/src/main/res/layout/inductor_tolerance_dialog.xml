@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Choose the band color"
+        android:text="Choose the tolerance color"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:entries="@array/resistor_colors"
+        android:entries="@array/tolerance_colors_inductance"
         android:background="@drawable/border"
         android:padding="10dp" />
 

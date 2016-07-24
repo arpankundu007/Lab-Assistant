@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:gravity="fill"
+    android:fillViewport="false"
+    android:scrollbars="none"
+    android:background="@drawable/loginbackground">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="8dp">
+
+        <View android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:id="@+id/view" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/first"
+            android:background="#ffffff"
+            android:src="@drawable/border"
+            android:layout_below="@+id/textView3"
+            android:layout_alignRight="@+id/textView8"
+            android:layout_alignEnd="@+id/textView8"
+            android:layout_marginTop="20dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/second"
+            android:background="#ffffff"
+            android:layout_alignBottom="@+id/first"
+            android:layout_toRightOf="@+id/first"
+            android:layout_toEndOf="@+id/first"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/border" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/third"
+            android:background="#ffffff"
+            android:layout_marginLeft="20dp"
+            android:layout_alignTop="@+id/second"
+            android:layout_toRightOf="@+id/second"
+            android:layout_toEndOf="@+id/second"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/border" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/tolerance"
+            android:background="#ffffff"
+            android:src="@drawable/border"
+            android:layout_alignTop="@+id/third"
+            android:layout_toRightOf="@+id/line3"
+            android:layout_toEndOf="@+id/line3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Inductance"
+            android:id="@+id/show_inductance"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/second"
+            android:layout_toRightOf="@+id/first"
+            android:layout_toEndOf="@+id/first" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Specify the inductor colors below"
+            android:id="@+id/textView3"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/view"
+            android:layout_toEndOf="@+id/view"
+            android:layout_marginLeft="8dp" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:background="#8c8c8c"
+            android:layout_alignBottom="@+id/second"
+            android:layout_toRightOf="@+id/first"
+            android:layout_toEndOf="@+id/first"
+            android:layout_marginBottom="19dp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:background="#8c8c8c"
+            android:layout_alignTop="@+id/line"
+            android:layout_toRightOf="@+id/second"
+            android:layout_toEndOf="@+id/second" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:background="#8c8c8c"
+            android:layout_alignTop="@+id/line2"
+            android:layout_toRightOf="@+id/third"
+            android:layout_toEndOf="@+id/third" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Inductance:"
+            android:id="@+id/resistance_text_view"
+            android:textSize="20dp"
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/show_inductance"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/inductance_value"
+            android:textSize="20dp"
+            android:layout_alignTop="@+id/resistance_text_view"
+            android:layout_alignLeft="@+id/resistance_entered"
+            android:layout_alignStart="@+id/resistance_entered"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Or enter inductance to get color code"
+            android:id="@+id/textView4"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/tolerance_textview"
+            android:layout_alignLeft="@+id/enter_resistance"
+            android:layout_alignStart="@+id/enter_resistance"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Inductance:"
+            android:id="@+id/enter_resistance"
+            android:textSize="20dp"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/textView4"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/resistance_entered"
+            android:maxLength="4"
+            android:layout_alignBottom="@+id/enter_resistance"
+            android:layout_toRightOf="@+id/resistance_text_view"
+            android:layout_alignRight="@+id/third"
+            android:layout_alignEnd="@+id/third"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="μH"
+            android:id="@+id/ohms_text_view"
+            android:textSize="18dp"
+            android:layout_above="@+id/textView8"
+            android:layout_toRightOf="@+id/resistance_power"
+            android:layout_toEndOf="@+id/resistance_power" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="x 10"
+            android:id="@+id/textView5"
+            android:layout_alignTop="@+id/enter_resistance"
+            android:layout_toRightOf="@+id/resistance_entered"
+            android:layout_toEndOf="@+id/resistance_entered"
+            android:layout_marginLeft="5dp" />
+
+        <EditText
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/resistance_power"
+            android:layout_below="@+id/textView4"
+            android:layout_above="@+id/textView5"
+            android:layout_toRightOf="@+id/textView5"
+            android:layout_toEndOf="@+id/textView5"
+            android:maxLength="2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Tolerance :"
+            android:id="@+id/tolerance_textview"
+            android:textSize="20dp"
+            android:layout_below="@+id/resistance_text_view"
+            android:layout_alignLeft="@+id/resistance_text_view"
+            android:layout_alignStart="@+id/resistance_text_view"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/tolerance_value"
+            android:textSize="20dp"
+            android:layout_alignTop="@+id/tolerance_textview"
+            android:layout_alignLeft="@+id/inductance_value"
+            android:layout_alignStart="@+id/inductance_value" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Convert"
+            android:id="@+id/parse_resistance"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/tol_spinner"
+            android:layout_alignLeft="@+id/color1_space"
+            android:layout_alignStart="@+id/color1_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/res_left"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/parse_resistance"
+            android:layout_toStartOf="@+id/color1_space"
+            android:layout_alignRight="@+id/color1_space"
+            android:layout_alignEnd="@+id/color1_space"
+            android:layout_toLeftOf="@+id/color1_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@drawable/res_right"
+            android:layout_alignTop="@+id/converted_tolerance_space"
+            android:layout_alignRight="@+id/textView4"
+            android:layout_alignEnd="@+id/textView4" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_first"
+            android:background="@drawable/spacer"
+            android:layout_alignTop="@+id/color1_space"
+            android:layout_toLeftOf="@+id/color1_space"
+            android:layout_toStartOf="@+id/color1_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color1_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_second"
+            android:layout_toLeftOf="@+id/converted_second"
+            android:layout_toStartOf="@+id/converted_second" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_second"
+            android:background="@drawable/spacer"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toLeftOf="@+id/color2_space"
+            android:layout_toStartOf="@+id/color2_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color2_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_second"
+            android:layout_toLeftOf="@+id/converted_third"
+            android:layout_toStartOf="@+id/converted_third" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_third"
+            android:background="@drawable/spacer"
+            android:layout_alignTop="@+id/color2_space"
+            android:layout_toLeftOf="@+id/color3_space"
+            android:layout_toStartOf="@+id/color3_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/color3_space"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/converted_third"
+            android:layout_toLeftOf="@+id/converted_tolerance_space"
+            android:layout_toStartOf="@+id/converted_tolerance_space" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/converted_tolerance_space"
+            android:background="@drawable/spacer"
+            android:layout_alignTop="@+id/color3_space"
+            android:layout_toLeftOf="@+id/tolerance_color"
+            android:layout_toStartOf="@+id/tolerance_color" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tolerance_color"
+            android:src="@drawable/spacer"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4" />
+
+        <Button android:id="@+id/inductance_conversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Conversion"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toRightOf="@+id/tolerance_textview"
+            android:layout_toEndOf="@+id/tolerance_textview"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Tolerance:"
+            android:id="@+id/textView8"
+            android:textSize="20dp"
+            android:layout_below="@+id/enter_resistance"
+            android:layout_toRightOf="@+id/view"
+            android:layout_toEndOf="@+id/view"
+            android:layout_marginTop="15dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/tol_spinner"
+            android:background="@drawable/border_thin"
+            android:padding="4dp"
+            android:entries="@array/tolerance_values"
+            android:layout_alignTop="@+id/textView8"
+            android:layout_alignLeft="@+id/resistance_entered"
+            android:layout_alignStart="@+id/resistance_entered"
+            android:layout_alignRight="@+id/resistance_entered"
+            android:layout_alignEnd="@+id/resistance_entered" />
+
+    </RelativeLayout>
+
+</ScrollView>
