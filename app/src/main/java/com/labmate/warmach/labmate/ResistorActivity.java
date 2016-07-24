@@ -323,7 +323,7 @@ public class ResistorActivity extends Activity {
     }
 
     public void setResistance() {
-        String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10 ^" + fourthValue + " Ohms";
+        String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10 ^ " + fourthValue + " Ohms";
         String tolerance = toleranceValue + " Tol";
         resistanceTextView.setText(resistance);
         toleranceTextView.setText(tolerance);
