@@ -73,7 +73,8 @@
             android:layout_marginTop="36dp"
             android:layout_below="@+id/second"
             android:layout_toRightOf="@+id/first"
-            android:layout_toEndOf="@+id/first" />
+            android:layout_toEndOf="@+id/first"
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +87,8 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/view"
             android:layout_toEndOf="@+id/view"
-            android:layout_marginLeft="8dp" />
+            android:layout_marginLeft="8dp"
+            android:textColor="#666666" />
 
         <View
             android:id="@+id/line"
@@ -127,7 +129,8 @@
             android:layout_marginTop="21dp"
             android:layout_below="@+id/show_inductance"
             android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4" />
+            android:layout_alignStart="@+id/textView4"
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -152,7 +155,8 @@
             android:layout_below="@+id/tolerance_textview"
             android:layout_alignLeft="@+id/enter_resistance"
             android:layout_alignStart="@+id/enter_resistance"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -164,7 +168,8 @@
             android:layout_marginTop="35dp"
             android:layout_below="@+id/textView4"
             android:layout_alignLeft="@+id/textView8"
-            android:layout_alignStart="@+id/textView8" />
+            android:layout_alignStart="@+id/textView8"
+            android:textColor="#666666" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -188,7 +193,8 @@
             android:textSize="18dp"
             android:layout_above="@+id/textView8"
             android:layout_toRightOf="@+id/resistance_power"
-            android:layout_toEndOf="@+id/resistance_power" />
+            android:layout_toEndOf="@+id/resistance_power"
+            android:textColor="#666666" />
 
 
 
@@ -201,7 +207,8 @@
             android:layout_alignTop="@+id/enter_resistance"
             android:layout_toRightOf="@+id/resistance_entered"
             android:layout_toEndOf="@+id/resistance_entered"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            android:textColor="#666666" />
 
         <EditText
             android:layout_width="40dp"
@@ -225,7 +232,8 @@
             android:layout_below="@+id/resistance_text_view"
             android:layout_alignLeft="@+id/resistance_text_view"
             android:layout_alignStart="@+id/resistance_text_view"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -247,7 +255,8 @@
             android:layout_marginTop="20dp"
             android:layout_below="@+id/tol_spinner"
             android:layout_alignLeft="@+id/color1_space"
-            android:layout_alignStart="@+id/color1_space" />
+            android:layout_alignStart="@+id/color1_space"
+            android:textColor="#666666" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -352,7 +361,8 @@
             android:layout_marginTop="90dp"
             android:background="@drawable/border"
             android:padding="8dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -364,7 +374,8 @@
             android:layout_below="@+id/enter_resistance"
             android:layout_toRightOf="@+id/view"
             android:layout_toEndOf="@+id/view"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:textColor="#666666" />
 
         <Spinner
             android:layout_width="wrap_content"
