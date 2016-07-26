@@ -10,7 +10,8 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="8dp">
 
     <View android:layout_width="0dp"
         android:layout_height="0dp"
@@ -84,9 +85,11 @@
         android:padding="8dp"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/second"
-        android:layout_toLeftOf="@+id/power_entered"
-        android:layout_toStartOf="@+id/power_entered"
-        android:textColor="#666666" />
+        android:textColor="#666666"
+        android:layout_alignLeft="@+id/second"
+        android:layout_alignStart="@+id/second"
+        android:layout_toLeftOf="@+id/tolerance"
+        android:layout_toStartOf="@+id/tolerance" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -165,9 +168,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Or enter reistance to get color code"
+        android:text="Enter reistance to get color code"
         android:id="@+id/textView4"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="65dp"
         android:textSize="20dp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
@@ -206,7 +209,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ohms"
         android:id="@+id/ohms_text_view"
-        android:textSize="18dp"
+        android:textSize="17dp"
         android:layout_above="@+id/textView8"
         android:layout_toRightOf="@+id/power_entered"
         android:layout_toEndOf="@+id/power_entered"
@@ -250,6 +253,18 @@
             android:layout_marginTop="10dp"
             android:textColor="#666666" />
 
+        <View
+            android:id="@+id/line5"
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:background="#8c8c8c"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_marginTop="-15dp"
+            android:layout_alignRight="@+id/ohms_text_view"
+            android:layout_alignEnd="@+id/ohms_text_view" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -268,10 +283,12 @@
             android:background="@drawable/border"
             android:padding="8dp"
             android:layout_below="@+id/tol_spinner"
-            android:layout_alignRight="@+id/tolerance_color"
-            android:layout_alignEnd="@+id/tolerance_color"
             android:layout_marginTop="20dp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:layout_alignLeft="@+id/show_component_value"
+            android:layout_alignStart="@+id/show_component_value"
+            android:layout_alignRight="@+id/show_component_value"
+            android:layout_alignEnd="@+id/show_component_value" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -387,13 +404,15 @@
             android:layout_height="wrap_content"
             android:text="Show Conversion"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_toRightOf="@+id/tolerance_textview"
-            android:layout_toEndOf="@+id/tolerance_textview"
             android:layout_marginTop="90dp"
             android:background="@drawable/border"
             android:padding="8dp"
             android:layout_marginBottom="10dp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:layout_alignLeft="@+id/parse_component"
+            android:layout_alignStart="@+id/parse_component"
+            android:layout_alignRight="@+id/parse_component"
+            android:layout_alignEnd="@+id/parse_component" />
 
         <TextView
             android:layout_width="wrap_content"

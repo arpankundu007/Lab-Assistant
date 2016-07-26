@@ -62,4 +62,21 @@
         <item>5 %</item>
         <item>10 %</item>
     </string-array>
+
+    <string-array name="capacitor_units">
+        <item>pF</item>
+        <item>nF</item>
+        <item>μF</item>
+    </string-array>
+
+    <string-array name="tolerance_values_capacitor">
+        <item>C</item>
+        <item>D</item>
+        <item>F</item>
+        <item>G</item>
+        <item>J</item>
+        <item>K</item>
+        <item>M</item>
+        <item>Z</item>
+    </string-array>
 </resources>

@@ -39,21 +39,7 @@ public class ResistorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor);
         bindViews();
-        setDefaults();
         setListeners();
-    }
-
-    public void setDefaults() {
-        firstColor.setBackgroundColor(Color.parseColor("#a52a2a"));
-        firstValue = 1;
-        secondColor.setBackgroundColor(Color.BLACK);
-        secondValue = 0;
-        thirdColor.setBackgroundColor(Color.BLACK);
-        thirdValue = 0;
-        fourthColor.setBackgroundColor(Color.BLACK);
-        fourthValue = 0;
-        toleranceColor.setBackgroundColor(Color.BLUE);
-        toleranceValue = "0.25%";
     }
 
     public void bindViews() {
