@@ -122,32 +122,34 @@ public class ResistorActivity extends Activity {
     }
 
     public void setToleranceColor() {
-        int value = toleranceSpinner.getSelectedItemPosition();
-        switch(value){
-            case 0:
-                convertedToleranceColor.setImageResource(tolColorArray[0]);
-                break;
-            case 1:
-                convertedToleranceColor.setImageResource(tolColorArray[1]);
-                break;
-            case 2:
-                convertedToleranceColor.setImageResource(tolColorArray[2]);
-                break;
-            case 3:
-                convertedToleranceColor.setImageResource(tolColorArray[3]);
-                break;
-            case 4:
-                convertedToleranceColor.setImageResource(tolColorArray[4]);
-                break;
-            case 5:
-                convertedToleranceColor.setImageResource(tolColorArray[5]);
-                break;
-            case 6:
-                convertedToleranceColor.setImageResource(tolColorArray[6]);
-                break;
-            case 7:
-                convertedToleranceColor.setImageResource(tolColorArray[7]);
-                break;
+        if(setValidations()) {
+            int value = toleranceSpinner.getSelectedItemPosition();
+            switch (value) {
+                case 0:
+                    convertedToleranceColor.setImageResource(tolColorArray[0]);
+                    break;
+                case 1:
+                    convertedToleranceColor.setImageResource(tolColorArray[1]);
+                    break;
+                case 2:
+                    convertedToleranceColor.setImageResource(tolColorArray[2]);
+                    break;
+                case 3:
+                    convertedToleranceColor.setImageResource(tolColorArray[3]);
+                    break;
+                case 4:
+                    convertedToleranceColor.setImageResource(tolColorArray[4]);
+                    break;
+                case 5:
+                    convertedToleranceColor.setImageResource(tolColorArray[5]);
+                    break;
+                case 6:
+                    convertedToleranceColor.setImageResource(tolColorArray[6]);
+                    break;
+                case 7:
+                    convertedToleranceColor.setImageResource(tolColorArray[7]);
+                    break;
+            }
         }
     }
 
@@ -219,7 +221,6 @@ public class ResistorActivity extends Activity {
     }
 
     public void setTolerance(int color) {
-        if(setValidations()) {
             switch (color) {
                 case 0:
                     toleranceColor.setBackgroundColor(Color.parseColor("#a52a2a"));
@@ -254,7 +255,7 @@ public class ResistorActivity extends Activity {
                     toleranceValue = "10%";
                     break;
             }
-        }
+
     }
 
     public void setColor(int color, ImageButton imageButton) {

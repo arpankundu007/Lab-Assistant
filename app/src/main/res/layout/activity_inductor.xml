@@ -388,11 +388,11 @@
             android:text="Tolerance:"
             android:id="@+id/textView8"
             android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:textColor="#666666"
             android:layout_below="@+id/enter_resistance"
-            android:layout_toRightOf="@+id/view"
-            android:layout_toEndOf="@+id/view"
-            android:layout_marginTop="15dp"
-            android:textColor="#666666" />
+            android:layout_alignLeft="@+id/parse_component"
+            android:layout_alignStart="@+id/parse_component" />
 
         <Spinner
             android:layout_width="wrap_content"
@@ -401,11 +401,10 @@
             android:background="@drawable/border_thin"
             android:padding="4dp"
             android:entries="@array/tolerance_values_inductor"
-            android:layout_alignTop="@+id/textView8"
+            android:layout_alignBottom="@+id/textView8"
+            android:layout_toLeftOf="@+id/textView5"
             android:layout_alignLeft="@+id/base_entered"
-            android:layout_alignStart="@+id/base_entered"
-            android:layout_alignRight="@+id/base_entered"
-            android:layout_alignEnd="@+id/base_entered" />
+            android:layout_alignStart="@+id/base_entered" />
 
     </RelativeLayout>
 

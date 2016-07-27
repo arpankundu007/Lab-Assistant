@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbackground"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="none"
+    android:id="@+id/capacitance_scrollview">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,7 +42,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView10"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:text="3-digit code:"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#666666"
@@ -167,7 +169,7 @@
 
         <Spinner
             android:id="@+id/capacitance_unit_spinner"
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView14"
             android:layout_alignEnd="@+id/show_capacitance"
@@ -211,7 +213,8 @@
             android:layout_alignLeft="@+id/capacitance_tolerance_spinner"
             android:layout_alignStart="@+id/capacitance_tolerance_spinner"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:maxLength="3" />
 
         <TextView
             android:id="@+id/textView17"
@@ -232,7 +235,8 @@
             android:layout_above="@+id/textView17"
             android:layout_toRightOf="@+id/textView17"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <TextView
             android:id="@+id/textView18"

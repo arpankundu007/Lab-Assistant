@@ -420,24 +420,23 @@
             android:text="Tolerance:"
             android:id="@+id/textView8"
             android:textSize="20dp"
+            android:layout_marginTop="26dp"
+            android:textColor="#666666"
             android:layout_below="@+id/enter_resistance"
             android:layout_toRightOf="@+id/view"
-            android:layout_toEndOf="@+id/view"
-            android:layout_marginTop="10dp"
-            android:textColor="#666666" />
+            android:layout_toEndOf="@+id/view" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:id="@+id/tol_spinner"
-            android:layout_alignTop="@+id/textView8"
             android:background="@drawable/border_thin"
             android:padding="4dp"
             android:entries="@array/tolerance_values"
-            android:layout_alignRight="@+id/tolerance_color"
-            android:layout_alignEnd="@+id/tolerance_color"
+            android:layout_alignBottom="@+id/textView8"
             android:layout_toRightOf="@+id/resistance_text_view"
-            android:layout_toEndOf="@+id/resistance_text_view" />
+            android:layout_alignRight="@+id/base_entered"
+            android:layout_alignEnd="@+id/base_entered" />
 
     </RelativeLayout>
 
