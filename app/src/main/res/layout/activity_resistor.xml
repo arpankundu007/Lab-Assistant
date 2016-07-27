@@ -86,10 +86,9 @@
         android:layout_marginTop="28dp"
         android:layout_below="@+id/second"
         android:textColor="#666666"
-        android:layout_alignLeft="@+id/second"
-        android:layout_alignStart="@+id/second"
-        android:layout_toLeftOf="@+id/tolerance"
-        android:layout_toStartOf="@+id/tolerance" />
+        android:layout_toRightOf="@+id/view"
+        android:layout_alignRight="@+id/imageView4"
+        android:layout_alignEnd="@+id/imageView4" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -278,7 +277,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Convert"
+            android:text="Get Color Code"
             android:id="@+id/parse_component"
             android:background="@drawable/border"
             android:padding="8dp"
@@ -402,7 +401,7 @@
         <Button android:id="@+id/resistance_conversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show Conversion"
+            android:text="View Conversion Chart"
             android:layout_alignTop="@+id/imageView3"
             android:layout_marginTop="90dp"
             android:background="@drawable/border"

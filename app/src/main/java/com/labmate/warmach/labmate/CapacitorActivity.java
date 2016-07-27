@@ -31,7 +31,7 @@ public class CapacitorActivity extends Activity {
     }
 
     public void bindViews() {
-        capacitorValueEditText = (EditText) findViewById(R.id.capacitance_edittext);
+        capacitorValueEditText = (EditText) findViewById(R.id.capacitance_code_edittext);
         capacitorToleranceSpinner = (Spinner) findViewById(R.id.capacitance_tolerance_spinner);
         calculateCapacitanceButton = (Button) findViewById(R.id.show_capacitance);
         capacitorUnitSpinner = (Spinner) findViewById(R.id.capacitance_unit_spinner);
@@ -116,27 +116,30 @@ public class CapacitorActivity extends Activity {
         String tolerance = "";
         switch(position){
             case 0:
-                tolerance = "0.25 pF";
+                tolerance = "";
                 break;
             case 1:
-                tolerance = "0.5 pF";
+                tolerance = "0.25 pF";
                 break;
             case 2:
-                tolerance = "1 %";
+                tolerance = "0.5 pF";
                 break;
             case 3:
-                tolerance = "2 %";
+                tolerance = "1 %";
                 break;
             case 4:
-                tolerance = "5 %";
+                tolerance = "2 %";
                 break;
             case 5:
-                tolerance = "10 %";
+                tolerance = "5 %";
                 break;
             case 6:
-                tolerance = "20 %";
+                tolerance = "10 %";
                 break;
             case 7:
+                tolerance = "20 %";
+                break;
+            case 8:
                 tolerance = " - 20% + 80%";
                 break;
         }

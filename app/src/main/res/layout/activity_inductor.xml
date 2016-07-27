@@ -73,10 +73,10 @@
             android:layout_marginTop="36dp"
             android:layout_below="@+id/second"
             android:textColor="#666666"
-            android:layout_alignLeft="@+id/first"
-            android:layout_alignStart="@+id/first"
-            android:layout_alignRight="@+id/tolerance"
-            android:layout_alignEnd="@+id/tolerance" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -261,7 +261,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Convert"
+            android:text="Get Color Code"
             android:id="@+id/parse_component"
             android:background="@drawable/border"
             android:padding="8dp"
@@ -270,8 +270,8 @@
             android:textColor="#666666"
             android:layout_alignLeft="@+id/show_component_value"
             android:layout_alignStart="@+id/show_component_value"
-            android:layout_alignRight="@+id/tolerance"
-            android:layout_alignEnd="@+id/tolerance" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -369,7 +369,7 @@
         <Button android:id="@+id/inductance_conversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show Conversion"
+            android:text="View Conversion Chart"
             android:layout_alignTop="@+id/imageView3"
             android:layout_marginTop="90dp"
             android:background="@drawable/border"
