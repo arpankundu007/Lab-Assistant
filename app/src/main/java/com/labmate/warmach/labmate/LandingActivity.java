@@ -63,7 +63,7 @@ public class LandingActivity extends Activity {
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
                 setView(type_view).setCancelable(true).create();
         final RadioButton bands4 = (RadioButton) type_view.findViewById(R.id.band_4);
-        RadioButton bands5 = (RadioButton) type_view.findViewById(R.id.band_5);
+        final RadioButton bands5 = (RadioButton) type_view.findViewById(R.id.band_5);
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -73,13 +73,15 @@ public class LandingActivity extends Activity {
                     public void onClick(View view) {
                         if(bands4.isChecked()) {
                             alertDialog.dismiss();
-                            Toast.makeText(getBaseContext(), "Page under construction", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Page under construction. PLease select 5 bands option as of now", Toast.LENGTH_LONG).show();
                         }
-                        else {
+                        else if(bands5.isChecked()){
                             alertDialog.dismiss();
                             Intent intent = new Intent(LandingActivity.this, ResistorActivity.class);
                             startActivity(intent);
                         }
+                        else
+                            Toast.makeText(getBaseContext(), "Please select an option", Toast.LENGTH_LONG).show();
                     }
                 });
             }

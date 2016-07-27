@@ -10,7 +10,8 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="8dp">
 
     <View android:layout_width="0dp"
         android:layout_height="0dp"
@@ -79,14 +80,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Resistance"
-        android:id="@+id/show_inductance"
+        android:id="@+id/show_component_value"
         android:background="@drawable/border"
         android:padding="8dp"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/second"
-        android:layout_toLeftOf="@+id/resistance_power"
-        android:layout_toStartOf="@+id/resistance_power"
-        android:textColor="#666666" />
+        android:textColor="#666666"
+        android:layout_toRightOf="@+id/view"
+        android:layout_alignRight="@+id/imageView4"
+        android:layout_alignEnd="@+id/imageView4" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -146,7 +148,7 @@
         android:text="Resistance : "
         android:id="@+id/resistance_text_view"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/show_inductance"
+        android:layout_below="@+id/show_component_value"
         android:layout_alignLeft="@+id/first"
         android:textSize="20dp"
             android:textColor="#666666" />
@@ -158,16 +160,16 @@
         android:id="@+id/inductance_value"
         android:textSize="20dp"
         android:layout_alignTop="@+id/resistance_text_view"
-        android:layout_alignLeft="@+id/resistance_entered"
-        android:layout_alignStart="@+id/resistance_entered" />
+        android:layout_alignLeft="@+id/base_entered"
+        android:layout_alignStart="@+id/base_entered" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Or enter reistance to get color code"
+        android:text="Enter reistance to get color code"
         android:id="@+id/textView4"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="65dp"
         android:textSize="20dp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
@@ -193,7 +195,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/resistance_entered"
+        android:id="@+id/base_entered"
         android:maxLength="4"
         android:layout_alignBottom="@+id/enter_resistance"
         android:layout_toRightOf="@+id/resistance_text_view"
@@ -206,10 +208,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ohms"
         android:id="@+id/ohms_text_view"
-        android:textSize="18dp"
+        android:textSize="17dp"
         android:layout_above="@+id/textView8"
-        android:layout_toRightOf="@+id/resistance_power"
-        android:layout_toEndOf="@+id/resistance_power"
+        android:layout_toRightOf="@+id/power_entered"
+        android:layout_toEndOf="@+id/power_entered"
         android:textColor="#666666" />
 
 
@@ -221,8 +223,8 @@
             android:text="x 10"
             android:id="@+id/textView5"
             android:layout_alignTop="@+id/enter_resistance"
-            android:layout_toRightOf="@+id/resistance_entered"
-            android:layout_toEndOf="@+id/resistance_entered"
+            android:layout_toRightOf="@+id/base_entered"
+            android:layout_toEndOf="@+id/base_entered"
             android:layout_marginLeft="5dp" />
 
         <EditText
@@ -230,7 +232,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/resistance_power"
+            android:id="@+id/power_entered"
             android:layout_below="@+id/textView4"
             android:layout_above="@+id/textView5"
             android:layout_toRightOf="@+id/textView5"
@@ -250,6 +252,18 @@
             android:layout_marginTop="10dp"
             android:textColor="#666666" />
 
+        <View
+            android:id="@+id/line5"
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:background="#8c8c8c"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_marginTop="-15dp"
+            android:layout_alignRight="@+id/ohms_text_view"
+            android:layout_alignEnd="@+id/ohms_text_view" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -263,22 +277,24 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Convert"
-            android:id="@+id/parse_resistance"
+            android:text="Get Color Code"
+            android:id="@+id/parse_component"
             android:background="@drawable/border"
             android:padding="8dp"
             android:layout_below="@+id/tol_spinner"
-            android:layout_alignRight="@+id/tolerance_color"
-            android:layout_alignEnd="@+id/tolerance_color"
             android:layout_marginTop="20dp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:layout_alignLeft="@+id/show_component_value"
+            android:layout_alignStart="@+id/show_component_value"
+            android:layout_alignRight="@+id/show_component_value"
+            android:layout_alignEnd="@+id/show_component_value" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView3"
             android:src="@drawable/res_left"
-            android:layout_below="@+id/parse_resistance"
+            android:layout_below="@+id/parse_component"
             android:layout_alignLeft="@+id/enter_resistance"
             android:layout_marginTop="20dp"
             android:layout_alignStart="@+id/enter_resistance" />
@@ -298,8 +314,8 @@
             android:id="@+id/converted_first"
             android:background="@drawable/spacer"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_alignLeft="@+id/resistance_entered"
-            android:layout_alignStart="@+id/resistance_entered" />
+            android:layout_alignLeft="@+id/base_entered"
+            android:layout_alignStart="@+id/base_entered" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -385,15 +401,17 @@
         <Button android:id="@+id/resistance_conversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show Conversion"
+            android:text="View Conversion Chart"
             android:layout_alignTop="@+id/imageView3"
-            android:layout_toRightOf="@+id/tolerance_textview"
-            android:layout_toEndOf="@+id/tolerance_textview"
             android:layout_marginTop="90dp"
             android:background="@drawable/border"
             android:padding="8dp"
             android:layout_marginBottom="10dp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:layout_alignLeft="@+id/parse_component"
+            android:layout_alignStart="@+id/parse_component"
+            android:layout_alignRight="@+id/parse_component"
+            android:layout_alignEnd="@+id/parse_component" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -402,24 +420,23 @@
             android:text="Tolerance:"
             android:id="@+id/textView8"
             android:textSize="20dp"
+            android:layout_marginTop="26dp"
+            android:textColor="#666666"
             android:layout_below="@+id/enter_resistance"
             android:layout_toRightOf="@+id/view"
-            android:layout_toEndOf="@+id/view"
-            android:layout_marginTop="10dp"
-            android:textColor="#666666" />
+            android:layout_toEndOf="@+id/view" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:id="@+id/tol_spinner"
-            android:layout_alignTop="@+id/textView8"
             android:background="@drawable/border_thin"
             android:padding="4dp"
             android:entries="@array/tolerance_values"
-            android:layout_alignRight="@+id/tolerance_color"
-            android:layout_alignEnd="@+id/tolerance_color"
+            android:layout_alignBottom="@+id/textView8"
             android:layout_toRightOf="@+id/resistance_text_view"
-            android:layout_toEndOf="@+id/resistance_text_view" />
+            android:layout_alignRight="@+id/base_entered"
+            android:layout_alignEnd="@+id/base_entered" />
 
     </RelativeLayout>
 
