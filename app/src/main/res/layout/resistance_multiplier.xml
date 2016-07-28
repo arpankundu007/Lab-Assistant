@@ -6,59 +6,56 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Choose the multiplier color"
-        android:id="@+id/textView2"
+        android:id="@+id/textView22"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
-        android:textColor="#666666"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#666666" />
 
     <Spinner
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:id="@+id/multiplier_color_spinner"
-        android:layout_below="@+id/textView2"
+        android:id="@+id/resistor_multiplier_spinner"
+        android:layout_below="@+id/textView22"
         android:layout_marginTop="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:entries="@array/inductance_multiplier"
-        android:background="@drawable/border"
-        android:padding="10dp" />
+        android:background="@drawable/border_thin"
+        android:entries="@array/resistor_multiplier_colors" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
-        android:id="@+id/confirmColor"
+        android:id="@+id/resistor_multiplier_positive"
+        android:layout_below="@+id/resistor_multiplier_spinner"
+        android:layout_alignLeft="@+id/resistor_multiplier_spinner"
+        android:layout_alignStart="@+id/resistor_multiplier_spinner"
         android:layout_marginTop="35dp"
-        android:background="@drawable/border"
-        android:layout_below="@+id/multiplier_color_spinner"
-        android:layout_alignLeft="@+id/multiplier_color_spinner"
-        android:layout_alignStart="@+id/multiplier_color_spinner"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#666666" />
+        android:background="@drawable/border"
+        android:padding="8dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:id="@+id/cancelColor"
+        android:id="@+id/resistor_multiplier_negative"
         android:background="@drawable/border"
-        android:layout_alignTop="@+id/confirmColor"
-        android:layout_alignRight="@+id/multiplier_color_spinner"
-        android:layout_alignEnd="@+id/multiplier_color_spinner"
+        android:layout_alignTop="@+id/resistor_multiplier_positive"
+        android:layout_alignRight="@+id/resistor_multiplier_spinner"
+        android:layout_alignEnd="@+id/resistor_multiplier_spinner"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#666666" />
-
+        android:layout_marginBottom="20dp" />
 </RelativeLayout>
