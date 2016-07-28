@@ -399,49 +399,53 @@ public class ResistorActivity extends Activity {
     }
 
     public void setResistanceColors(String resistanceValue) {
-        int col_1 = Integer.parseInt(String.valueOf(resistanceValue.charAt(0)));
-        int col_2 = 0, col_3 = 0, col_4 = 0;
-        if (resistanceValue.contains(".")) {
-            String string1 = resistanceValue.split("\\.")[0];
-            String string2 = resistanceValue.split("\\.")[1];
-            if (string1.length() == 1 && string2.length() == 1) {
-                col_2 = Integer.parseInt(String.valueOf(string2.charAt(0)));
+        if(Float.parseFloat(resistanceValue) == 0)
+            Toast.makeText(getBaseContext(), "Resistance cannot be zero", Toast.LENGTH_LONG).show();
+        else {
+            int col_1 = Integer.parseInt(String.valueOf(resistanceValue.charAt(0)));
+            int col_2 = 0, col_3 = 0, col_4 = 0;
+            if (resistanceValue.contains(".")) {
+                String string1 = resistanceValue.split("\\.")[0];
+                String string2 = resistanceValue.split("\\.")[1];
+                if (string1.length() == 1 && string2.length() == 1) {
+                    col_2 = Integer.parseInt(String.valueOf(string2.charAt(0)));
+                    col_3 = 0;
+                    col_4 = 11;
+                }
+                if (string1.length() == 1 && string2.length() == 2) {
+                    col_2 = Integer.parseInt(String.valueOf(string2.charAt(0)));
+                    col_3 = Integer.parseInt(String.valueOf(string2.charAt(1)));
+                    col_4 = 11;
+                } else if (string1.length() == 2 && string2.length() == 1) {
+                    col_2 = Integer.parseInt(String.valueOf(string1.charAt(1)));
+                    col_3 = Integer.parseInt(String.valueOf(string2.charAt(0)));
+                    col_4 = 10;
+                }
+                convertedFirstColor.setImageResource(colorArray[col_1]);
+                convertedSecondColor.setImageResource(colorArray[col_2]);
+                convertedThirdColor.setImageResource(colorArray[col_3]);
+                convertedFourthColor.setImageResource(colorArray[col_4]);
+            } else if (resistanceValue.length() == 1) {
+                col_2 = 0;
                 col_3 = 0;
                 col_4 = 11;
-            }
-            if (string1.length() == 1 && string2.length() == 2) {
-                col_2 = Integer.parseInt(String.valueOf(string2.charAt(0)));
-                col_3 = Integer.parseInt(String.valueOf(string2.charAt(1)));
-                col_4 = 11;
-            } else if (string1.length() == 2 && string2.length() == 1) {
-                col_2 = Integer.parseInt(String.valueOf(string1.charAt(1)));
-                col_3 = Integer.parseInt(String.valueOf(string2.charAt(0)));
+            } else if (resistanceValue.length() == 2) {
+                col_2 = Integer.parseInt(String.valueOf(resistanceValue.charAt(1)));
+                col_3 = 0;
                 col_4 = 10;
+            } else {
+                col_2 = Integer.parseInt(String.valueOf(resistanceValue.charAt(1)));
+                col_3 = Integer.parseInt(String.valueOf(resistanceValue.charAt(2)));
+                col_4 = resistanceValue.length() - 3;
             }
-            convertedFirstColor.setImageResource(colorArray[col_1]);
-            convertedSecondColor.setImageResource(colorArray[col_2]);
-            convertedThirdColor.setImageResource(colorArray[col_3]);
-            convertedFourthColor.setImageResource(colorArray[col_4]);
-        } else if (resistanceValue.length() == 1) {
-            col_2 = 0;
-            col_3 = 0;
-            col_4 = 11;
-        } else if (resistanceValue.length() == 2) {
-            col_2 = Integer.parseInt(String.valueOf(resistanceValue.charAt(1)));
-            col_3 = 0;
-            col_4 = 10;
-        } else {
-            col_2 = Integer.parseInt(String.valueOf(resistanceValue.charAt(1)));
-            col_3 = Integer.parseInt(String.valueOf(resistanceValue.charAt(2)));
-            col_4 = resistanceValue.length() - 3;
-        }
-        if (col_4 > 11)
-            Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
-        else {
-            convertedFirstColor.setImageResource(colorArray[col_1]);
-            convertedSecondColor.setImageResource(colorArray[col_2]);
-            convertedThirdColor.setImageResource(colorArray[col_3]);
-            convertedFourthColor.setImageResource(colorArray[col_4]);
+            if (col_4 > 11)
+                Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
+            else {
+                convertedFirstColor.setImageResource(colorArray[col_1]);
+                convertedSecondColor.setImageResource(colorArray[col_2]);
+                convertedThirdColor.setImageResource(colorArray[col_3]);
+                convertedFourthColor.setImageResource(colorArray[col_4]);
+            }
         }
     }
 
