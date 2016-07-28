@@ -314,11 +314,13 @@ public class InductorActivity extends Activity {
         int col_1 = Integer.parseInt(String.valueOf(inductance.charAt(0)));
         int col_2 = Integer.parseInt(String.valueOf(inductance.charAt(1)));
         int col_3 = inductance.length() - 2;
-        if (col_3 > 11)
+        if (col_3 >= 11)
             Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
-        convertedFirstColor.setImageResource(colorArray[col_1]);
-        convertedSecondColor.setImageResource(colorArray[col_2]);
-        convertedThirdColor.setImageResource(colorArray[col_3]);
+        else {
+            convertedFirstColor.setImageResource(colorArray[col_1]);
+            convertedSecondColor.setImageResource(colorArray[col_2]);
+            convertedThirdColor.setImageResource(colorArray[col_3]);
+        }
     }
 
     public void setToleranceColor() {
@@ -379,7 +381,7 @@ public class InductorActivity extends Activity {
     }
 
     public boolean setValidations() {
-        if (enteredInductanceValue.getText().toString().length() < 2 || enteredInductancePower.getText().toString().equals("")) {
+        if (enteredInductanceValue.getText().toString().equals("") || enteredInductancePower.getText().toString().equals("")) {
             Toast.makeText(getBaseContext(), "Invalid data entered", Toast.LENGTH_SHORT).show();
             return false;
         }

@@ -92,4 +92,19 @@
         <item>-20 % + 80 %</item>
     </string-array>
 
+    <string-array name="resistor_multiplier_colors">
+        <item>Black</item>
+        <item>Brown</item>
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Violet</item>
+        <item>Grey</item>
+        <item>White</item>
+        <item>Gold</item>
+        <item>Silver</item>
+    </string-array>
+
 </resources>

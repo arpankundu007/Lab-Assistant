@@ -6,7 +6,8 @@
     android:gravity="fill"
     android:fillViewport="false"
     android:scrollbars="none"
-    android:background="@drawable/loginbackground">
+    android:background="@drawable/loginbackground"
+    android:id="@+id/resistor_scroll">
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
