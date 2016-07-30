@@ -19,6 +19,7 @@
         <activity android:name=".ResistorActivity"></activity>
         <activity android:name=".CapacitorActivity"></activity>
         <activity android:name=".InductorActivity"></activity>
+        <activity android:name=".DigitalComponentsActivity"></activity>
     </application>
 
 </manifest>

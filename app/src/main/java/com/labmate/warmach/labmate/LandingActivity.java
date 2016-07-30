@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class LandingActivity extends Activity {
 
-    ImageButton resistorImageButton, capacitorImageButton, inductorImageButton;
+    ImageButton resistorImageButton, capacitorImageButton, inductorImageButton, digitalComponentsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,7 @@ public class LandingActivity extends Activity {
         resistorImageButton = (ImageButton) findViewById(R.id.resistorButton);
         capacitorImageButton = (ImageButton) findViewById(R.id.capacitorButton);
         inductorImageButton = (ImageButton) findViewById(R.id.inductorButton);
+        digitalComponentsButton = (ImageButton) findViewById(R.id.digital_components);
     }
 
     public void setListeners() {
@@ -54,7 +55,13 @@ public class LandingActivity extends Activity {
                 startActivity(intent);
             }
         });
-
+        digitalComponentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingActivity.this, DigitalComponentsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void showBandPopup() {
@@ -73,7 +80,7 @@ public class LandingActivity extends Activity {
                     public void onClick(View view) {
                         if(bands4.isChecked()) {
                             alertDialog.dismiss();
-                            Toast.makeText(getBaseContext(), "Page under construction. PLease select 5 bands option as of now", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LandingActivity.this, "Page under construction", Toast.LENGTH_SHORT).show();
                         }
                         else if(bands5.isChecked()){
                             alertDialog.dismiss();
