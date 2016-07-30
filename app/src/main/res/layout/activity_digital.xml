@@ -3,7 +3,8 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="8dp"
     android:gravity="center_horizontal"
-    android:background="@drawable/loginbackground">
+    android:background="@drawable/loginbackground"
+    android:scrollbars="none">
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -11,11 +12,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@+id/and_gate"
+        android:background="@drawable/border_thin"
+        android:layout_below="@+id/textView30"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/and_gate"
-        android:background="@drawable/border_thin">
+        android:layout_marginTop="10dp">
 
         <ImageButton
             android:layout_width="90dp"
@@ -273,6 +275,16 @@
                 android:textSize="26dp"
                 android:textColor="#666666" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select a digital component"
+            android:id="@+id/textView30"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#666666" />
 
     </RelativeLayout>
 </ScrollView>

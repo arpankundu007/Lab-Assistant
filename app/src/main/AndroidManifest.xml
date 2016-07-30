@@ -15,11 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LandingActivity"></activity>
-        <activity android:name=".ResistorActivity"></activity>
-        <activity android:name=".CapacitorActivity"></activity>
-        <activity android:name=".InductorActivity"></activity>
-        <activity android:name=".DigitalComponentsActivity"></activity>
+        <activity android:name=".LandingActivity"/>
+        <activity android:name=".ResistorActivity"/>
+        <activity android:name=".CapacitorActivity"/>
+        <activity android:name=".InductorActivity"/>
+        <activity android:name=".DigitalComponentsActivity"/>
+        <activity android:name=".GateInformationActivity"/>
     </application>
 
 </manifest>
