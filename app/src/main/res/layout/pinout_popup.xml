@@ -34,7 +34,7 @@
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:id="@+id/pin_imageview"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/border"
         android:layout_below="@+id/textView33"
         android:layout_centerHorizontal="true" />
@@ -44,12 +44,29 @@
         android:layout_height="wrap_content"
         android:text="Close"
         android:id="@+id/close_chip_button"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:layout_below="@+id/datasheet_button"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/datasheet_button"
+        android:layout_alignStart="@+id/datasheet_button"
+        android:layout_alignRight="@+id/datasheet_button"
+        android:layout_alignEnd="@+id/datasheet_button"
+        android:textColor="#666666"
+        android:layout_marginBottom="15dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download Datasheet"
+        android:id="@+id/datasheet_button"
         android:layout_below="@+id/pin_imageview"
         android:layout_alignLeft="@+id/pin_imageview"
         android:layout_alignStart="@+id/pin_imageview"
         android:layout_alignRight="@+id/pin_imageview"
         android:layout_alignEnd="@+id/pin_imageview"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
         android:background="@drawable/border"
-        android:layout_marginBottom="20dp" />
+        android:textColor="#666666" />
+
 </RelativeLayout>

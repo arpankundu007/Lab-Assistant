@@ -2,11 +2,18 @@ package com.labmate.warmach.labmate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +21,16 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by warmach on 30/7/16.
@@ -30,6 +47,8 @@ public class GateInformationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_gate_information);
         intent = getIntent();
         bindViews();
@@ -136,11 +155,18 @@ public class GateInformationActivity extends Activity {
                 TextView chipname = (TextView) view.findViewById(R.id.chip_name_textview);
                 ImageView chipPinImage = (ImageView) view.findViewById(R.id.pin_imageview);
                 Button close = (Button) view.findViewById(R.id.close_chip_button);
+                Button datasheet = (Button) view.findViewById(R.id.datasheet_button);
                 setTtlDetails(chipname, chipPinImage);
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         alertDialog.dismiss();
+                    }
+                });
+                datasheet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        downloadTtlDatasheet();
                     }
                 });
             }
@@ -182,9 +208,125 @@ public class GateInformationActivity extends Activity {
         }
     }
 
-    public void showCmosPopup() {
+    public void downloadTtlDatasheet() {
+        String chipType = intent.getStringExtra("gate_type");
+        String url = "";
+        switch (chipType) {
+            case "and":
+                url = "https://www.sonoma.edu/users/m/marivani/datasheets/74ls_series/7408.pdf";
+                break;
+            case "or":
+                url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS32.pdf";
+                break;
+            case "xor":
+                url = "http://www.elexp.com/PDFs/1074LS86.pdf";
+                break;
+            case "nand":
+                url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS00A.pdf";
+                break;
+            case "nor":
+                url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS02.pdf";
+                break;
+            case "xnor":
+                url = "http://pdf.datasheetcatalog.com/datasheets/50/375549_DS.pdf";
+                break;
+            case "not":
+                url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS04B.pdf";
+                break;
+        }
+        try {
+            downloadFile(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
     }
 
+    public void showCmosPopup() {
+        LayoutInflater inflater = getLayoutInflater();
+        final View view = inflater.inflate(R.layout.pinout_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                TextView chipname = (TextView) view.findViewById(R.id.chip_name_textview);
+                ImageView chipPinImage = (ImageView) view.findViewById(R.id.pin_imageview);
+                Button close = (Button) view.findViewById(R.id.close_chip_button);
+                setCmosDetails(chipname, chipPinImage);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
+        alertDialog.show();
+    }
+
+    public void setCmosDetails(TextView chipName, ImageView chipPinImage){
+        String chipType = intent.getStringExtra("gate_type");
+        switch (chipType) {
+            case "and":
+                chipName.setText("CD4081");
+                chipPinImage.setBackgroundResource(ttl_pinouts[0]);
+                break;
+            case "or":
+                chipName.setText("CD4071");
+                chipPinImage.setBackgroundResource(ttl_pinouts[1]);
+                break;
+            case "xor":
+                chipName.setText("CD4070");
+                chipPinImage.setBackgroundResource(ttl_pinouts[2]);
+                break;
+            case "nand":
+                chipName.setText("CD4011");
+                chipPinImage.setBackgroundResource(ttl_pinouts[3]);
+                break;
+            case "nor":
+                chipName.setText("CD4001");
+                chipPinImage.setBackgroundResource(ttl_pinouts[4]);
+                break;
+            case "xnor":
+                chipName.setText("CD4077");
+                chipPinImage.setBackgroundResource(ttl_pinouts[5]);
+                break;
+            case "not":
+                chipName.setText("CD4069");
+                chipPinImage.setBackgroundResource(ttl_pinouts[6]);
+                break;
+        }
+    }
+
+    public void downloadFile(String url) throws MalformedURLException {
+        if(isNetworkAvailable(this)) {
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(GateInformationActivity.this, "Please check your Internet Connection", Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        boolean status = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
+                status = true;
+            }
+            else {
+                netInfo = cm.getNetworkInfo(1);
+                if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
+                    status = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return status;
+    }
 
 }
