@@ -31,7 +31,7 @@
             android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
             android:background="@drawable/and_gate"
-            android:src="@drawable/border" />
+            android:src="@drawable/border_thin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/border"
+            android:src="@drawable/border_thin"
             android:background="@drawable/or_gate" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/xor_gate"
-            android:src="@drawable/border" />
+            android:src="@drawable/border_thin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/nand_gate"
-            android:src="@drawable/border" />
+            android:src="@drawable/border_thin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -182,7 +182,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/border"
+            android:src="@drawable/border_thin"
             android:background="@drawable/nor_gate" />
 
         <TextView
@@ -220,7 +220,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/border"
+                android:src="@drawable/border_thin"
                 android:background="@drawable/xnor_gate" />
 
             <TextView
@@ -259,7 +259,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/not_gate"
-                android:src="@drawable/border" />
+                android:src="@drawable/border_thin" />
 
             <TextView
                 android:layout_width="wrap_content"

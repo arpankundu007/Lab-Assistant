@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Chip Name:"
+        android:id="@+id/textView33"
+        android:textSize="20dp"
+        android:textColor="#666666"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/pin_imageview"
+        android:layout_alignStart="@+id/pin_imageview"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/chip_name_textview"
+        android:layout_alignBottom="@+id/textView33"
+        android:layout_toRightOf="@+id/textView33"
+        android:layout_toEndOf="@+id/textView33"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColor="#666666"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:id="@+id/pin_imageview"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/border"
+        android:layout_below="@+id/textView33"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:id="@+id/close_chip_button"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/pin_imageview"
+        android:layout_alignLeft="@+id/pin_imageview"
+        android:layout_alignStart="@+id/pin_imageview"
+        android:layout_alignRight="@+id/pin_imageview"
+        android:layout_alignEnd="@+id/pin_imageview"
+        android:background="@drawable/border"
+        android:layout_marginBottom="20dp" />
+</RelativeLayout>
