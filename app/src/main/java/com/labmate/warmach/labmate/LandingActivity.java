@@ -38,7 +38,8 @@ public class LandingActivity extends Activity {
         resistorRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBandPopup();
+                Intent intent = new Intent(LandingActivity.this, ResistorActivity.class);
+                startActivity(intent);
 
             }
         });

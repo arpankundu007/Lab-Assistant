@@ -18,7 +18,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +43,9 @@ public class GateInformationActivity extends Activity {
     ImageView gateTruthImageView, gateImageView;
     Intent intent;
     Button showPinOutButton;
-    int[] gate_images = {R.drawable.and_gate, R.drawable.or_gate, R.drawable.xor_gate, R.drawable.nand_gate, R.drawable.nor_gate, R.drawable.xnor_gate, R.drawable.not_gate};
-    int[] truth_images = {R.drawable.and_truth, R.drawable.or_truth, R.drawable.xor_truth, R.drawable.nand_truth, R.drawable.nor_truth, R.drawable.xnor_truth, R.drawable.not_truth};
-    int[] ttl_pinouts = {R.drawable.ttl_and, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not};
+    int[] gate_images = {R.drawable.and_gate, R.drawable.or_gate, R.drawable.xor_gate, R.drawable.nand_gate, R.drawable.nor_gate, R.drawable.xnor_gate, R.drawable.not_gate, R.drawable.timer_555};
+    int[] truth_images = {R.drawable.and_truth, R.drawable.or_truth, R.drawable.xor_truth, R.drawable.nand_truth, R.drawable.nor_truth, R.drawable.xnor_truth, R.drawable.not_truth, R.drawable.no_timer};
+    int[] ttl_pinouts = {R.drawable.ttl_and, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,39 +112,47 @@ public class GateInformationActivity extends Activity {
                 gateImageView.setBackgroundResource(gate_images[6]);
                 gateTruthImageView.setBackgroundResource(truth_images[6]);
                 break;
+            case "timer_555":
+                gateNameTextView.setText("555 Timer");
+                gateImageView.setBackgroundResource(gate_images[7]);
+                gateTruthImageView.setBackgroundResource(truth_images[7]);
+                break;
         }
     }
 
     public void showPinTypePopup() {
-        LayoutInflater inflater = getLayoutInflater();
-        final View view = inflater.inflate(R.layout.pin_out_type_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
-        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                final RadioButton ttl = (RadioButton) view.findViewById(R.id.ttl_radioButton);
-                final RadioButton cmos = (RadioButton) view.findViewById(R.id.cmos_radioButton);
-                Button confirm = (Button) view.findViewById(R.id.chip_type_button);
-                confirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(ttl.isChecked())
-                        {
-                            alertDialog.dismiss();
-                            showTtlPopup();
+        if (getIntent().getStringExtra("gate_type").equals("timer_555"))
+            showTtlPopup();
+        else {
+            LayoutInflater inflater = getLayoutInflater();
+            final View view = inflater.inflate(R.layout.pin_out_type_popup, null);
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+            alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface dialogInterface) {
+                    final RadioButton ttl = (RadioButton) view.findViewById(R.id.ttl_radioButton);
+                    final RadioButton cmos = (RadioButton) view.findViewById(R.id.cmos_radioButton);
+                    Button confirm = (Button) view.findViewById(R.id.chip_type_button);
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (ttl.isChecked()) {
+                                alertDialog.dismiss();
+                                showTtlPopup();
+                            } else if (cmos.isChecked()) {
+                                alertDialog.dismiss();
+                                showCmosPopup();
+                            } else
+                                Toast.makeText(GateInformationActivity.this, "Please select an option", Toast.LENGTH_LONG).show();
                         }
-                        else if(cmos.isChecked())
-                        {
-                            alertDialog.dismiss();
-                            showCmosPopup();
-                        }
-                        else
-                            Toast.makeText(GateInformationActivity.this, "Please select an option", Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });
-        alertDialog.show();
+                    });
+
+                }
+            });
+            alertDialog.show();
+        }
+
     }
 
     public void showTtlPopup(){
@@ -205,6 +215,12 @@ public class GateInformationActivity extends Activity {
                 chipName.setText("74LS04");
                 chipPinImage.setBackgroundResource(ttl_pinouts[6]);
                 break;
+            case "timer_555":
+                chipName.setText("LM555 Timer");
+                chipPinImage.getLayoutParams().height = (int) getResources().getDimension(R.dimen.imageview_height);
+                chipPinImage.getLayoutParams().width = (int) getResources().getDimension(R.dimen.imageview_width);
+                chipPinImage.setBackgroundResource(ttl_pinouts[7]);
+                break;
         }
     }
 
@@ -233,6 +249,9 @@ public class GateInformationActivity extends Activity {
             case "not":
                 url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS04B.pdf";
                 break;
+            case "timer_555":
+                url = "https://www.fairchildsemi.com/datasheets/lm/lm555.pdf";
+                break;
         }
         try {
             downloadFile(url);
@@ -252,11 +271,18 @@ public class GateInformationActivity extends Activity {
                 TextView chipname = (TextView) view.findViewById(R.id.chip_name_textview);
                 ImageView chipPinImage = (ImageView) view.findViewById(R.id.pin_imageview);
                 Button close = (Button) view.findViewById(R.id.close_chip_button);
+                Button download = (Button) view.findViewById(R.id.datasheet_button);
                 setCmosDetails(chipname, chipPinImage);
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         alertDialog.dismiss();
+                    }
+                });
+                download.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        downloadCmosDatasheet();
                     }
                 });
             }
@@ -295,6 +321,39 @@ public class GateInformationActivity extends Activity {
                 chipName.setText("CD4069");
                 chipPinImage.setBackgroundResource(ttl_pinouts[6]);
                 break;
+        }
+    }
+
+    public void downloadCmosDatasheet() {
+        String chipType = intent.getStringExtra("gate_type");
+        String url = "";
+        switch (chipType) {
+            case "and":
+                url = "http://www.pcbheaven.com/datasheet/cd4081.pdf";
+                break;
+            case "or":
+                url = "http://www.pcbheaven.com/datasheet/cd4071_72_75.pdf";
+                break;
+            case "xor":
+                url = "http://www-3.unipv.it/lde/strumentazione_componentistica/datasheet/4070.pdf";
+                break;
+            case "nand":
+                url = "http://www.ti.com/lit/ds/symlink/cd4011b.pdf";
+                break;
+            case "nor":
+                url = "https://www.elektronik-kompendium.de/public/schaerer/FILES/cd4001b_cd4011b.pdf";
+                break;
+            case "xnor":
+                url = "http://www.ti.com/lit/ds/symlink/cd4077b.pdf";
+                break;
+            case "not":
+                url = "http://pdf.datasheetcatalog.com/datasheets/150/206783_DS.pdf";
+                break;
+        }
+        try {
+            downloadFile(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
