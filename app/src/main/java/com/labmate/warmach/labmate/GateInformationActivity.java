@@ -2,6 +2,7 @@ package com.labmate.warmach.labmate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,8 +47,8 @@ public class GateInformationActivity extends Activity {
     Intent intent;
     Button showPinOutButton;
     int[] gate_images = {R.drawable.and_gate, R.drawable.or_gate, R.drawable.xor_gate, R.drawable.nand_gate, R.drawable.nor_gate, R.drawable.xnor_gate, R.drawable.not_gate, R.drawable.timer_555};
-    int[] truth_images = {R.drawable.and_truth, R.drawable.or_truth, R.drawable.xor_truth, R.drawable.nand_truth, R.drawable.nor_truth, R.drawable.xnor_truth, R.drawable.not_truth, R.drawable.no_timer};
-    int[] ttl_pinouts = {R.drawable.ttl_and, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
+    int[] truth_images = {R.drawable.truth_and, R.drawable.truth_or, R.drawable.truth_xor, R.drawable.truth_nand, R.drawable.truth_nor, R.drawable.truth_xnor, R.drawable.truth_not, R.drawable.no_timer};
+    int[] ttl_pinouts = {R.drawable.test, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -358,13 +361,40 @@ public class GateInformationActivity extends Activity {
     }
 
     public void downloadFile(String url) throws MalformedURLException {
-        if(isNetworkAvailable(this)) {
+        String[] fileName = url.split("/");
+        String name = fileName[fileName.length - 1];
+        Log.v("File Name:", name);
+        File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)));
+        File list[] = file.listFiles();
+        int exists = 0;
+        for(int i=0 ; i < list.length ; i++){
+            if(list[i].getName().equals(name))
+            {
+                openFile(list[i]);
+                exists = 1;
+            }
+        }
+        if(exists == 1)
+            Toast.makeText(GateInformationActivity.this, "File Exists", Toast.LENGTH_SHORT).show();
+        else if(isNetworkAvailable(this)) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         }
         else
             Toast.makeText(GateInformationActivity.this, "Please check your Internet Connection", Toast.LENGTH_SHORT).show();
+    }
+
+    public void openFile(File file){
+        Intent target = new Intent(Intent.ACTION_VIEW);
+        target.setDataAndType(Uri.fromFile(file),"application/pdf");
+        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        Intent intent = Intent.createChooser(target, "Open File");
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(GateInformationActivity.this, "No PDF reader found..Please install one from the playstore", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static boolean isNetworkAvailable(Context context) {
