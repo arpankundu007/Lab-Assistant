@@ -47,8 +47,11 @@ public class GateInformationActivity extends Activity {
     Intent intent;
     Button showPinOutButton;
     int[] gate_images = {R.drawable.and_gate, R.drawable.or_gate, R.drawable.xor_gate, R.drawable.nand_gate, R.drawable.nor_gate, R.drawable.xnor_gate, R.drawable.not_gate, R.drawable.timer_555};
-    int[] truth_images = {R.drawable.truth_and, R.drawable.truth_or, R.drawable.truth_xor, R.drawable.truth_nand, R.drawable.truth_nor, R.drawable.truth_xnor, R.drawable.truth_not, R.drawable.no_timer};
-    int[] ttl_pinouts = {R.drawable.test, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
+    int[] truth_images = {R.drawable.truth_and, R.drawable.truth_or,
+            R.drawable.truth_xor,R.drawable.truth_nand,
+            R.drawable.truth_nor, R.drawable.truth_xnor,
+            R.drawable.truth_not, R.drawable.no_timer};
+    int[] ttl_pinouts = {R.drawable.ttl_and, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
