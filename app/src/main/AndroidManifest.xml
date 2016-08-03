@@ -26,6 +26,7 @@
         <activity android:name=".InductorActivity"/>
         <activity android:name=".DigitalComponentsActivity"/>
         <activity android:name=".GateInformationActivity"/>
+        <activity android:name=".AnalogComponentsActivity"/>
     </application>
 
 </manifest>

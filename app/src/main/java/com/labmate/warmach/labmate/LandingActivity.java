@@ -64,7 +64,8 @@ public class LandingActivity extends Activity {
         analogRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LandingActivity.this, "Analog components under construction", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LandingActivity.this, AnalogComponentsActivity.class);
+                startActivity(intent);
             }
         });
     }
