@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Chip Name:"
+        android:id="@+id/textView33"
+        android:textSize="20dp"
+        android:textColor="#666666"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/chip_name_textview"
+        android:layout_alignBottom="@+id/textView33"
+        android:layout_toRightOf="@+id/textView33"
+        android:layout_toEndOf="@+id/textView33"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="#666666"
+        android:textSize="20dp" />
+        </RelativeLayout>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:id="@+id/pin_imageview"
+        android:src="@drawable/border_thin"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:id="@+id/close_chip_button"
+        android:background="@drawable/border"
+        android:layout_below="@+id/datasheet_button"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/datasheet_button"
+        android:layout_alignStart="@+id/datasheet_button"
+        android:layout_alignRight="@+id/datasheet_button"
+        android:layout_alignEnd="@+id/datasheet_button"
+        android:textColor="#666666"
+        android:layout_marginBottom="15dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download Datasheet"
+        android:id="@+id/datasheet_button"
+        android:layout_below="@+id/pin_imageview"
+        android:layout_alignLeft="@+id/pin_imageview"
+        android:layout_alignStart="@+id/pin_imageview"
+        android:layout_alignRight="@+id/pin_imageview"
+        android:layout_alignEnd="@+id/pin_imageview"
+        android:layout_marginTop="15dp"
+        android:padding="8dp"
+        android:background="@drawable/border"
+        android:textColor="#666666" />
+
+</RelativeLayout>

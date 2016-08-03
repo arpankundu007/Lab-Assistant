@@ -1,5 +1,6 @@
 package com.labmate.warmach.labmate;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class InductorActivity extends Activity {
     ImageView convertedFirstColor, convertedSecondColor, convertedThirdColor, convertedToleranceColor;
     TextView inductanceTextView, toleranceTextView;
     Spinner toleranceSpinner;
+    ScrollView scrollView;
     int[] colorArray = {R.drawable.black, R.drawable.brown, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.green, R.drawable.blue, R.drawable.violet,
             R.drawable.gray, R.drawable.white, R.drawable.gold};
     int[] tolColorArray = {R.drawable.black, R.drawable.brown, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.gold, R.drawable.silver};
@@ -59,6 +62,7 @@ public class InductorActivity extends Activity {
         convertedToleranceColor = (ImageView) findViewById(R.id.tolerance_color);
         parseInductanceButton = (Button) findViewById(R.id.parse_component);
         toleranceSpinner = (Spinner) findViewById(R.id.tol_spinner);
+        scrollView = (ScrollView) findViewById(R.id.inductor_scroll);
     }
 
     public void setListeners() {
@@ -325,6 +329,7 @@ public class InductorActivity extends Activity {
 
     public void setToleranceColor() {
         if(setValidations()) {
+            ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 500).setDuration(1000).start();
             int value = toleranceSpinner.getSelectedItemPosition();
             switch (value) {
                 case 0:

@@ -10,14 +10,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class LandingActivity extends Activity {
 
-    ImageButton resistorImageButton, capacitorImageButton, inductorImageButton;
+    RelativeLayout resistorRelativeLayout, capacitorRelativeLayout, inductorRelativeLayout, digitalComponentsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,34 +28,42 @@ public class LandingActivity extends Activity {
     }
 
     public void bindViews(){
-        resistorImageButton = (ImageButton) findViewById(R.id.resistorButton);
-        capacitorImageButton = (ImageButton) findViewById(R.id.capacitorButton);
-        inductorImageButton = (ImageButton) findViewById(R.id.inductorButton);
+        resistorRelativeLayout = (RelativeLayout) findViewById(R.id.resistor_relativelayout);
+        capacitorRelativeLayout = (RelativeLayout) findViewById(R.id.capacitor_relativelayout);
+        inductorRelativeLayout = (RelativeLayout) findViewById(R.id.inductor_relativeLayout);
+        digitalComponentsButton = (RelativeLayout) findViewById(R.id.digital_relativeLayout);
     }
 
     public void setListeners() {
-        resistorImageButton.setOnClickListener(new View.OnClickListener() {
+        resistorRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBandPopup();
+                Intent intent = new Intent(LandingActivity.this, ResistorActivity.class);
+                startActivity(intent);
 
             }
         });
-        capacitorImageButton.setOnClickListener(new View.OnClickListener() {
+        capacitorRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LandingActivity.this, CapacitorActivity.class);
                 startActivity(intent);
             }
         });
-        inductorImageButton.setOnClickListener(new View.OnClickListener() {
+        inductorRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LandingActivity.this, InductorActivity.class);
                 startActivity(intent);
             }
         });
-
+        digitalComponentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingActivity.this, DigitalComponentsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void showBandPopup() {
@@ -73,7 +82,7 @@ public class LandingActivity extends Activity {
                     public void onClick(View view) {
                         if(bands4.isChecked()) {
                             alertDialog.dismiss();
-                            Toast.makeText(getBaseContext(), "Page under construction. PLease select 5 bands option as of now", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LandingActivity.this, "Page under construction", Toast.LENGTH_SHORT).show();
                         }
                         else if(bands5.isChecked()){
                             alertDialog.dismiss();
