@@ -2,23 +2,19 @@ package com.labmate.warmach.labmate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class LandingActivity extends Activity {
 
-    RelativeLayout resistorRelativeLayout, capacitorRelativeLayout, inductorRelativeLayout, digitalComponentsButton;
+    RelativeLayout resistorRelativeLayout, capacitorRelativeLayout, inductorRelativeLayout, digitalRelativeLayout, analogRelativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +27,8 @@ public class LandingActivity extends Activity {
         resistorRelativeLayout = (RelativeLayout) findViewById(R.id.resistor_relativelayout);
         capacitorRelativeLayout = (RelativeLayout) findViewById(R.id.capacitor_relativelayout);
         inductorRelativeLayout = (RelativeLayout) findViewById(R.id.inductor_relativeLayout);
-        digitalComponentsButton = (RelativeLayout) findViewById(R.id.digital_relativeLayout);
+        digitalRelativeLayout = (RelativeLayout) findViewById(R.id.digital_relativeLayout);
+        analogRelativeLayout = (RelativeLayout) findViewById(R.id.analog_relativeLayout);
     }
 
     public void setListeners() {
@@ -57,11 +54,17 @@ public class LandingActivity extends Activity {
                 startActivity(intent);
             }
         });
-        digitalComponentsButton.setOnClickListener(new View.OnClickListener() {
+        digitalRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LandingActivity.this, DigitalComponentsActivity.class);
                 startActivity(intent);
+            }
+        });
+        analogRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LandingActivity.this, "Analog components under construction", Toast.LENGTH_SHORT).show();
             }
         });
     }
