@@ -52,6 +52,7 @@ public class GateInformationActivity extends Activity {
             R.drawable.truth_nor, R.drawable.truth_xnor,
             R.drawable.truth_not, R.drawable.no_timer};
     int[] ttl_pinouts = {R.drawable.ttl_and, R.drawable.ttl_or, R.drawable.ttl_xor, R.drawable.ttl_nand, R.drawable.ttl_nor, R.drawable.ttl_xnor, R.drawable.ttl_not, R.drawable.timer_pins};
+    int[] cmos_pinouts = {R.drawable.cmos_and, R.drawable.cmos_or, R.drawable.cmos_xor, R.drawable.cmos_nand, R.drawable.cmos_nor, R.drawable.cmos_xnor, R.drawable.ttl_not};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -301,31 +302,31 @@ public class GateInformationActivity extends Activity {
         switch (chipType) {
             case "and":
                 chipName.setText("CD4081");
-                chipPinImage.setBackgroundResource(ttl_pinouts[0]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[0]);
                 break;
             case "or":
                 chipName.setText("CD4071");
-                chipPinImage.setBackgroundResource(ttl_pinouts[1]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[1]);
                 break;
             case "xor":
                 chipName.setText("CD4070");
-                chipPinImage.setBackgroundResource(ttl_pinouts[2]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[2]);
                 break;
             case "nand":
                 chipName.setText("CD4011");
-                chipPinImage.setBackgroundResource(ttl_pinouts[3]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[3]);
                 break;
             case "nor":
                 chipName.setText("CD4001");
-                chipPinImage.setBackgroundResource(ttl_pinouts[4]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[4]);
                 break;
             case "xnor":
                 chipName.setText("CD4077");
-                chipPinImage.setBackgroundResource(ttl_pinouts[5]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[5]);
                 break;
             case "not":
                 chipName.setText("CD4069");
-                chipPinImage.setBackgroundResource(ttl_pinouts[6]);
+                chipPinImage.setBackgroundResource(cmos_pinouts[6]);
                 break;
         }
     }
@@ -353,7 +354,7 @@ public class GateInformationActivity extends Activity {
                 url = "http://www.ti.com/lit/ds/symlink/cd4077b.pdf";
                 break;
             case "not":
-                url = "http://pdf.datasheetcatalog.com/datasheets/150/206783_DS.pdf";
+                url = "https://www.fairchildsemi.com/datasheets/CD/CD4069UBC.pdf";
                 break;
         }
         try {
