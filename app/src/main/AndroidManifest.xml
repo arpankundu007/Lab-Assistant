@@ -27,6 +27,7 @@
         <activity android:name=".DigitalComponentsActivity"/>
         <activity android:name=".GateInformationActivity"/>
         <activity android:name=".AnalogComponentsActivity"/>
+        <activity android:name=".OpampConfigurationActivity"/>
     </application>
 
 </manifest>

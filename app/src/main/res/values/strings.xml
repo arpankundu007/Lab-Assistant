@@ -107,4 +107,10 @@
         <item>Silver</item>
     </string-array>
 
+    <string-array name =  "opamp_config">
+        <item>Inverting</item>
+        <item>Non-Inverting</item>
+
+    </string-array>
+
 </resources>

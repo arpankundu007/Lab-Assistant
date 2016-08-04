@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <ImageView
+            android:id="@+id/config_type_imageview"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:src="@drawable/border_thin"
+            android:layout_below="@+id/config_spinner" />
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/config_type_imageview"
+            android:layout_alignStart="@+id/config_type_imageview"
+            android:layout_below="@+id/config_type_imageview"
+            android:layout_marginTop="45dp"
+            android:text="R1:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView44"
+            android:layout_alignStart="@+id/textView44"
+            android:layout_below="@+id/textView44"
+            android:layout_marginTop="30dp"
+            android:text="R2:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/r1_editText"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView44"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/textView44"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <EditText
+            android:id="@+id/r2_edittext"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView45"
+            android:layout_alignLeft="@+id/r1_editText"
+            android:layout_alignStart="@+id/r1_editText"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView44"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/r1_editText"
+            android:layout_toRightOf="@+id/r1_editText"
+            android:text="x 10 "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/r1_power_editText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView46"
+            android:layout_toRightOf="@+id/textView46"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/r2_edittext"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/r2_edittext"
+            android:layout_toRightOf="@+id/r2_edittext"
+            android:text="x 10 "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/r2_power_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView47"
+            android:layout_alignEnd="@+id/r1_power_editText"
+            android:layout_alignRight="@+id/r1_power_editText"
+            android:layout_toRightOf="@+id/textView46"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ohm"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:layout_alignTop="@+id/textView46"
+            android:layout_alignRight="@+id/config_type_imageview"
+            android:layout_alignEnd="@+id/config_type_imageview" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ohm"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:layout_below="@+id/r2_power_edittext"
+            android:layout_alignLeft="@+id/textView48"
+            android:layout_alignStart="@+id/textView48" />
+
+        <Button
+            android:id="@+id/gain_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView45"
+            android:layout_alignStart="@+id/textView45"
+            android:layout_below="@+id/textView45"
+            android:layout_marginTop="31dp"
+            android:background="@drawable/border"
+            android:text="Calculate Gain"
+            android:textColor="#666666"
+            android:layout_alignRight="@+id/config_type_imageview"
+            android:layout_alignEnd="@+id/config_type_imageview" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/gain_button"
+            android:layout_alignStart="@+id/gain_button"
+            android:layout_below="@+id/gain_button"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="Gain:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/gain_value_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView50"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/textView50"
+            android:layout_toRightOf="@+id/textView50"
+            android:gravity="center_horizontal"
+            android:text="                     "
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Vout = Gain * Vin"
+            android:id="@+id/textView51"
+            android:layout_below="@+id/gain_value_textview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#666666" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/config_spinner"
+            android:layout_alignLeft="@+id/config_type_imageview"
+            android:layout_alignStart="@+id/config_type_imageview"
+            android:layout_alignRight="@+id/config_type_imageview"
+            android:layout_alignEnd="@+id/config_type_imageview"
+            android:layout_marginTop="10dp"
+            android:entries="@array/opamp_config"
+            android:background="@drawable/border_thin"
+            android:gravity="center|center_horizontal"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+</ScrollView>
