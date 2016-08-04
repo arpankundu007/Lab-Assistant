@@ -59,8 +59,8 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/textView44"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="4" />
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
 
         <EditText
             android:id="@+id/r2_edittext"
@@ -70,8 +70,8 @@
             android:layout_alignLeft="@+id/r1_editText"
             android:layout_alignStart="@+id/r1_editText"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="4" />
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
 
         <TextView
             android:id="@+id/textView46"
@@ -173,7 +173,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView50"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="25dp"
             android:layout_toEndOf="@+id/textView50"
             android:layout_toRightOf="@+id/textView50"
             android:gravity="center_horizontal"
@@ -190,7 +190,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:padding="5dp" />
 
         <Spinner
             android:layout_width="wrap_content"
@@ -205,6 +206,17 @@
             android:background="@drawable/border_thin"
             android:gravity="center|center_horizontal"
             android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/gain_formula_textview"
+            android:textColor="#666666"
+            android:layout_alignTop="@+id/gain_value_textview"
+            android:layout_alignRight="@+id/gain_button"
+            android:layout_alignEnd="@+id/gain_button" />
 
     </RelativeLayout>
 </ScrollView>

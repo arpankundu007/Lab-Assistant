@@ -6,7 +6,7 @@
 
     <ImageView
         android:layout_width="300dp"
-        android:layout_height="270dp"
+        android:layout_height="250dp"
         android:id="@+id/opamp_pins_imageview"
         android:background="@drawable/opamp_pins"
         android:layout_below="@+id/textView43"
@@ -51,5 +51,19 @@
         android:layout_alignRight="@+id/inverting_button"
         android:layout_alignEnd="@+id/inverting_button"
         android:layout_marginTop="10dp"
+        android:textColor="#666666" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download datasheet"
+        android:id="@+id/opamp_datasheet_button"
+        android:layout_below="@+id/non_inverting_button"
+        android:layout_alignLeft="@+id/non_inverting_button"
+        android:layout_alignStart="@+id/non_inverting_button"
+        android:layout_alignRight="@+id/non_inverting_button"
+        android:layout_alignEnd="@+id/non_inverting_button"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
         android:textColor="#666666" />
 </RelativeLayout>
