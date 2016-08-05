@@ -110,7 +110,10 @@
     <string-array name =  "opamp_config">
         <item>Inverting</item>
         <item>Non-Inverting</item>
-
     </string-array>
 
+    <string-array name =  "timer_mode">
+        <item>Astable Mode</item>
+        <item>Monostable Mode</item>
+    </string-array>
 </resources>
