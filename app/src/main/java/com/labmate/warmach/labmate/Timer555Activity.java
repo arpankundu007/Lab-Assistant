@@ -37,7 +37,7 @@ public class Timer555Activity extends Activity {
     ImageView timerModeImageView;
     TextView r2TextView, textView, freqTextView, dutyTextView, tHighTextView, tLowTextView;
     EditText r1EditText, r1PowerEditText, r2EditText, r2PowerEditText, cEditText, cPowerEditText;
-    Button timerOutputButton, timerPinsButton;
+    Button timerOutputButton, timerPinsButton, resetButton;
     ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class Timer555Activity extends Activity {
         capacitorUnitsSpinner = (Spinner) findViewById(R.id.timer_capacitor_units_spinner);
         r1UnitsSpinner = (Spinner) findViewById(R.id.timer_r1_units_spinner);
         r2UnitsSpinner = (Spinner) findViewById(R.id.timer_r2_units_spinner);
+        resetButton = (Button) findViewById(R.id.timer_input_reset_button);
     }
 
     public void setListeners() {
@@ -111,6 +112,13 @@ public class Timer555Activity extends Activity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 1000).setDuration(1000).start();
                 return false;
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetInputData();
             }
         });
     }
@@ -184,6 +192,18 @@ public class Timer555Activity extends Activity {
         String c_power = cPowerEditText.getText().toString();
         String formattedHigh, formattedLow;
         float r1Value, r2Value;
+        if(r1_power.length() == 0) {
+            r1_power = "0";
+            r1PowerEditText.setText("0");
+        }
+        if(r2_power.length() == 0) {
+            r2_power = "0";
+            r2PowerEditText.setText("0");
+        }
+        if(c_power.length() == 0) {
+            c_power = "0";
+            cPowerEditText.setText("0");
+        }
         if(r1UnitsSpinner.getSelectedItemPosition() == 0)
             r1Value = (float) (Float.parseFloat(r1) * Math.pow(10, Float.parseFloat(r1_power)));
         else if (r1UnitsSpinner.getSelectedItemPosition() == 1)
@@ -216,18 +236,23 @@ public class Timer555Activity extends Activity {
             formattedHigh = df.format(t_high) + " s";
         else if((t_high * Math.pow(10,3)) > 1 && (t_high * Math.pow(10,3)) < 1000)
             formattedHigh = df.format(t_high * Math.pow(10,3)) + " ms";
-        else
+        else if((t_high * Math.pow(10,6)) > 1 && (t_high * Math.pow(10,6)) < 1000)
             formattedHigh = df.format(t_high * Math.pow(10,6)) + " μs";
+        else
+            formattedHigh = df.format(t_high * Math.pow(10,9)) + " ns";
 
         if((t_low * Math.pow(10,3)) > 1000)
             formattedLow = df.format(t_low) + " s";
         else if((t_low * Math.pow(10,3)) > 1  && (t_low * Math.pow(10,3)) < 1000)
             formattedLow = df.format(t_low * Math.pow(10,3)) + " ms";
-        else
+        else if((t_low * Math.pow(10,6)) > 1  && (t_low * Math.pow(10,6)) < 1000)
             formattedLow = df.format(t_low * Math.pow(10,6)) + " μs";
+        else
+            formattedLow = df.format(t_low * Math.pow(10,9)) + " ns";
+
         String dutyCycle = df.format(duty * 100) + " %";
         String formatted_div;
-        if(div > 1000)
+        if(div > 1000 && div < 1000000)
             formatted_div = df.format(div / 1000) + " KHz";
         else if(div > 1000000)
             formatted_div = df.format(div/1000000) + " MHz";
@@ -242,6 +267,19 @@ public class Timer555Activity extends Activity {
 
     public void setMonoStableModeCalculation() {
 
+    }
+
+    public void resetInputData(){
+        r1EditText.setText("");
+        r1PowerEditText.setText("");
+        r2EditText.setText("");
+        r2PowerEditText.setText("");
+        cEditText.setText("");
+        cPowerEditText.setText("");
+        freqTextView.setText("");
+        dutyTextView.setText("");
+        tHighTextView.setText("");
+        tLowTextView.setText("");
     }
 
     public void downloadDatasheet(){
@@ -312,9 +350,15 @@ public class Timer555Activity extends Activity {
             tLowTextView.setText("");
             return false;
         }
-        else if(r1PowerEditText.getText().toString().length() == 0 || cPowerEditText.getText().toString().length() == 0 || cPowerEditText.getText().toString().length() == 0) {
+        if(r1PowerEditText.getText().toString().length() == 0) {
             r1PowerEditText.setText("0");
+            return true;
+        }
+        if(r2PowerEditText.getText().toString().length() == 0) {
             r2PowerEditText.setText("0");
+            return true;
+        }
+        if(cPowerEditText.getText().toString().length() == 0){
             cPowerEditText.setText("0");
             return true;
         }
