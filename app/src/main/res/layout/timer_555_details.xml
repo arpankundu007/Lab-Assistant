@@ -1,32 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
     android:gravity="center_horizontal"
-    android:background="@drawable/loginbackground">
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:scrollbars="none"
+    android:id="@+id/timer_scrollview">
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/timer_mode_spinner"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_thin"
-        android:textAlignment="center"
-        android:layout_alignRight="@+id/timer_mode_imageview"
-        android:layout_alignEnd="@+id/timer_mode_imageview"
-        android:layout_alignLeft="@+id/timer_mode_imageview"
-        android:layout_alignStart="@+id/timer_mode_imageview"
-        android:layout_marginLeft="-15dp"
-        android:layout_marginRight="-15dp"
-        android:entries="@array/timer_mode" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/timer_mode_imageview"
-        android:layout_below="@+id/timer_mode_spinner"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/border" />
-</RelativeLayout>
+        <Spinner
+            android:id="@+id/timer_mode_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/timer_mode_imageview"
+            android:layout_alignLeft="@+id/timer_mode_imageview"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/timer_mode_imageview"
+            android:layout_alignStart="@+id/timer_mode_imageview"
+            android:layout_marginLeft="-15dp"
+            android:layout_marginRight="-15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_thin"
+            android:entries="@array/timer_mode"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/timer_mode_imageview"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/timer_mode_spinner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/border" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/timer_mode_imageview"
+            android:layout_alignStart="@+id/timer_mode_imageview"
+            android:layout_below="@+id/timer_mode_imageview"
+            android:layout_marginTop="39dp"
+            android:text="R1:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_r1_edittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView36"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/textView36"
+            android:layout_toRightOf="@+id/textView36"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="4" />
+
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView36"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/timer_r1_edittext"
+            android:layout_toRightOf="@+id/timer_r1_edittext"
+            android:text="x 10 "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_r1_power_edittext"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView53"
+            android:layout_toRightOf="@+id/textView53"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+
+        <TextView
+            android:id="@+id/timer_r2_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView36"
+            android:layout_alignStart="@+id/textView36"
+            android:layout_below="@+id/textView36"
+            android:layout_marginTop="40dp"
+            android:text="R2:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_r2_edittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/timer_r2_textview"
+            android:layout_alignLeft="@+id/timer_r1_edittext"
+            android:layout_alignStart="@+id/timer_r1_edittext"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="4" />
+
+        <TextView
+            android:id="@+id/textView56"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView53"
+            android:layout_alignStart="@+id/textView53"
+            android:layout_alignTop="@+id/timer_r2_textview"
+            android:text="x 10 "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_r2_power_edittext"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView56"
+            android:layout_alignEnd="@+id/timer_r1_power_edittext"
+            android:layout_alignRight="@+id/timer_r1_power_edittext"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+        <TextView
+            android:id="@+id/textView58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/timer_r2_textview"
+            android:layout_alignStart="@+id/timer_r2_textview"
+            android:layout_below="@+id/timer_r2_textview"
+            android:layout_marginTop="40dp"
+            android:text="C:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_capacitor_edittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView58"
+            android:layout_alignLeft="@+id/timer_r2_edittext"
+            android:layout_alignStart="@+id/timer_r2_edittext"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/textView59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView56"
+            android:layout_alignStart="@+id/textView56"
+            android:layout_alignTop="@+id/textView58"
+            android:text="x 10 "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/timer_capacitor_power_edittext"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView59"
+            android:layout_toEndOf="@+id/textView59"
+            android:layout_toRightOf="@+id/textView59"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+        <Button
+            android:id="@+id/timer_output_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/timer_mode_imageview"
+            android:layout_alignLeft="@+id/textView58"
+            android:layout_alignRight="@+id/timer_mode_imageview"
+            android:layout_alignStart="@+id/textView58"
+            android:layout_below="@+id/textView58"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Calculate Output"
+            android:textColor="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Frequency:"
+            android:id="@+id/textView55"
+            android:layout_below="@+id/timer_output_button"
+            android:layout_alignLeft="@+id/timer_output_button"
+            android:layout_alignStart="@+id/timer_output_button"
+            android:layout_marginTop="10dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Duty Cycle:"
+            android:id="@+id/textView61"
+            android:layout_below="@+id/textView55"
+            android:layout_alignLeft="@+id/textView55"
+            android:layout_alignStart="@+id/textView55"
+            android:layout_marginTop="10dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                      "
+            android:id="@+id/timer_frequency_textview"
+            android:layout_alignTop="@+id/textView55"
+            android:layout_toRightOf="@+id/textView61"
+            android:layout_toEndOf="@+id/textView61"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                      "
+            android:id="@+id/timer_duty_cycle_textview"
+            android:layout_alignBottom="@+id/textView61"
+            android:layout_alignLeft="@+id/timer_frequency_textview"
+            android:layout_alignStart="@+id/timer_frequency_textview" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Pinouts"
+            android:id="@+id/timer_555_pinouts_button"
+            android:background="@drawable/border"
+            android:textColor="#666666"
+            android:layout_below="@+id/textView63"
+            android:layout_alignLeft="@+id/textView61"
+            android:layout_alignStart="@+id/textView61"
+            android:layout_marginTop="10dp"
+            android:layout_alignRight="@+id/timer_mode_imageview"
+            android:layout_alignEnd="@+id/timer_mode_imageview" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="T-High:"
+            android:id="@+id/textView62"
+            android:layout_below="@+id/textView61"
+            android:layout_alignLeft="@+id/timer_555_pinouts_button"
+            android:layout_alignStart="@+id/timer_555_pinouts_button"
+            android:layout_marginTop="10dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                      "
+            android:id="@+id/t_high_textview"
+            android:layout_alignTop="@+id/textView62"
+            android:layout_alignLeft="@+id/timer_duty_cycle_textview"
+            android:layout_alignStart="@+id/timer_duty_cycle_textview" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="T-Low:"
+            android:id="@+id/textView63"
+            android:textColor="#666666"
+            android:layout_below="@+id/textView62"
+            android:layout_alignLeft="@+id/timer_555_pinouts_button"
+            android:layout_alignStart="@+id/timer_555_pinouts_button"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                      "
+            android:id="@+id/t_low_textview"
+            android:layout_above="@+id/timer_555_pinouts_button"
+            android:layout_alignLeft="@+id/t_high_textview"
+            android:layout_alignStart="@+id/t_high_textview" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timer_capacitor_units_spinner"
+            android:background="@drawable/border_thin"
+            android:entries="@array/capacitor_units"
+            android:textAlignment="center"
+            android:layout_above="@+id/timer_output_button"
+            android:layout_alignLeft="@+id/timer_r2_units_spinner"
+            android:layout_alignStart="@+id/timer_r2_units_spinner"
+            android:layout_alignTop="@+id/timer_capacitor_edittext"
+            android:layout_alignRight="@+id/timer_mode_spinner"
+            android:layout_alignEnd="@+id/timer_mode_spinner" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timer_r1_units_spinner"
+            android:background="@drawable/border_thin"
+            android:entries="@array/resistor_units"
+            android:textAlignment="center"
+            android:layout_alignBottom="@+id/textView53"
+            android:layout_alignRight="@+id/timer_mode_spinner"
+            android:layout_alignEnd="@+id/timer_mode_spinner"
+            android:layout_toEndOf="@+id/timer_r1_power_edittext"
+            android:layout_alignTop="@+id/timer_r1_edittext"
+            android:layout_toRightOf="@+id/timer_r1_power_edittext"
+            android:layout_marginLeft="10dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timer_r2_units_spinner"
+            android:background="@drawable/border_thin"
+            android:entries="@array/resistor_units"
+            android:textAlignment="center"
+            android:layout_alignBottom="@+id/textView56"
+            android:layout_alignRight="@+id/timer_r1_units_spinner"
+            android:layout_alignEnd="@+id/timer_r1_units_spinner"
+            android:layout_alignTop="@+id/timer_r2_edittext"
+            android:layout_alignLeft="@+id/timer_r1_units_spinner"
+            android:layout_alignStart="@+id/timer_r1_units_spinner" />
+
+    </RelativeLayout>
+</ScrollView>

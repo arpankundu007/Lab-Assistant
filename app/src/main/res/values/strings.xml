@@ -69,6 +69,12 @@
         <item>μF</item>
     </string-array>
 
+    <string-array name="resistor_units">
+        <item>Ω</item>
+        <item>KΩ</item>
+        <item>MΩ</item>
+    </string-array>
+
     <string-array name="tolerance_values_capacitor">
         <item>Select Tolerance</item>
         <item>C</item>
