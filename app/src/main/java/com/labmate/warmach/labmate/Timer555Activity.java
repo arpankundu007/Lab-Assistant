@@ -3,15 +3,9 @@ package com.labmate.warmach.labmate;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,8 +19,6 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
 import java.text.DecimalFormat;
 
 /**
@@ -35,7 +27,7 @@ import java.text.DecimalFormat;
 public class Timer555Activity extends Activity {
     Spinner timerModeSPinner, capacitorUnitsSpinner, r1UnitsSpinner, r2UnitsSpinner;
     ImageView timerModeImageView;
-    TextView r2TextView, textView, freqTextView, dutyTextView, tHighTextView, tLowTextView;
+    TextView r2TextView, textView, freqTextView, dutyTextView, tHighTextView, tLowTextView, textView2, textView3, textView4, textView5;
     EditText r1EditText, r1PowerEditText, r2EditText, r2PowerEditText, cEditText, cPowerEditText;
     Button timerOutputButton, timerPinsButton, resetButton;
     ScrollView scrollView;
@@ -69,6 +61,10 @@ public class Timer555Activity extends Activity {
         r1UnitsSpinner = (Spinner) findViewById(R.id.timer_r1_units_spinner);
         r2UnitsSpinner = (Spinner) findViewById(R.id.timer_r2_units_spinner);
         resetButton = (Button) findViewById(R.id.timer_input_reset_button);
+        textView2 = (TextView) findViewById(R.id.textView55);
+        textView3 = (TextView) findViewById(R.id.textView61);
+        textView4 = (TextView) findViewById(R.id.textView62);
+        textView5 = (TextView) findViewById(R.id.textView63);
     }
 
     public void setListeners() {
@@ -126,11 +122,13 @@ public class Timer555Activity extends Activity {
     public void setAstableMode() {
         timerModeImageView.setBackgroundResource(R.drawable.timer_555_config);
         showR2();
+        resetInputData();
     }
 
     public void setMonoStableMode() {
         timerModeImageView.setBackgroundResource(R.drawable.timer_555_monostable);
         hideR2();
+        resetInputData();
 
     }
 
@@ -140,6 +138,13 @@ public class Timer555Activity extends Activity {
         textView.setVisibility(View.GONE);
         r2EditText.setVisibility(View.GONE);
         r2PowerEditText.setVisibility(View.GONE);
+        textView2.setText("Pulse Width:");
+        textView3.setVisibility(View.GONE);
+        textView4.setVisibility(View.GONE);
+        textView5.setVisibility(View.GONE);
+        dutyTextView.setVisibility(View.GONE);
+        tHighTextView.setVisibility(View.GONE);
+        tLowTextView.setVisibility(View.GONE);
     }
 
     public void showR2() {
@@ -148,6 +153,13 @@ public class Timer555Activity extends Activity {
         textView.setVisibility(View.VISIBLE);
         r2EditText.setVisibility(View.VISIBLE);
         r2PowerEditText.setVisibility(View.VISIBLE);
+        dutyTextView.setVisibility(View.VISIBLE);
+        tHighTextView.setVisibility(View.VISIBLE);
+        tLowTextView.setVisibility(View.VISIBLE);
+        textView2.setText("Frequency:");
+        textView3.setVisibility(View.VISIBLE);
+        textView4.setVisibility(View.VISIBLE);
+        textView5.setVisibility(View.VISIBLE);
     }
 
     public void showTimerPins() {
@@ -169,7 +181,7 @@ public class Timer555Activity extends Activity {
                     @Override
                     public void onClick(View view) {
                         alertDialog.dismiss();
-                        downloadDatasheet();
+                        Utility.downloadDatasheet(Timer555Activity.this, "http://www.ti.com/lit/ds/symlink/ne555.pdf");
                     }
                 });
                 close.setOnClickListener(new View.OnClickListener() {
@@ -203,6 +215,11 @@ public class Timer555Activity extends Activity {
         if(c_power.length() == 0) {
             c_power = "0";
             cPowerEditText.setText("0");
+        }
+        if(r1 == "0" || r2 == "0" || c == "0")
+        {
+            Toast.makeText(Timer555Activity.this, "Values cannot be zero", Toast.LENGTH_SHORT).show();
+            return;
         }
         if(r1UnitsSpinner.getSelectedItemPosition() == 0)
             r1Value = (float) (Float.parseFloat(r1) * Math.pow(10, Float.parseFloat(r1_power)));
@@ -266,7 +283,44 @@ public class Timer555Activity extends Activity {
     }
 
     public void setMonoStableModeCalculation() {
-
+        String r1 = r1EditText.getText().toString();
+        String r1_power = r1PowerEditText.getText().toString();
+        String c = cEditText.getText().toString();
+        String c_power = cPowerEditText.getText().toString();
+        if(r1_power.length() == 0) {
+            r1_power = "0";
+            r1PowerEditText.setText("0");
+        }
+        if(c_power.length() == 0) {
+            c_power = "0";
+            cPowerEditText.setText("0");
+        }
+        float r1Value, cValue;
+        if(r1UnitsSpinner.getSelectedItemPosition() == 0)
+            r1Value = (float) (Float.parseFloat(r1) * Math.pow(10, Float.parseFloat(r1_power)));
+        else if (r1UnitsSpinner.getSelectedItemPosition() == 1)
+            r1Value = (float) (Float.parseFloat(r1) * Math.pow(10, (Float.parseFloat(r1_power) + 3)));
+        else
+            r1Value = (float) (Float.parseFloat(r1) * Math.pow(10, (Float.parseFloat(r1_power) + 6)));
+        if(capacitorUnitsSpinner.getSelectedItemPosition() == 0)
+            cValue = (float) (Float.parseFloat(c) * Math.pow(10, (Float.parseFloat(c_power)) - 12));
+        else if(capacitorUnitsSpinner.getSelectedItemPosition() == 1)
+            cValue = (float) (Float.parseFloat(c) * Math.pow(10, (Float.parseFloat(c_power)) - 9));
+        else
+            cValue = (float) (Float.parseFloat(c) * Math.pow(10, (Float.parseFloat(c_power)) - 6));
+        float time_out = (float) (1.1 * r1Value * cValue);
+        DecimalFormat df = new DecimalFormat("#.###");
+        String formatted_tout;
+        if((time_out * Math.pow(10,3)) > 1000)
+            formatted_tout = df.format(time_out) + " s";
+        else if((time_out * Math.pow(10,3)) > 1 && (time_out * Math.pow(10,3)) < 1000)
+            formatted_tout = df.format(time_out * Math.pow(10,3)) + " ms";
+        else if((time_out * Math.pow(10,6)) > 1 && (time_out * Math.pow(10,6)) < 1000)
+            formatted_tout = df.format(time_out * Math.pow(10,6)) + " μs";
+        else
+            formatted_tout = df.format(time_out * Math.pow(10,9)) + " ns";
+        freqTextView.setText(formatted_tout);
+        Log.v("Time Out: ", "" + formatted_tout);
     }
 
     public void resetInputData(){
@@ -282,67 +336,16 @@ public class Timer555Activity extends Activity {
         tLowTextView.setText("");
     }
 
-    public void downloadDatasheet(){
-        String url = "http://www.ti.com/lit/ds/symlink/ne555.pdf";
-        String[] fileName = url.split("/");
-        String name = fileName[fileName.length - 1];
-        Log.v("File Name:", name);
-        File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)));
-        File list[] = file.listFiles();
-        int exists = 0;
-        for(int i=0 ; i < list.length ; i++){
-            if(list[i].getName().equals(name))
-            {
-                openFile(list[i]);
-                exists = 1;
-            }
-        }
-        if(exists == 1)
-            Toast.makeText(getBaseContext(), "File Exists", Toast.LENGTH_SHORT).show();
-        else if(isNetworkAvailable(this)) {
-            Uri uri = Uri.parse(url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        }
-        else
-            Toast.makeText(getBaseContext(), "Please check your Internet Connection", Toast.LENGTH_SHORT).show();
-    }
-
-    public void openFile(File file){
-        Intent target = new Intent(Intent.ACTION_VIEW);
-        target.setDataAndType(Uri.fromFile(file),"application/pdf");
-        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        Intent intent = Intent.createChooser(target, "Open File");
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getBaseContext(), "No PDF reader found..Please install one from the playstore", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public static boolean isNetworkAvailable(Context context) {
-        boolean status = false;
-        try {
-            ConnectivityManager cm = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getNetworkInfo(0);
-            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
-                status = true;
-            }
-            else {
-                netInfo = cm.getNetworkInfo(1);
-                if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
-                    status = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean setValidations() {
+        if((r1EditText.getText().toString().length() == 0 || r2EditText.getText().toString().length() == 0 || cEditText.getText().toString().length() == 0) && timerModeSPinner.getSelectedItemPosition() == 0) {
+            Toast.makeText(Timer555Activity.this, "Empty values not allowed", Toast.LENGTH_SHORT).show();
+            freqTextView.setText("");
+            dutyTextView.setText("");
+            tHighTextView.setText("");
+            tLowTextView.setText("");
             return false;
         }
-        return status;
-    }
-
-    public boolean setValidations() {
-        if(r1EditText.getText().toString().length() == 0 || r2EditText.getText().toString().length() == 0 || cEditText.getText().toString().length() == 0  ) {
+        if((r1EditText.getText().toString().length() == 0 || cEditText.getText().toString().length() == 0) && timerModeSPinner.getSelectedItemPosition() == 1) {
             Toast.makeText(Timer555Activity.this, "Empty values not allowed", Toast.LENGTH_SHORT).show();
             freqTextView.setText("");
             dutyTextView.setText("");

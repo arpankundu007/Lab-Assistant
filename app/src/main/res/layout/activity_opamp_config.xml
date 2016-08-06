@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbackground"
     android:orientation="vertical"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:id="@+id/opamp_scrollview">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -217,6 +218,20 @@
             android:layout_alignTop="@+id/gain_value_textview"
             android:layout_alignRight="@+id/gain_button"
             android:layout_alignEnd="@+id/gain_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Pin Outs"
+            android:id="@+id/opamp_pins_button"
+            android:layout_below="@+id/textView51"
+            android:layout_alignLeft="@+id/textView50"
+            android:layout_alignStart="@+id/textView50"
+            android:layout_alignRight="@+id/gain_formula_textview"
+            android:layout_alignEnd="@+id/gain_formula_textview"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border"
+            android:textColor="#666666" />
 
     </RelativeLayout>
 </ScrollView>

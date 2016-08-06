@@ -260,12 +260,7 @@ public class GateInformationActivity extends Activity {
                 url = "https://www.fairchildsemi.com/datasheets/lm/lm555.pdf";
                 break;
         }
-        try {
-            downloadFile(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
+            Utility.downloadDatasheet(GateInformationActivity.this, url);
     }
 
     public void showCmosPopup() {
@@ -357,69 +352,6 @@ public class GateInformationActivity extends Activity {
                 url = "https://www.fairchildsemi.com/datasheets/CD/CD4069UBC.pdf";
                 break;
         }
-        try {
-            downloadFile(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+            Utility.downloadDatasheet(GateInformationActivity.this, url);
     }
-
-    public void downloadFile(String url) throws MalformedURLException {
-        String[] fileName = url.split("/");
-        String name = fileName[fileName.length - 1];
-        Log.v("File Name:", name);
-        File file = new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)));
-        File list[] = file.listFiles();
-        int exists = 0;
-        for(int i=0 ; i < list.length ; i++){
-            if(list[i].getName().equals(name))
-            {
-                openFile(list[i]);
-                exists = 1;
-            }
-        }
-        if(exists == 1)
-            Toast.makeText(GateInformationActivity.this, "File Exists", Toast.LENGTH_SHORT).show();
-        else if(isNetworkAvailable(this)) {
-            Uri uri = Uri.parse(url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        }
-        else
-            Toast.makeText(GateInformationActivity.this, "Please check your Internet Connection", Toast.LENGTH_SHORT).show();
-    }
-
-    public void openFile(File file){
-        Intent target = new Intent(Intent.ACTION_VIEW);
-        target.setDataAndType(Uri.fromFile(file),"application/pdf");
-        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        Intent intent = Intent.createChooser(target, "Open File");
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(GateInformationActivity.this, "No PDF reader found..Please install one from the playstore", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public static boolean isNetworkAvailable(Context context) {
-        boolean status = false;
-        try {
-            ConnectivityManager cm = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getNetworkInfo(0);
-            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
-                status = true;
-            }
-            else {
-                netInfo = cm.getNetworkInfo(1);
-                if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
-                    status = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return status;
-    }
-
 }

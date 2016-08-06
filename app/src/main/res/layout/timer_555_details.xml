@@ -184,7 +184,8 @@
             android:text="Calculate Output"
             android:textColor="#666666"
             android:layout_toStartOf="@+id/textView59"
-            android:layout_toLeftOf="@+id/textView59" />
+            android:layout_toLeftOf="@+id/textView59"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -217,8 +218,7 @@
             android:text="                      "
             android:id="@+id/timer_frequency_textview"
             android:layout_alignTop="@+id/textView55"
-            android:layout_toRightOf="@+id/textView61"
-            android:layout_toEndOf="@+id/textView61"
+            android:layout_toRightOf="@+id/textView55"
             android:layout_marginLeft="20dp" />
 
         <TextView
@@ -344,7 +344,8 @@
             android:textColor="#666666"
             android:layout_alignLeft="@+id/textView59"
             android:layout_alignStart="@+id/textView59"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </ScrollView>

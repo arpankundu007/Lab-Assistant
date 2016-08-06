@@ -1,19 +1,30 @@
 package com.labmate.warmach.labmate;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.DecorContentParent;
+import android.os.Environment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.DecimalFormat;
 
 /**
@@ -23,9 +34,10 @@ public class OpampConfigurationActivity extends Activity {
     Intent intent;
     ImageView invertingImageView;
     Spinner configSpinner;
-    Button gainButton;
+    Button gainButton, pinsButton;
     EditText r1EditText, r1PowerEditText, r2EditText, r2PowerEditText;
     TextView gainTextView, gainFormulaTextView;
+    ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +63,8 @@ public class OpampConfigurationActivity extends Activity {
         r1PowerEditText = (EditText) findViewById(R.id.r1_power_editText);
         r2EditText = (EditText) findViewById(R.id.r2_edittext);
         r2PowerEditText = (EditText) findViewById(R.id.r2_power_edittext);
+        pinsButton = (Button) findViewById(R.id.opamp_pins_button);
+        scrollView = (ScrollView) findViewById(R.id.opamp_scrollview);
     }
 
     public void setListeners() {
@@ -76,7 +90,14 @@ public class OpampConfigurationActivity extends Activity {
                         calculateInvertingGain();
                     else
                         calculateNonInvertingGain();
+                    ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 1000).setDuration(1000).start();
                 }
+            }
+        });
+        pinsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showOpampPopup();
             }
         });
     }
@@ -130,6 +151,41 @@ public class OpampConfigurationActivity extends Activity {
             float gain = 1 + temp;
             gainTextView.setText("" + df.format(gain));
         }
+    }
+
+    public void showOpampPopup(){
+        LayoutInflater inflater = getLayoutInflater();
+        final View view = inflater.inflate(R.layout.opamp_layout, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button inverting = (Button) view.findViewById(R.id.inverting_button);
+                Button nonInverting = (Button) view.findViewById(R.id.non_inverting_button);
+                final Button downloadDatasheet = (Button) view.findViewById(R.id.opamp_datasheet_button);
+                inverting.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                        setInverting();
+                    }
+                });
+                nonInverting.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                        setNonInverting();
+                    }
+                });
+                downloadDatasheet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Utility.downloadDatasheet(OpampConfigurationActivity.this, "http://www.ti.com/lit/ds/symlink/lm741.pdf");
+                    }
+                });
+            }
+        });
+        alertDialog.show();
     }
 
     public boolean setValidations() {
