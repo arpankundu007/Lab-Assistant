@@ -29,6 +29,7 @@
         <activity android:name=".AnalogComponentsActivity"/>
         <activity android:name=".OpampConfigurationActivity"/>
         <activity android:name=".Timer555Activity"/>
+        <activity android:name=".Decoder38Activity"/>
     </application>
 
 </manifest>

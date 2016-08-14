@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
  * Created by warmach on 30/7/16.
  */
 public class DigitalComponentsActivity extends Activity{
-    RelativeLayout andGate, orGate, xorGate, nandGate, norGate, xnorGate, notGate, timer555;
+    RelativeLayout andGate, orGate, xorGate, nandGate, norGate, xnorGate, notGate, decoder_38;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class DigitalComponentsActivity extends Activity{
         norGate = (RelativeLayout) findViewById(R.id.nor_gate);
         xnorGate = (RelativeLayout) findViewById(R.id.xnor_gate);
         notGate = (RelativeLayout) findViewById(R.id.not_gate);
+        decoder_38 = (RelativeLayout) findViewById(R.id.decoder_38_relativelayout);
 
     }
 
@@ -79,6 +80,13 @@ public class DigitalComponentsActivity extends Activity{
                 setNotGate();
             }
         });
+
+        decoder_38.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDecoder38();
+            }
+        });
     }
 
     public void setAndGate(){
@@ -120,6 +128,11 @@ public class DigitalComponentsActivity extends Activity{
     public void setNotGate() {
         Intent intent = new Intent(DigitalComponentsActivity.this, GateInformationActivity.class);
         intent.putExtra("gate_type", "not");
+        startActivity(intent);
+    }
+
+    public void setDecoder38() {
+        Intent intent = new Intent(DigitalComponentsActivity.this, Decoder38Activity.class);
         startActivity(intent);
     }
 

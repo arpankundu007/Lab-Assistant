@@ -251,7 +251,7 @@ public class GateInformationActivity extends Activity {
                 url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS02.pdf";
                 break;
             case "xnor":
-                url = "http://pdf.datasheetcatalog.com/datasheets/50/375549_DS.pdf";
+                url = "http://www.datasheet39.com/download.php?id=375549";
                 break;
             case "not":
                 url = "https://www.fairchildsemi.com/datasheets/DM/DM74ALS04B.pdf";
