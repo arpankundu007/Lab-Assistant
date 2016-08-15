@@ -26,6 +26,11 @@
         <activity android:name=".InductorActivity"/>
         <activity android:name=".DigitalComponentsActivity"/>
         <activity android:name=".GateInformationActivity"/>
+        <activity android:name=".AnalogComponentsActivity"/>
+        <activity android:name=".OpampConfigurationActivity"/>
+        <activity android:name=".Timer555Activity"/>
+        <activity android:name=".Decoder38Activity"/>
+        <activity android:name=".GatesActivity"/>
     </application>
 
 </manifest>

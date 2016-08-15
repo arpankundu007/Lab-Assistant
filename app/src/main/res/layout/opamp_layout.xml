@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:id="@+id/opamp_pins_imageview"
+        android:background="@drawable/opamp_pins"
+        android:layout_below="@+id/textView43"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/border" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="741 Operational Amplifier"
+        android:id="@+id/textView43"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:textColor="#666666" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inverting Configuration"
+        android:id="@+id/inverting_button"
+        android:layout_below="@+id/opamp_pins_imageview"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/opamp_pins_imageview"
+        android:layout_alignStart="@+id/opamp_pins_imageview"
+        android:layout_alignRight="@+id/opamp_pins_imageview"
+        android:layout_alignEnd="@+id/opamp_pins_imageview"
+        android:background="@drawable/border"
+        android:textColor="#666666" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Non-Inverting Configuration"
+        android:id="@+id/non_inverting_button"
+        android:background="@drawable/border"
+        android:layout_below="@+id/inverting_button"
+        android:layout_alignLeft="@+id/inverting_button"
+        android:layout_alignStart="@+id/inverting_button"
+        android:layout_alignRight="@+id/inverting_button"
+        android:layout_alignEnd="@+id/inverting_button"
+        android:layout_marginTop="10dp"
+        android:textColor="#666666" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download datasheet"
+        android:id="@+id/opamp_datasheet_button"
+        android:layout_below="@+id/non_inverting_button"
+        android:layout_alignLeft="@+id/non_inverting_button"
+        android:layout_alignStart="@+id/non_inverting_button"
+        android:layout_alignRight="@+id/non_inverting_button"
+        android:layout_alignEnd="@+id/non_inverting_button"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:textColor="#666666" />
+</RelativeLayout>

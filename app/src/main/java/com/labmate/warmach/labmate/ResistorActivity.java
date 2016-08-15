@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -139,7 +140,7 @@ public class ResistorActivity extends Activity {
                 positive.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        setColor(mul_spinner.getSelectedItemPosition(), fourthColor);
+                        setColor(mul_spinner.getSelectedItemPosition(), fourthColor, mul_spinner);
                         fourthValue = mul_spinner.getSelectedItemPosition();
                         alertDialog.dismiss();
                     }
@@ -208,7 +209,7 @@ public class ResistorActivity extends Activity {
                             secondValue = color;
                         else if (imageButton == thirdColor)
                             thirdValue = color;
-                        setColor(color, imageButton);
+                        setColor(color, imageButton, colorSpinner);
                         alertDialog.dismiss();
                     }
                 });
@@ -290,46 +291,61 @@ public class ResistorActivity extends Activity {
 
     }
 
-    public void setColor(int color, ImageButton imageButton) {
+    public void setColor(int color, ImageButton imageButton, Spinner spinner) {
         switch (color) {
             case 0:
                 if (imageButton == firstColor && color == 0)
                     Toast.makeText(getBaseContext(), "First band cannot be black", Toast.LENGTH_LONG).show();
                 else
+                {
                     imageButton.setBackgroundColor(Color.BLACK);
+                    spinner.setBackgroundColor(Color.BLACK);
+                }
+
                 break;
             case 1:
                 imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
+                spinner.setBackgroundColor(Color.parseColor("#a52a2a"));
                 break;
             case 2:
                 imageButton.setBackgroundColor(Color.RED);
+                spinner.setBackgroundColor(Color.RED);
                 break;
             case 3:
                 imageButton.setBackgroundColor(Color.parseColor("#ffa500"));
+                spinner.setBackgroundColor(Color.parseColor("#ffa500"));
                 break;
             case 4:
                 imageButton.setBackgroundColor(Color.YELLOW);
+                spinner.setBackgroundColor(Color.YELLOW);
                 break;
             case 5:
                 imageButton.setBackgroundColor(Color.parseColor("#006600"));
+                spinner.setBackgroundColor(Color.parseColor("#006600"));
                 break;
             case 6:
                 imageButton.setBackgroundColor(Color.BLUE);
+                spinner.setBackgroundColor(Color.BLUE);
                 break;
             case 7:
                 imageButton.setBackgroundColor(Color.parseColor("#ca1cca"));
+                spinner.setBackgroundColor(Color.parseColor("#ca1cca"));
                 break;
             case 8:
                 imageButton.setBackgroundColor(Color.GRAY);
+                spinner.setBackgroundColor(Color.GRAY);
                 break;
             case 9:
                 imageButton.setBackgroundColor(Color.WHITE);
+                spinner.setBackgroundColor(Color.WHITE);
                 break;
             case 10:
                 imageButton.setBackgroundColor(Color.parseColor("#ffd700"));
+                spinner.setBackgroundColor(Color.parseColor("#ffd700"));
                 break;
             case 11:
                 imageButton.setBackgroundColor(Color.parseColor("#c0c0c0"));
+                spinner.setBackgroundColor(Color.parseColor("#c0c0c0"));
                 break;
         }
     }

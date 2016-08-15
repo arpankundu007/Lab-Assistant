@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Lab Assistant</string>
-    <string-array name="resistor_colors">
+    <string-array name = "resistor_colors">
         <item>Black</item>
         <item>Brown</item>
         <item>Red</item>
@@ -13,7 +13,7 @@
         <item>White</item>
     </string-array>
 
-    <string-array name="tolerance_colors">
+    <string-array name = "tolerance_colors">
         <item>Brown</item>
         <item>Red</item>
         <item>Green</item>
@@ -24,7 +24,7 @@
         <item>Silver</item>
     </string-array>
 
-    <string-array name="tolerance_values">
+    <string-array name = "tolerance_values">
         <item>1 %</item>
         <item>2 %</item>
         <item>0.5 %</item>
@@ -35,7 +35,7 @@
         <item>10 %</item>
     </string-array>
 
-    <string-array name="tolerance_colors_inductance">
+    <string-array name = "tolerance_colors_inductance">
         <item>Black</item>
         <item>Brown</item>
         <item>Red</item>
@@ -45,7 +45,7 @@
         <item>Silver</item>
     </string-array>
 
-    <string-array name="inductance_multiplier">
+    <string-array name = "inductance_multiplier">
         <item>Black</item>
         <item>Brown</item>
         <item>Red</item>
@@ -53,7 +53,7 @@
         <item>Yellow</item>
     </string-array>
 
-    <string-array name="tolerance_values_inductor">
+    <string-array name = "tolerance_values_inductor">
         <item>20 %</item>
         <item>1 %</item>
         <item>2 %</item>
@@ -63,13 +63,19 @@
         <item>10 %</item>
     </string-array>
 
-    <string-array name="capacitor_units">
+    <string-array name = "capacitor_units">
         <item>pF</item>
         <item>nF</item>
         <item>μF</item>
     </string-array>
 
-    <string-array name="tolerance_values_capacitor">
+    <string-array name = "resistor_units">
+        <item>Ω</item>
+        <item>KΩ</item>
+        <item>MΩ</item>
+    </string-array>
+
+    <string-array name = "tolerance_values_capacitor">
         <item>Select Tolerance</item>
         <item>C</item>
         <item>D</item>
@@ -81,7 +87,7 @@
         <item>Z</item>
     </string-array>
 
-    <string-array name="tolerance_capacitor">
+    <string-array name = "tolerance_capacitor">
         <item>0.25 pF</item>
         <item>0.5 pF</item>
         <item>1 %</item>
@@ -92,7 +98,7 @@
         <item>-20 % + 80 %</item>
     </string-array>
 
-    <string-array name="resistor_multiplier_colors">
+    <string-array name = "resistor_multiplier_colors">
         <item>Black</item>
         <item>Brown</item>
         <item>Red</item>
@@ -107,4 +113,23 @@
         <item>Silver</item>
     </string-array>
 
+    <string-array name = "opamp_config">
+        <item>Inverting</item>
+        <item>Non-Inverting</item>
+    </string-array>
+
+    <string-array name = "timer_mode">
+        <item>Astable Mode</item>
+        <item>Monostable Mode</item>
+    </string-array>
+
+    <string-array name = "decoder_mode">
+        <item>Decoder</item>
+        <item>Encoder</item>
+    </string-array>
+
+    <string-array name = "binary">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/and_gate"
+        android:id="@+id/not_gate"
         android:background="@drawable/border_thin"
         android:layout_below="@+id/textView30"
         android:layout_alignParentLeft="true"
@@ -37,244 +37,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="AND Gate"
+            android:text="Digital Gates"
             android:id="@+id/textView23"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/imageButton"
             android:layout_toEndOf="@+id/imageButton"
             android:layout_marginLeft="60dp"
             android:layout_marginStart="56dp"
-            android:textSize="26dp"
+            android:textSize="22dp"
             android:textColor="#666666" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/and_gate"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_thin"
-        android:id="@+id/or_gate">
-
-        <ImageButton
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/imageButton2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/border_thin"
-            android:background="@drawable/or_gate" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="OR Gate"
-            android:id="@+id/textView24"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageButton2"
-            android:layout_toEndOf="@+id/imageButton2"
-            android:layout_marginLeft="60dp"
-            android:textSize="26dp"
-            android:textColor="#666666" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/or_gate"
-        android:layout_alignLeft="@+id/or_gate"
-        android:layout_alignStart="@+id/or_gate"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_thin"
-        android:id="@+id/xor_gate">
-
-        <ImageButton
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/imageButton3"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/xor_gate"
-            android:src="@drawable/border_thin" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="XOR Gate"
-            android:id="@+id/textView25"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageButton3"
-            android:layout_toEndOf="@+id/imageButton3"
-            android:layout_marginLeft="60dp"
-            android:layout_marginStart="60dp"
-            android:textSize="26dp"
-            android:textColor="#666666" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/xor_gate"
-        android:layout_alignLeft="@+id/xor_gate"
-        android:layout_alignStart="@+id/xor_gate"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_thin"
-        android:id="@+id/nand_gate">
-
-        <ImageButton
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/imageButton4"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/nand_gate"
-            android:src="@drawable/border_thin" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="NAND Gate"
-            android:id="@+id/textView26"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageButton4"
-            android:layout_toEndOf="@+id/imageButton4"
-            android:layout_marginLeft="60dp"
-            android:layout_marginStart="60dp"
-            android:textSize="26dp"
-            android:textColor="#666666" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_thin"
-        android:id="@+id/nor_gate"
-        android:layout_below="@+id/nand_gate"
-        android:layout_alignLeft="@+id/nand_gate"
-        android:layout_alignStart="@+id/nand_gate"
-        android:layout_marginTop="10dp">
-
-        <ImageButton
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/imageButton5"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/border_thin"
-            android:background="@drawable/nor_gate" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="NOR Gate"
-            android:id="@+id/textView27"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageButton5"
-            android:layout_toEndOf="@+id/imageButton5"
-            android:layout_marginLeft="60dp"
-            android:layout_marginStart="60dp"
-            android:textSize="26dp"
-            android:textColor="#666666" />
-    </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_thin"
-            android:id="@+id/xnor_gate"
-            android:layout_below="@+id/nor_gate"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp">
-
-            <ImageButton
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:id="@+id/imageButton6"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/border_thin"
-                android:background="@drawable/xnor_gate" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="XNOR Gate"
-                android:id="@+id/textView28"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageButton6"
-                android:layout_toEndOf="@+id/imageButton6"
-                android:layout_marginLeft="60dp"
-                android:layout_marginStart="60dp"
-                android:textSize="26dp"
-                android:textColor="#666666" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_thin"
-            android:id="@+id/not_gate"
-            android:layout_below="@+id/xnor_gate"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp">
-
-            <ImageButton
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:id="@+id/imageButton7"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/not_gate"
-                android:src="@drawable/border_thin" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="NOT Gate"
-                android:id="@+id/textView29"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageButton7"
-                android:layout_toEndOf="@+id/imageButton7"
-                android:layout_marginLeft="60dp"
-                android:layout_marginStart="60dp"
-                android:textSize="26dp"
-                android:textColor="#666666" />
-        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -290,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_thin"
-            android:id="@+id/timer_555"
+            android:id="@+id/decoder_38_relativelayout"
             android:layout_below="@+id/not_gate"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -306,22 +78,22 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/timer_555"
+                android:background="@drawable/decoder_block"
                 android:src="@drawable/border_thin" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="555 Timer"
-                android:id="@+id/textView36"
+                android:text="3:8 Decoder/ \n8:3 Encoder"
+                android:id="@+id/textView40"
+                android:textSize="22dp"
+                android:textColor="#666666"
+                android:layout_marginLeft="60dp"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/imageButton12"
                 android:layout_toEndOf="@+id/imageButton12"
-                android:layout_marginLeft="60dp"
-                android:layout_marginStart="60dp"
-                android:textSize="26dp"
-                android:textColor="#666666" />
+                android:layout_marginStart="60dp" />
         </RelativeLayout>
 
     </RelativeLayout>

@@ -5,13 +5,13 @@
     android:background="@drawable/loginbackground">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:id="@+id/imageView"
         android:background="@drawable/icon"
+        android:layout_marginTop="88dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,9 @@
         android:id="@+id/textView"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp" />
+        android:layout_marginTop="66dp"
+        android:textColor="#666666"
+        android:textSize="26dp" />
 
     <ProgressBar
         android:layout_width="wrap_content"
