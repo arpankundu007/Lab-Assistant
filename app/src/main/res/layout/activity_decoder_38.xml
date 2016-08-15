@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginbackground"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:id="@+id/decoder_scrollview">
 
     <RelativeLayout android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -32,11 +33,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:src="@drawable/border" />
+
         <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/decoder_imageview"
             android:layout_marginTop="10dp"
-            android:paddingTop="10dp">
+            android:id="@+id/decoder_relative"
+            android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="X3:"
+                android:text="X2:"
                 android:id="@+id/textView41"
                 android:paddingTop="10dp"
                 android:layout_alignParentTop="true"
@@ -60,12 +63,13 @@
                 android:paddingBottom="10dp"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="0.16"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#666666" />
 
             <Spinner
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/decode_x3_spinner"
+                android:id="@+id/decode_x2_spinner"
                 android:layout_alignBottom="@+id/textView41"
                 android:layout_toRightOf="@+id/textView41"
                 android:layout_alignTop="@+id/textView41"
@@ -74,28 +78,30 @@
                 android:layout_weight="0.15"
                 android:background="@drawable/border_thin"
                 android:layout_marginBottom="20dp"
-                android:entries="@array/binary" />
+                android:entries="@array/binary"
+                android:textAlignment="center" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="X2:"
+                android:text="X1:"
                 android:id="@+id/textView42"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:layout_alignBottom="@+id/decode_x3_spinner"
-                android:layout_toEndOf="@+id/decode_x3_spinner"
-                android:layout_toRightOf="@+id/decode_x3_spinner"
+                android:layout_alignBottom="@+id/decode_x2_spinner"
+                android:layout_toEndOf="@+id/decode_x2_spinner"
+                android:layout_toRightOf="@+id/decode_x2_spinner"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0.15"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#666666" />
 
             <Spinner
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/decode_x2_spinner"
+                android:id="@+id/decode_x1_spinner"
                 android:layout_alignBottom="@+id/textView42"
                 android:layout_toRightOf="@+id/textView42"
                 android:layout_toEndOf="@+id/textView42"
@@ -104,28 +110,30 @@
                 android:layout_alignTop="@+id/textView57"
                 android:layout_weight="0.15"
                 android:background="@drawable/border_thin"
-                android:entries="@array/binary" />
+                android:entries="@array/binary"
+                android:textAlignment="center" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="X1:"
+                android:text="X0:"
                 android:id="@+id/textView57"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_alignBottom="@+id/textView42"
-                android:layout_toRightOf="@+id/decode_x2_spinner"
-                android:layout_toEndOf="@+id/decode_x2_spinner"
+                android:layout_toRightOf="@+id/decode_x1_spinner"
+                android:layout_toEndOf="@+id/decode_x1_spinner"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0.15"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#666666" />
 
             <Spinner
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/decode_x1_spinner"
+                android:id="@+id/decode_x0_spinner"
                 android:layout_toRightOf="@+id/textView57"
                 android:layout_toEndOf="@+id/textView57"
                 android:layout_alignBottom="@+id/textView57"
@@ -134,7 +142,8 @@
                 android:layout_alignTop="@+id/textView57"
                 android:layout_weight="0.15"
                 android:background="@drawable/border_thin"
-                android:entries="@array/binary" />
+                android:entries="@array/binary"
+                android:textAlignment="center" />
         </LinearLayout>
 
             <LinearLayout
@@ -157,7 +166,7 @@
                     android:id="@+id/textView60"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -167,7 +176,7 @@
                     android:id="@+id/textView64"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,7 +186,7 @@
                     android:id="@+id/textView65"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,7 +196,7 @@
                     android:id="@+id/textView66"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -197,7 +206,7 @@
                     android:id="@+id/textView67"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +216,7 @@
                     android:id="@+id/textView68"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -217,7 +226,7 @@
                     android:id="@+id/textView69"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -227,7 +236,7 @@
                     android:id="@+id/textView70"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:textColor="#666666" />
             </LinearLayout>
 
             <LinearLayout
@@ -238,88 +247,89 @@
                 android:gravity="center_horizontal"
                 android:layout_below="@+id/linearLayout2"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:background="@drawable/border_thin"
+                android:id="@+id/linearLayout3">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="     "
+                    android:text="0"
                     android:id="@+id/decode_y7_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="   "
+                    android:text="0"
                     android:id="@+id/decode_y6_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="    "
+                    android:text="0"
                     android:id="@+id/decode_y5_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="    "
+                    android:text="0"
                     android:id="@+id/decode_y4_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="    "
+                    android:text="0"
                     android:id="@+id/decode_y3_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="    "
+                    android:text="0"
                     android:id="@+id/decode_y2_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="    "
+                    android:text="0"
                     android:id="@+id/decode_y1_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="     "
+                    android:text="1"
                     android:id="@+id/decode_y0_textview"
                     android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center|center_horizontal"
+                    android:background="@drawable/border_thin" />
             </LinearLayout>
 
             <Button
@@ -331,14 +341,104 @@
                 android:background="@drawable/border"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="2dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:textColor="#666666" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show decoder circuit"
+                android:id="@+id/decoder_circuit_button"
+                android:layout_marginTop="53dp"
+                android:layout_alignTop="@+id/linearLayout3"
+                android:layout_alignLeft="@+id/decode_button"
+                android:layout_alignStart="@+id/decode_button"
+                android:layout_alignRight="@+id/decode_button"
+                android:layout_alignEnd="@+id/decode_button"
+                android:background="@drawable/border"
+                android:textColor="#666666" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download datasheet"
+                android:id="@+id/decoder_datasheet_button"
+                android:layout_below="@+id/decoder_circuit_button"
+                android:layout_alignLeft="@+id/decoder_circuit_button"
+                android:layout_alignStart="@+id/decoder_circuit_button"
+                android:layout_alignRight="@+id/decoder_circuit_button"
+                android:layout_alignEnd="@+id/decoder_circuit_button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border"
+                android:textColor="#666666" />
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/decoder_relative"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/encoder_relative"
+            android:paddingBottom="300dp"
+            android:padding="8dp">
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Encoding Chart"
+                android:id="@+id/encoder_chart_button"
+                android:background="@drawable/border"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#666666"
+                android:layout_weight="1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Encoder circuit"
+                android:id="@+id/encoder_circuit_button"
+                android:background="@drawable/border"
+                android:textColor="#666666"
+                android:layout_below="@+id/encoder_chart_button"
+                android:layout_alignLeft="@+id/encoder_chart_button"
+                android:layout_alignStart="@+id/encoder_chart_button"
+                android:layout_alignRight="@+id/encoder_chart_button"
+                android:layout_alignEnd="@+id/encoder_chart_button"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download datasheet"
+                android:id="@+id/encoder_datasheet_button"
+                android:background="@drawable/border"
+                android:textColor="#666666"
+                android:layout_below="@+id/encoder_circuit_button"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@+id/encoder_circuit_button"
+                android:layout_alignStart="@+id/encoder_circuit_button"
+                android:layout_alignRight="@+id/encoder_circuit_button"
+                android:layout_alignEnd="@+id/encoder_circuit_button" />
+
+
+        </RelativeLayout>
+
     </RelativeLayout>
 </ScrollView>
