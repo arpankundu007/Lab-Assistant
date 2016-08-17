@@ -5,7 +5,7 @@
     android:padding="8dp"
     android:background="@drawable/loginbackground"
     android:scrollbars="none">
-    <RelativeLayout android:layout_height="1000dp"
+    <RelativeLayout android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
     <RelativeLayout

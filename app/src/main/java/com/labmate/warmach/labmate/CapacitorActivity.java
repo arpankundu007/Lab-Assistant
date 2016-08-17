@@ -112,7 +112,7 @@ public class CapacitorActivity extends Activity {
             final String[] parsedCapacitance = new String[1];
             final Float capFloat = Float.parseFloat("" + val_1 + "" + val_2 + zeros);
             final DecimalFormat df = new DecimalFormat("#.#");
-            df.setMaximumFractionDigits(6);
+            df.setMaximumFractionDigits(3);
             Log.v("nano: ", "" + df.format(capFloat / 1000));
             Log.v("micro", "" + df.format(capFloat / 1000000));
             final String finalZeros = zeros;
@@ -194,8 +194,9 @@ public class CapacitorActivity extends Activity {
     public void parseCapacitance() {
         String capacitance = enteredCapacitanceEditText.getText().toString();
         String power = enteredPowerEditText.getText().toString();
-        if (capacitance.length() < 2 || power.length() < 1)
-            Toast.makeText(getBaseContext(), "Invalid capacitance", Toast.LENGTH_LONG).show();
+        Log.v("Test", String.valueOf(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power))));
+        if(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power)) < 10)
+            Toast.makeText(getBaseContext(), "Capacitance cannot be below 10pF", Toast.LENGTH_LONG).show();
         else {
             ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 500).setDuration(1000).start();
             float resistanceFloat = Float.parseFloat(capacitance);
@@ -209,6 +210,7 @@ public class CapacitorActivity extends Activity {
                 parsedCapacitance = new DecimalFormat("##").format((float) (resistanceFloat * Math.pow(10, powerFloat)));
                 zerosLeft = 0;
             }
+            Log.v("capacitance", parsedCapacitance);
             while (zerosLeft > 0) {
                 parsedCapacitance = parsedCapacitance + "0";
                 zerosLeft--;
