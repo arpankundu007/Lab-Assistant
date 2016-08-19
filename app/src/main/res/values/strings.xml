@@ -75,6 +75,12 @@
         <item>MΩ</item>
     </string-array>
 
+    <string-array name = "frequency_units">
+        <item>Hz</item>
+        <item>KHz</item>
+        <item>MHz</item>
+    </string-array>
+
     <string-array name = "tolerance_values_capacitor">
         <item>Select Tolerance</item>
         <item>C</item>

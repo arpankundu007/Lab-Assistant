@@ -16,6 +16,8 @@ public class SignalGeneratorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signal_generators);
+        bindViews();
+        setListeners();
     }
 
     public void bindViews() {
@@ -57,7 +59,7 @@ public class SignalGeneratorActivity extends Activity {
 
     public void navigateToSquareWaveGenerator() {
         Intent intent = new Intent(SignalGeneratorActivity.this, Timer555Activity.class);
-        Toast.makeText(SignalGeneratorActivity.this, "555 Timer is a square wave generator", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SignalGeneratorActivity.this, "555 Timer can be used as a square wave generator", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }
