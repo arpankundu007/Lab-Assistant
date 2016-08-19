@@ -214,7 +214,7 @@
             android:layout_alignStart="@+id/capacitance_tolerance_spinner"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:maxLength="4" />
+            android:maxLength="5" />
 
         <TextView
             android:id="@+id/textView17"

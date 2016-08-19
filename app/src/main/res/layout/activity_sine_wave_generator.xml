@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginbackground"
     android:orientation="vertical"
-    android:id="@+id/sine_wave_scrollview">
+    android:id="@+id/sine_wave_scrollview"
+    android:scrollbars="none">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -74,7 +75,7 @@
             android:layout_toRightOf="@+id/textView79"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:maxLength="4" />
+            android:maxLength="6" />
 
         <Spinner
             android:id="@+id/sine_wave_c1_spinner"
