@@ -148,7 +148,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Resistance : "
         android:id="@+id/resistance_text_view"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/show_component_value"
         android:layout_alignLeft="@+id/first"
         android:textSize="20dp"

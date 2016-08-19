@@ -66,7 +66,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/resistor"
+            android:background="@drawable/triangular_wave"
             android:src="@drawable/border_thin" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/resistor"
+            android:background="@drawable/square_wave"
             android:src="@drawable/border_thin" />
 
         <TextView

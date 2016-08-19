@@ -128,7 +128,7 @@
             android:text="Inductance:"
             android:id="@+id/resistance_text_view"
             android:textSize="20dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@+id/show_component_value"
             android:layout_alignLeft="@+id/textView4"
             android:layout_alignStart="@+id/textView4"

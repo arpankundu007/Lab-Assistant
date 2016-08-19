@@ -42,7 +42,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView10"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:text="3-digit code:"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#666666"
@@ -88,7 +88,7 @@
             android:background="@drawable/border_thin"
             android:entries="@array/tolerance_values_capacitor"
             android:gravity="center"
-            android:textAlignment="gravity" />
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView13"
@@ -97,8 +97,8 @@
             android:layout_alignLeft="@+id/textView12"
             android:layout_alignStart="@+id/textView12"
             android:layout_below="@+id/show_capacitance"
-            android:layout_marginTop="12dp"
-            android:paddingTop="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="12dp"
             android:text="Capacitance:"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#666666"
@@ -171,12 +171,13 @@
             android:id="@+id/capacitance_unit_spinner"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView14"
             android:layout_alignEnd="@+id/show_capacitance"
             android:layout_alignRight="@+id/show_capacitance"
-            android:layout_alignTop="@+id/textView13"
             android:background="@drawable/border_thin"
-            android:entries="@array/capacitor_units" />
+            android:entries="@array/capacitor_units"
+            android:textAlignment="center"
+            android:layout_above="@+id/textView14"
+            android:layout_alignTop="@+id/textView13" />
 
         <TextView
             android:id="@+id/textView15"
@@ -185,7 +186,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/line5"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="Enter capacitance to get code"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#666666"
@@ -207,7 +208,7 @@
 
         <EditText
             android:id="@+id/capacitance_entered_edittext"
-            android:layout_width="90dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView16"
             android:layout_alignLeft="@+id/capacitance_tolerance_spinner"
@@ -230,24 +231,13 @@
 
         <EditText
             android:id="@+id/capacitance_power_edittext"
-            android:layout_width="50dp"
+            android:layout_width="42dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView17"
             android:layout_toRightOf="@+id/textView17"
             android:ems="10"
             android:inputType="number"
             android:maxLength="2" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/capacitance_unit_spinner"
-            android:layout_alignRight="@+id/capacitance_unit_spinner"
-            android:layout_below="@+id/capacitance_power_edittext"
-            android:text="pF"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#666666" />
 
         <TextView
             android:id="@+id/textView19"
@@ -274,7 +264,8 @@
             android:layout_alignStart="@+id/capacitance_entered_edittext"
             android:layout_alignTop="@+id/textView19"
             android:background="@drawable/border_thin"
-            android:entries="@array/tolerance_capacitor" />
+            android:entries="@array/tolerance_capacitor"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/get_capacitor_code_button"
@@ -351,6 +342,19 @@
             android:background="@drawable/border"
             android:text="View Conversion Chart"
             android:textColor="#666666" />
+
+        <Spinner
+            android:id="@+id/converted_cap_units_spinner"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_thin"
+            android:entries="@array/capacitor_units"
+            android:textAlignment="center"
+            android:layout_alignBottom="@+id/capacitance_entered_edittext"
+            android:layout_toEndOf="@+id/capacitance_power_edittext"
+            android:layout_alignLeft="@+id/capacitance_unit_spinner"
+            android:layout_alignStart="@+id/capacitance_unit_spinner"
+            android:layout_alignTop="@+id/capacitance_entered_edittext" />
     </RelativeLayout>
 
 </ScrollView>

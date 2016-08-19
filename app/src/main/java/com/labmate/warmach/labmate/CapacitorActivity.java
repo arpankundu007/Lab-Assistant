@@ -25,7 +25,7 @@ import java.text.DecimalFormat;
  */
 public class CapacitorActivity extends Activity {
     EditText capacitorValueEditText, enteredCapacitanceEditText, enteredPowerEditText;
-    Spinner capacitorUnitSpinner, capacitorToleranceSpinner, toleranceValueSpinner;
+    Spinner capacitorUnitSpinner, capacitorToleranceSpinner, toleranceValueSpinner, convertedCapacitorUnitsSpinner;
     Button calculateCapacitanceButton, showConversionButton, parseCapacitanceButton;
     TextView capacitanceValueTextView, capacitanceToleranceTextView, capacitorCodeTextView, capacitorToleranceTextView;
     ScrollView scrollView;
@@ -42,6 +42,7 @@ public class CapacitorActivity extends Activity {
         capacitorValueEditText = (EditText) findViewById(R.id.capacitance_code_edittext);
         capacitorToleranceSpinner = (Spinner) findViewById(R.id.capacitance_tolerance_spinner);
         toleranceValueSpinner = (Spinner) findViewById(R.id.capacitor_tolerance_values_spinner);
+        convertedCapacitorUnitsSpinner = (Spinner) findViewById(R.id.converted_cap_units_spinner);
         calculateCapacitanceButton = (Button) findViewById(R.id.show_capacitance);
         capacitorUnitSpinner = (Spinner) findViewById(R.id.capacitance_unit_spinner);
         capacitanceValueTextView = (TextView) findViewById(R.id.capacitance_value);
@@ -84,8 +85,10 @@ public class CapacitorActivity extends Activity {
         parseCapacitanceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parseCapacitance();
-                setToleranceCode();
+                if(setValidations()) {
+                    parseCapacitance();
+                    setToleranceCode();
+                }
             }
         });
     }
@@ -194,6 +197,19 @@ public class CapacitorActivity extends Activity {
     public void parseCapacitance() {
         String capacitance = enteredCapacitanceEditText.getText().toString();
         String power = enteredPowerEditText.getText().toString();
+        if(power.equals(""))
+        {
+            power = "0";
+            enteredPowerEditText.setText("0");
+        }
+        float unitsPower;
+        int units = convertedCapacitorUnitsSpinner.getSelectedItemPosition();
+        if(units == 0)
+            unitsPower = 0;
+        else if (units == 1)
+            unitsPower = 3;
+        else
+            unitsPower = 6;
         Log.v("Test", String.valueOf(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power))));
         if(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power)) < 10)
             Toast.makeText(getBaseContext(), "Capacitance cannot be below 10pF", Toast.LENGTH_LONG).show();
@@ -201,6 +217,7 @@ public class CapacitorActivity extends Activity {
             ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 500).setDuration(1000).start();
             float resistanceFloat = Float.parseFloat(capacitance);
             float powerFloat = Float.parseFloat(power);
+            powerFloat = powerFloat + unitsPower;
             String parsedCapacitance;
             int zerosLeft;
             if (powerFloat >= 3) {
@@ -276,5 +293,13 @@ public class CapacitorActivity extends Activity {
             }
         });
         conversionDialog.show();
+    }
+
+    public boolean setValidations() {
+        if(enteredCapacitanceEditText.getText().toString().equals("")) {
+            Toast.makeText(CapacitorActivity.this, "Please enter a valid capacitance", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
