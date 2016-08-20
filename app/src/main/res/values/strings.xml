@@ -51,6 +51,8 @@
         <item>Red</item>
         <item>Orange</item>
         <item>Yellow</item>
+        <item>Gold</item>
+        <item>Silver</item>
     </string-array>
 
     <string-array name = "tolerance_values_inductor">
@@ -73,6 +75,12 @@
         <item>Ω</item>
         <item>KΩ</item>
         <item>MΩ</item>
+    </string-array>
+
+    <string-array name = "frequency_units">
+        <item>Hz</item>
+        <item>KHz</item>
+        <item>MHz</item>
     </string-array>
 
     <string-array name = "tolerance_values_capacitor">

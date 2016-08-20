@@ -31,6 +31,9 @@
         <activity android:name=".Timer555Activity"/>
         <activity android:name=".Decoder38Activity"/>
         <activity android:name=".GatesActivity"/>
+        <activity android:name=".SignalGeneratorActivity"/>
+        <activity android:name=".SineWaveGeneratorActivity"/>
+        <activity android:name=".TriangularWaveGeneratorActivity"/>
     </application>
 
 </manifest>

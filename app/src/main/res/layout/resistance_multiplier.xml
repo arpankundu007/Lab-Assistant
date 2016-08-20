@@ -31,7 +31,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/border_thin"
-        android:entries="@array/resistor_multiplier_colors" />
+        android:entries="@array/resistor_multiplier_colors"
+        android:contextClickable="false" />
 
     <Button
         android:layout_width="wrap_content"

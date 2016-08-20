@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/loginbackground"
+    android:scrollbars="none"
+    android:id="@+id/triangular_wave_scrollview">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Triangular Wave Generator"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="320dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/textView85"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/border"
+            android:background="@drawable/triangular_wave_generator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Frequency: "
+            android:id="@+id/textView86"
+            android:layout_below="@+id/imageView8"
+            android:layout_alignLeft="@+id/imageView8"
+            android:layout_alignStart="@+id/imageView8"
+            android:layout_marginTop="20dp"
+            android:textColor="#666666" />
+
+        <EditText
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/triangular_wave_frequency_edittext"
+            android:layout_alignBottom="@+id/textView86"
+            android:layout_toRightOf="@+id/textView86"
+            android:layout_marginLeft="7dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/triangular_wave_freq_units_spinner"
+            android:layout_alignBottom="@+id/triangular_wave_frequency_edittext"
+            android:layout_alignTop="@+id/triangular_wave_frequency_edittext"
+            android:layout_alignRight="@+id/imageView8"
+            android:layout_alignEnd="@+id/imageView8"
+            android:layout_toEndOf="@+id/textView85"
+            android:background="@drawable/border_thin"
+            android:layout_toRightOf="@+id/textView85"
+            android:layout_marginLeft="-20dp"
+            android:entries="@array/frequency_units"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="C: "
+            android:id="@+id/textView87"
+            android:textColor="#666666"
+            android:layout_below="@+id/textView86"
+            android:layout_alignLeft="@+id/textView86"
+            android:layout_alignStart="@+id/textView86"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/triangular_wave_capacitor_edittext"
+            android:layout_alignBottom="@+id/textView87"
+            android:layout_alignLeft="@+id/triangular_wave_frequency_edittext"
+            android:layout_alignStart="@+id/triangular_wave_frequency_edittext" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/triangular_wave_cap_units_spinner"
+            android:background="@drawable/border_thin"
+            android:entries="@array/capacitor_units"
+            android:layout_alignTop="@+id/triangular_wave_capacitor_edittext"
+            android:layout_alignLeft="@+id/triangular_wave_freq_units_spinner"
+            android:layout_alignStart="@+id/triangular_wave_freq_units_spinner"
+            android:layout_alignBottom="@+id/textView87"
+            android:layout_alignRight="@+id/triangular_wave_freq_units_spinner"
+            android:layout_alignEnd="@+id/triangular_wave_freq_units_spinner"
+            android:textAlignment="center" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate Components"
+            android:id="@+id/triangular_wave_output_button"
+            android:layout_below="@+id/textView87"
+            android:layout_alignLeft="@+id/textView87"
+            android:layout_alignStart="@+id/textView87"
+            android:layout_alignRight="@+id/imageView8"
+            android:layout_alignEnd="@+id/imageView8"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border"
+            android:textColor="#666666" />
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/triangular_output_relative_layout"
+            android:layout_below="@id/triangular_wave_output_button"
+            android:layout_marginTop="5dp"
+            android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="R1:"
+            android:id="@+id/textView88"
+            android:textColor="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                    "
+            android:id="@+id/triangular_wave_r1"
+            android:layout_alignTop="@+id/textView88"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="R2:"
+            android:id="@+id/textView90"
+            android:textColor="#666666"
+            android:layout_below="@+id/textView88"
+            android:layout_alignLeft="@+id/textView88"
+            android:layout_alignStart="@+id/textView88"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="R3:"
+            android:id="@+id/textView91"
+            android:textColor="#666666"
+            android:layout_below="@+id/textView90"
+            android:layout_alignLeft="@+id/textView90"
+            android:layout_alignStart="@+id/textView90"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                    "
+            android:id="@+id/triangular_wave_r2"
+            android:layout_above="@+id/textView91"
+            android:layout_alignLeft="@+id/triangular_wave_r1"
+            android:layout_alignStart="@+id/triangular_wave_r1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="                    "
+            android:id="@+id/triangular_wave_r3"
+            android:layout_alignBottom="@+id/textView91"
+            android:layout_alignLeft="@+id/triangular_wave_r2"
+            android:layout_alignStart="@+id/triangular_wave_r2" />
+            </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

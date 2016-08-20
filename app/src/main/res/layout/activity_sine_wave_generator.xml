@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
+    android:orientation="vertical"
+    android:id="@+id/sine_wave_scrollview"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <TextView
+            android:id="@+id/textView77"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Sine Wave Generator"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="320dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/textView77"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sine_wave_generator"
+            android:src="@drawable/border" />
+
+        <TextView
+            android:id="@+id/textView78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/imageView7"
+            android:layout_alignStart="@+id/imageView7"
+            android:layout_below="@+id/imageView7"
+            android:layout_marginTop="20dp"
+            android:text="C1: "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/textView79"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView78"
+            android:layout_alignStart="@+id/textView78"
+            android:layout_below="@+id/textView78"
+            android:layout_marginTop="25dp"
+            android:text="Frequency:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666" />
+
+        <EditText
+            android:id="@+id/sine_wave_c1_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView79"
+            android:layout_alignEnd="@+id/textView77"
+            android:layout_alignRight="@+id/textView77"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/textView79"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
+
+        <Spinner
+            android:id="@+id/sine_wave_c1_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView79"
+            android:layout_alignEnd="@+id/imageView7"
+            android:layout_alignRight="@+id/imageView7"
+            android:layout_alignTop="@+id/sine_wave_c1_edittext"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/sine_wave_c1_edittext"
+            android:background="@drawable/border_thin"
+            android:entries="@array/capacitor_units"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/sine_wave_freq_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView79"
+            android:layout_alignLeft="@+id/sine_wave_c1_edittext"
+            android:layout_alignStart="@+id/sine_wave_c1_edittext"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/sine_wave_c1_spinner"
+            android:layout_toStartOf="@+id/sine_wave_c1_spinner"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="4" />
+
+        <Spinner
+            android:id="@+id/sine_wave_freq_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sine_wave_freq_edittext"
+            android:layout_alignEnd="@+id/sine_wave_c1_spinner"
+            android:layout_alignLeft="@+id/sine_wave_c1_spinner"
+            android:layout_alignRight="@+id/sine_wave_c1_spinner"
+            android:layout_alignStart="@+id/sine_wave_c1_spinner"
+            android:layout_alignTop="@+id/sine_wave_freq_edittext"
+            android:background="@drawable/border_thin"
+            android:entries="@array/frequency_units"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/calculate_sine_wave_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/sine_wave_freq_spinner"
+            android:layout_alignLeft="@+id/textView79"
+            android:layout_alignRight="@+id/sine_wave_freq_spinner"
+            android:layout_alignStart="@+id/textView79"
+            android:layout_below="@+id/textView79"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border"
+            android:text="Calculate components"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/textView80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/calculate_sine_wave_button"
+            android:layout_alignStart="@+id/calculate_sine_wave_button"
+            android:layout_below="@+id/calculate_sine_wave_button"
+            android:layout_marginTop="20dp"
+            android:text="C2:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textView81"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView80"
+            android:layout_alignStart="@+id/textView80"
+            android:layout_below="@+id/textView80"
+            android:layout_marginTop="10dp"
+            android:text="C3:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textView82"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView81"
+            android:layout_alignStart="@+id/textView81"
+            android:layout_below="@+id/textView81"
+            android:layout_marginTop="10dp"
+            android:text="R1:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textView83"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView82"
+            android:layout_alignStart="@+id/textView82"
+            android:layout_below="@+id/textView82"
+            android:layout_marginTop="10dp"
+            android:text="R5:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textView84"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView83"
+            android:layout_alignStart="@+id/textView83"
+            android:layout_below="@+id/textView83"
+            android:layout_marginTop="10dp"
+            android:text="R6:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#666666"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/sine_wave_c2_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView81"
+            android:layout_alignLeft="@+id/sine_wave_freq_edittext"
+            android:layout_alignStart="@+id/sine_wave_freq_edittext"
+            android:text="                   "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/sine_wave_c3_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView81"
+            android:layout_alignLeft="@+id/sine_wave_c2_textview"
+            android:layout_alignStart="@+id/sine_wave_c2_textview"
+            android:text="                   "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/sine_wave_r1_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView83"
+            android:layout_alignLeft="@+id/sine_wave_c3_textview"
+            android:layout_alignStart="@+id/sine_wave_c3_textview"
+            android:text="                   "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/sine_wave_r5_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView84"
+            android:layout_alignLeft="@+id/sine_wave_r1_textview"
+            android:layout_alignStart="@+id/sine_wave_r1_textview"
+            android:text="                   "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/sine_wave_r6_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView84"
+            android:layout_alignLeft="@+id/sine_wave_r5_textview"
+            android:layout_alignStart="@+id/sine_wave_r5_textview"
+            android:text="                   "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal" />
+    </RelativeLayout>
+</ScrollView>

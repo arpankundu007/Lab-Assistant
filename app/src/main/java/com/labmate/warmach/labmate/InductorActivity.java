@@ -34,8 +34,10 @@ public class InductorActivity extends Activity {
     Spinner toleranceSpinner;
     ScrollView scrollView;
     int[] colorArray = {R.drawable.black, R.drawable.brown, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.green, R.drawable.blue, R.drawable.violet,
-            R.drawable.gray, R.drawable.white, R.drawable.gold};
+            R.drawable.gray, R.drawable.white, R.drawable.gold, R.drawable.silver};
     int[] tolColorArray = {R.drawable.black, R.drawable.brown, R.drawable.red, R.drawable.orange, R.drawable.yellow, R.drawable.gold, R.drawable.silver};
+
+    int[] colorArray2 = {R.drawable.gold, R.drawable.silver};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,12 +131,12 @@ public class InductorActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        if (imageButton == firstColor)
-                            firstValue = color;
-                        else if (imageButton == secondColor)
-                            secondValue = color;
-                        setColor(color, imageButton);
-                        alertDialog.dismiss();
+                            if (imageButton == firstColor)
+                                firstValue = color;
+                            else if (imageButton == secondColor)
+                                secondValue = color;
+                            setColor(color, imageButton);
+                            alertDialog.dismiss();
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -162,9 +164,15 @@ public class InductorActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        if (imageButton == thirdColor)
-                            thirdValue = color;
-                        setColor(color, imageButton);
+                        if (imageButton == thirdColor) {
+                            if(color == 5)
+                                thirdValue = -1;
+                            else if(color == 6)
+                                thirdValue = -2;
+                            else
+                                thirdValue = color;
+                        }
+                        setMultiplierColor(color, imageButton);
                         alertDialog.dismiss();
                     }
                 });
@@ -245,10 +253,7 @@ public class InductorActivity extends Activity {
     public void setColor(int color, ImageButton imageButton) {
         switch (color) {
             case 0:
-                if (imageButton == firstColor && color == 0)
-                    Toast.makeText(getBaseContext(), "First band cannot be black", Toast.LENGTH_LONG).show();
-                else
-                    imageButton.setBackgroundColor(Color.BLACK);
+                imageButton.setBackgroundColor(Color.BLACK);
                 break;
             case 1:
                 imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
@@ -280,8 +285,38 @@ public class InductorActivity extends Activity {
         }
     }
 
+    public void setMultiplierColor(int color, ImageButton imageButton) {
+        switch (color) {
+            case 0:
+                imageButton.setBackgroundColor(Color.BLACK);
+                break;
+            case 1:
+                imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
+                break;
+            case 2:
+                imageButton.setBackgroundColor(Color.RED);
+                break;
+            case 3:
+                imageButton.setBackgroundColor(Color.parseColor("#ffa500"));
+                break;
+            case 4:
+                imageButton.setBackgroundColor(Color.YELLOW);
+                break;
+            case 5:
+                imageButton.setBackgroundColor(Color.parseColor("#ffd700"));
+                break;
+            case 6:
+                imageButton.setBackgroundColor(Color.parseColor("#c0c0c0"));
+                break;
+        }
+    }
+
     public void setInductance() {
-        String inductance = "" + firstValue + "" + secondValue + " x 10 ^ " + thirdValue + " μH";
+        String inductance;
+        if(firstValue == 0 && secondValue != 0)
+            inductance = "" + secondValue + " x 10 ^ " + thirdValue + " μH";
+        else
+            inductance = "" + firstValue + "" + secondValue + " x 10 ^ " + thirdValue + " μH";
         String tolerance = toleranceValue + " Tol";
         inductanceTextView.setText(inductance);
         toleranceTextView.setText(tolerance);
@@ -293,37 +328,65 @@ public class InductorActivity extends Activity {
             String power = enteredInductancePower.getText().toString();
             float inductanceFloat = Float.parseFloat(inductance);
             float powerFloat = Float.parseFloat(power);
-            String parsedInductance;
-            int zerosLeft;
-            if (powerFloat >= 3) {
-                parsedInductance = new DecimalFormat("##").format((float) (inductanceFloat * Math.pow(10, 3)));
-                zerosLeft = (int) (powerFloat - 3);
-            } else {
-                parsedInductance = new DecimalFormat("##").format((float) (inductanceFloat * Math.pow(10, powerFloat)));
-                zerosLeft = 0;
-            }
-            while (zerosLeft > 0) {
-                parsedInductance = parsedInductance + "0";
-                zerosLeft--;
-            }
-            parsedInductance = parsedInductance.replace(".", "");
-            if(!parsedInductance.equals("") && Integer.parseInt(inductance.replace(".","")) < 99)
+            if(inductanceFloat * Math.pow(10, powerFloat) < 10){
+                String parsedInductance;
+                parsedInductance = String.valueOf(inductanceFloat * Math.pow(10, powerFloat));
                 setInductanceColors(parsedInductance);
-            else
-                Toast.makeText(getBaseContext(), "Please enter base of inductance less than 100", Toast.LENGTH_LONG).show();
+            }
+            else {
+                String parsedInductance;
+                int zerosLeft;
+                if (powerFloat >= 3) {
+                    parsedInductance = new DecimalFormat("##").format((float) (inductanceFloat * Math.pow(10, 3)));
+                    zerosLeft = (int) (powerFloat - 3);
+                } else {
+                    parsedInductance = new DecimalFormat("##").format((float) (inductanceFloat * Math.pow(10, powerFloat)));
+                    zerosLeft = 0;
+                }
+                while (zerosLeft > 0) {
+                    parsedInductance = parsedInductance + "0";
+                    zerosLeft--;
+                }
+                parsedInductance = parsedInductance.replace(".", "");
+                if (!parsedInductance.equals("") && Integer.parseInt(inductance.replace(".", "")) < 99)
+                    setInductanceColors(parsedInductance);
+                else
+                    Toast.makeText(getBaseContext(), "Please enter base of inductance less than 100", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
     public void setInductanceColors(String inductance) {
-        int col_1 = Integer.parseInt(String.valueOf(inductance.charAt(0)));
-        int col_2 = Integer.parseInt(String.valueOf(inductance.charAt(1)));
-        int col_3 = inductance.length() - 2;
-        if (col_3 >= 11)
-            Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
-        else {
+        int col_1, col_2, col_3;
+        if(Float.parseFloat(inductance) < 10 && Float.parseFloat(inductance) >= 1) {
+            col_1 = Integer.parseInt(String.valueOf(inductance.charAt(0)));
+            col_2 = Integer.parseInt(String.valueOf(inductance.charAt(2)));
+            col_3 = 0;
             convertedFirstColor.setImageResource(colorArray[col_1]);
             convertedSecondColor.setImageResource(colorArray[col_2]);
-            convertedThirdColor.setImageResource(colorArray[col_3]);
+            convertedThirdColor.setImageResource(colorArray2[col_3]);
+        }
+        else if (Float.parseFloat(inductance) < 1){
+            if(inductance.length() < 4)
+                inductance = inductance + "0000";
+            col_1 = Integer.parseInt(String.valueOf(inductance.charAt(2)));
+            col_2 = Integer.parseInt(String.valueOf(inductance.charAt(3)));
+            col_3 = 1;
+            convertedFirstColor.setImageResource(colorArray[col_1]);
+            convertedSecondColor.setImageResource(colorArray[col_2]);
+            convertedThirdColor.setImageResource(colorArray2[col_3]);
+        }
+        else {
+            col_1 = Integer.parseInt(String.valueOf(inductance.charAt(0)));
+            col_2 = Integer.parseInt(String.valueOf(inductance.charAt(1)));
+            col_3 = inductance.length() - 2;
+            if (col_3 >= 11)
+                Toast.makeText(getBaseContext(), "Out of bounds exception", Toast.LENGTH_LONG).show();
+            else {
+                convertedFirstColor.setImageResource(colorArray[col_1]);
+                convertedSecondColor.setImageResource(colorArray[col_2]);
+                convertedThirdColor.setImageResource(colorArray[col_3]);
+            }
         }
     }
 

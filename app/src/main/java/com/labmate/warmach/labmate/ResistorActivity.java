@@ -294,14 +294,8 @@ public class ResistorActivity extends Activity {
     public void setColor(int color, ImageButton imageButton, Spinner spinner) {
         switch (color) {
             case 0:
-                if (imageButton == firstColor && color == 0)
-                    Toast.makeText(getBaseContext(), "First band cannot be black", Toast.LENGTH_LONG).show();
-                else
-                {
-                    imageButton.setBackgroundColor(Color.BLACK);
-                    spinner.setBackgroundColor(Color.BLACK);
-                }
-
+                imageButton.setBackgroundColor(Color.BLACK);
+                spinner.setBackgroundColor(Color.BLACK);
                 break;
             case 1:
                 imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
@@ -376,7 +370,14 @@ public class ResistorActivity extends Activity {
         } else if (fourthValue == 11) {
             fourthValue = -2;
         }
-        String resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10 ^ " + fourthValue + " Ohms";
+        Log.v("second", secondValue + "");
+        String resistance;
+        if (firstValue == 0 && secondValue != 0)
+            resistance = "" + secondValue + "" + thirdValue + " x 10 ^ " + fourthValue + " Ohms";
+        else if (firstValue == 0 && secondValue == 0)
+            resistance = "" + thirdValue + " x 10 ^ " + fourthValue + " Ohms";
+        else
+            resistance = "" + firstValue + "" + secondValue + "" + thirdValue + " x 10 ^ " + fourthValue + " Ohms";
         String tolerance = toleranceValue + " Tol";
         resistanceTextView.setText(resistance);
         toleranceTextView.setText(tolerance);
@@ -416,7 +417,7 @@ public class ResistorActivity extends Activity {
     }
 
     public void setResistanceColors(String resistanceValue) {
-        if(Float.parseFloat(resistanceValue) == 0)
+        if (Float.parseFloat(resistanceValue) == 0)
             Toast.makeText(getBaseContext(), "Resistance cannot be zero", Toast.LENGTH_LONG).show();
         else {
             int col_1 = Integer.parseInt(String.valueOf(resistanceValue.charAt(0)));

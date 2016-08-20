@@ -24,7 +24,7 @@ import java.io.File;
  * Created by warmach on 3/8/16.
  */
 public class AnalogComponentsActivity extends Activity {
-    RelativeLayout opampRelativeLayout, timer555;
+    RelativeLayout opampRelativeLayout, timer555, signalGenerator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,7 @@ public class AnalogComponentsActivity extends Activity {
     public void bindViews(){
         opampRelativeLayout = (RelativeLayout) findViewById(R.id.opamp_relativeLayout);
         timer555 = (RelativeLayout) findViewById(R.id.timer_555);
+        signalGenerator = (RelativeLayout) findViewById(R.id.signal_generator_relativeLayout);
     }
 
     public void setListeners() {
@@ -49,6 +50,12 @@ public class AnalogComponentsActivity extends Activity {
             @Override
             public void onClick(View view) {
                 setTimer555();
+            }
+        });
+        signalGenerator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToSignalGenerator();
             }
         });
     }
@@ -91,6 +98,11 @@ public class AnalogComponentsActivity extends Activity {
     public void navigateToOpampConfig(String config){
         Intent intent = new Intent(AnalogComponentsActivity.this, OpampConfigurationActivity.class);
         intent.putExtra("config", config);
+        startActivity(intent);
+    }
+
+    public void navigateToSignalGenerator() {
+        Intent intent = new Intent(AnalogComponentsActivity.this, SignalGeneratorActivity.class);
         startActivity(intent);
     }
 
