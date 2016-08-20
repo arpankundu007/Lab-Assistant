@@ -131,16 +131,12 @@ public class InductorActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        if(imageButton == firstColor && color == 0)
-                            Toast.makeText(getBaseContext(), "First band cannot be black", Toast.LENGTH_LONG).show();
-                        else{
                             if (imageButton == firstColor)
                                 firstValue = color;
                             else if (imageButton == secondColor)
                                 secondValue = color;
                             setColor(color, imageButton);
                             alertDialog.dismiss();
-                        }
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -168,9 +164,15 @@ public class InductorActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        if (imageButton == thirdColor)
-                            thirdValue = color;
-                        setColor(color, imageButton);
+                        if (imageButton == thirdColor) {
+                            if(color == 5)
+                                thirdValue = -1;
+                            else if(color == 6)
+                                thirdValue = -2;
+                            else
+                                thirdValue = color;
+                        }
+                        setMultiplierColor(color, imageButton);
                         alertDialog.dismiss();
                     }
                 });
@@ -251,10 +253,7 @@ public class InductorActivity extends Activity {
     public void setColor(int color, ImageButton imageButton) {
         switch (color) {
             case 0:
-                if (imageButton == firstColor && color == 0)
-                    Toast.makeText(getBaseContext(), "First band cannot be black", Toast.LENGTH_LONG).show();
-                else
-                    imageButton.setBackgroundColor(Color.BLACK);
+                imageButton.setBackgroundColor(Color.BLACK);
                 break;
             case 1:
                 imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
@@ -286,8 +285,38 @@ public class InductorActivity extends Activity {
         }
     }
 
+    public void setMultiplierColor(int color, ImageButton imageButton) {
+        switch (color) {
+            case 0:
+                imageButton.setBackgroundColor(Color.BLACK);
+                break;
+            case 1:
+                imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));
+                break;
+            case 2:
+                imageButton.setBackgroundColor(Color.RED);
+                break;
+            case 3:
+                imageButton.setBackgroundColor(Color.parseColor("#ffa500"));
+                break;
+            case 4:
+                imageButton.setBackgroundColor(Color.YELLOW);
+                break;
+            case 5:
+                imageButton.setBackgroundColor(Color.parseColor("#ffd700"));
+                break;
+            case 6:
+                imageButton.setBackgroundColor(Color.parseColor("#c0c0c0"));
+                break;
+        }
+    }
+
     public void setInductance() {
-        String inductance = "" + firstValue + "" + secondValue + " x 10 ^ " + thirdValue + " μH";
+        String inductance;
+        if(firstValue == 0 && secondValue != 0)
+            inductance = "" + secondValue + " x 10 ^ " + thirdValue + " μH";
+        else
+            inductance = "" + firstValue + "" + secondValue + " x 10 ^ " + thirdValue + " μH";
         String tolerance = toleranceValue + " Tol";
         inductanceTextView.setText(inductance);
         toleranceTextView.setText(tolerance);

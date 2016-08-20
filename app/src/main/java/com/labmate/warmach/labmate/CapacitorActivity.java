@@ -197,8 +197,7 @@ public class CapacitorActivity extends Activity {
     public void parseCapacitance() {
         String capacitance = enteredCapacitanceEditText.getText().toString();
         String power = enteredPowerEditText.getText().toString();
-        if(power.equals(""))
-        {
+        if(power.equals("")) {
             power = "0";
             enteredPowerEditText.setText("0");
         }
@@ -211,7 +210,7 @@ public class CapacitorActivity extends Activity {
         else
             unitsPower = 6;
         Log.v("Test", String.valueOf(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power))));
-        if(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power)) < 10)
+        if(Float.parseFloat(capacitance) * Math.pow(10,Float.parseFloat(power + unitsPower)) < 10)
             Toast.makeText(getBaseContext(), "Capacitance cannot be below 10pF", Toast.LENGTH_LONG).show();
         else {
             ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.getScrollY() + 500).setDuration(1000).start();

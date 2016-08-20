@@ -51,6 +51,8 @@
         <item>Red</item>
         <item>Orange</item>
         <item>Yellow</item>
+        <item>Gold</item>
+        <item>Silver</item>
     </string-array>
 
     <string-array name = "tolerance_values_inductor">
