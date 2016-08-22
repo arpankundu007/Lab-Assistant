@@ -134,15 +134,19 @@ public class ResistorActivity extends Activity {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) view.findViewById(R.id.resistor_multiplier_positive);
                 Button negative = (Button) view.findViewById(R.id.resistor_multiplier_negative);
                 final Spinner mul_spinner = (Spinner) view.findViewById(R.id.resistor_multiplier_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                mul_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
-                        setColor(mul_spinner.getSelectedItemPosition(), fourthColor, mul_spinner);
-                        fourthValue = mul_spinner.getSelectedItemPosition();
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        setColor(mul_spinner.getSelectedItemPosition() - 1, fourthColor, mul_spinner);
+                        fourthValue = mul_spinner.getSelectedItemPosition() - 1;
                         alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -196,21 +200,25 @@ public class ResistorActivity extends Activity {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) colorPopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) colorPopup.findViewById(R.id.cancelColor);
                 final Spinner colorSpinner = (Spinner) colorPopup.findViewById(R.id.multiplier_color_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         int color = colorSpinner.getSelectedItemPosition();
                         if (imageButton == firstColor)
-                            firstValue = color;
+                            firstValue = color - 1;
                         else if (imageButton == secondColor)
-                            secondValue = color;
+                            secondValue = color - 1;
                         else if (imageButton == thirdColor)
-                            thirdValue = color;
-                        setColor(color, imageButton, colorSpinner);
+                            thirdValue = color - 1;
+                        setColor(color - 1, imageButton, colorSpinner);
                         alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -231,15 +239,19 @@ public class ResistorActivity extends Activity {
         toleranceDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) tolerancePopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) tolerancePopup.findViewById(R.id.cancelColor);
                 final Spinner colorSpinner = (Spinner) tolerancePopup.findViewById(R.id.multiplier_color_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        setTolerance(color);
+                        setTolerance(color - 1);
                         toleranceDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -294,8 +306,14 @@ public class ResistorActivity extends Activity {
     public void setColor(int color, ImageButton imageButton, Spinner spinner) {
         switch (color) {
             case 0:
-                imageButton.setBackgroundColor(Color.BLACK);
-                spinner.setBackgroundColor(Color.BLACK);
+                if(imageButton == firstColor) {
+                    Toast.makeText(getBaseContext(), "First color cannot be black", Toast.LENGTH_LONG).show();
+                    showResistanceDialog(imageButton);
+                }
+                else {
+                    imageButton.setBackgroundColor(Color.BLACK);
+                    spinner.setBackgroundColor(Color.BLACK);
+                }
                 break;
             case 1:
                 imageButton.setBackgroundColor(Color.parseColor("#a52a2a"));

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -124,19 +125,23 @@ public class InductorActivity extends Activity {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) view.findViewById(R.id.confirmColor);
                 Button negative = (Button) view.findViewById(R.id.cancelColor);
                 final Spinner colorSpinner = (Spinner) view.findViewById(R.id.multiplier_color_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         int color = colorSpinner.getSelectedItemPosition();
-                            if (imageButton == firstColor)
-                                firstValue = color;
-                            else if (imageButton == secondColor)
-                                secondValue = color;
-                            setColor(color, imageButton);
-                            alertDialog.dismiss();
+                        if (imageButton == firstColor)
+                            firstValue = color - 1;
+                        else if (imageButton == secondColor)
+                            secondValue = color - 1;
+                        setColor(color - 1, imageButton);
+                        alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -157,23 +162,27 @@ public class InductorActivity extends Activity {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) view.findViewById(R.id.confirmColor);
                 Button negative = (Button) view.findViewById(R.id.cancelColor);
                 final Spinner colorSpinner = (Spinner) view.findViewById(R.id.multiplier_color_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         int color = colorSpinner.getSelectedItemPosition();
                         if (imageButton == thirdColor) {
-                            if(color == 5)
+                            if(color == 6)
                                 thirdValue = -1;
-                            else if(color == 6)
+                            else if(color == 7)
                                 thirdValue = -2;
                             else
-                                thirdValue = color;
+                                thirdValue = color - 1;
                         }
-                        setMultiplierColor(color, imageButton);
+                        setMultiplierColor(color - 1, imageButton);
                         alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
@@ -194,15 +203,19 @@ public class InductorActivity extends Activity {
         toleranceDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                Button positive = (Button) tolerancePopup.findViewById(R.id.confirmColor);
                 Button negative = (Button) tolerancePopup.findViewById(R.id.cancelColor);
                 final Spinner colorSpinner = (Spinner) tolerancePopup.findViewById(R.id.multiplier_color_spinner);
-                positive.setOnClickListener(new View.OnClickListener() {
+                colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         int color = colorSpinner.getSelectedItemPosition();
-                        setTolerance(color);
+                        setTolerance(color - 1);
                         toleranceDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
                 negative.setOnClickListener(new View.OnClickListener() {
