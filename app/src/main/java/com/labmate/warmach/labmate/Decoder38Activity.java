@@ -193,7 +193,7 @@ public class Decoder38Activity extends Activity {
     public void showDecoderCircuitPopup() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.decoder_circuit_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -216,7 +216,7 @@ public class Decoder38Activity extends Activity {
     public void showEncoderChartPopup() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.decoder_circuit_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -239,7 +239,7 @@ public class Decoder38Activity extends Activity {
     public void showEncoderCircuitPopup() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.decoder_circuit_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

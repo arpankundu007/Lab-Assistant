@@ -121,7 +121,7 @@ public class InductorActivity extends Activity {
     public void showInductanceDialog(final ImageButton imageButton) {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.color_picker_alert, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -158,7 +158,7 @@ public class InductorActivity extends Activity {
     public void inductanceMultiplier(final ImageButton imageButton) {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.inductance_multiplier, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -199,7 +199,7 @@ public class InductorActivity extends Activity {
     public void showToleranceDialog() {
         LayoutInflater layoutInflater = getLayoutInflater();
         final View tolerancePopup = layoutInflater.inflate(R.layout.inductor_tolerance_dialog, null);
-        final AlertDialog toleranceDialog = new AlertDialog.Builder(this).setView(tolerancePopup).setCancelable(true).create();
+        final AlertDialog toleranceDialog = new AlertDialog.Builder(this).setView(tolerancePopup).setCancelable(false).create();
         toleranceDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -440,7 +440,7 @@ public class InductorActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         final View conversionDialogView = inflater.inflate(R.layout.inductor_conversion, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
-                setView(conversionDialogView).setCancelable(true).create();
+                setView(conversionDialogView).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

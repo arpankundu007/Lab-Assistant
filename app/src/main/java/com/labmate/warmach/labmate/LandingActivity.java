@@ -75,7 +75,7 @@ public class LandingActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         final View type_view = inflater.inflate(R.layout.resistor_bands, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
-                setView(type_view).setCancelable(true).create();
+                setView(type_view).setCancelable(false).create();
         final RadioButton bands4 = (RadioButton) type_view.findViewById(R.id.band_4);
         final RadioButton bands5 = (RadioButton) type_view.findViewById(R.id.band_5);
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {

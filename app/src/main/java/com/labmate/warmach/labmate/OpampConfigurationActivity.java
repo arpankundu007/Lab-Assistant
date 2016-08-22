@@ -156,7 +156,7 @@ public class OpampConfigurationActivity extends Activity {
     public void showOpampPopup(){
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.opamp_layout, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
