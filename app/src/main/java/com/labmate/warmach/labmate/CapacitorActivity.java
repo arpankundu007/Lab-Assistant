@@ -278,7 +278,7 @@ public class CapacitorActivity extends Activity {
     public void showCapacitanceConversion() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.capacitance_conversion, null);
-        final AlertDialog conversionDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog conversionDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         conversionDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

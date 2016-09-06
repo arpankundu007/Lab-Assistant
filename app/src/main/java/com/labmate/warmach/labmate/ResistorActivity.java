@@ -130,7 +130,7 @@ public class ResistorActivity extends Activity {
     public void showPowerDialog() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.resistance_multiplier, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setCancelable(true).setView(view).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setCancelable(false).setView(view).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -196,7 +196,7 @@ public class ResistorActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         final View colorPopup = inflater.inflate(R.layout.color_picker_alert, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
-                setView(colorPopup).setCancelable(true).create();
+                setView(colorPopup).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -235,7 +235,7 @@ public class ResistorActivity extends Activity {
     public void showToleranceDialog() {
         LayoutInflater layoutInflater = getLayoutInflater();
         final View tolerancePopup = layoutInflater.inflate(R.layout.tolerance_alert, null);
-        final AlertDialog toleranceDialog = new AlertDialog.Builder(this).setView(tolerancePopup).setCancelable(true).create();
+        final AlertDialog toleranceDialog = new AlertDialog.Builder(this).setView(tolerancePopup).setCancelable(false).create();
         toleranceDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -366,7 +366,7 @@ public class ResistorActivity extends Activity {
         LayoutInflater inflater = getLayoutInflater();
         final View conversionDialogView = inflater.inflate(R.layout.resistance_conversion_dialog, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).
-                setView(conversionDialogView).setCancelable(true).create();
+                setView(conversionDialogView).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

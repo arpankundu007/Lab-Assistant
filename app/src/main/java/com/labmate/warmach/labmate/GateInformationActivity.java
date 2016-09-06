@@ -133,7 +133,7 @@ public class GateInformationActivity extends Activity {
         else {
             LayoutInflater inflater = getLayoutInflater();
             final View view = inflater.inflate(R.layout.pin_out_type_popup, null);
-            final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
             alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
                 @Override
                 public void onShow(DialogInterface dialogInterface) {
@@ -165,7 +165,7 @@ public class GateInformationActivity extends Activity {
     public void showTtlPopup(){
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.pinout_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -266,7 +266,7 @@ public class GateInformationActivity extends Activity {
     public void showCmosPopup() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.pinout_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(true).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).setCancelable(false).create();
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
