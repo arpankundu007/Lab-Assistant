@@ -8,8 +8,8 @@ android {
         applicationId "com.labmate.warmach.labmate"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.1"
+        versionCode 4
+        versionName "1.2.1"
     }
     buildTypes {
         release {

@@ -370,10 +370,13 @@ public class InductorActivity extends Activity {
     }
 
     public void setInductanceColors(String inductance) {
+        Log.v("Ind: ", inductance);
         int col_1, col_2, col_3;
         if(Float.parseFloat(inductance) < 10 && Float.parseFloat(inductance) >= 1) {
             col_1 = Integer.parseInt(String.valueOf(inductance.charAt(0)));
             col_2 = Integer.parseInt(String.valueOf(inductance.charAt(2)));
+            if(inductance.length()>3 && Integer.parseInt(String.valueOf(inductance.charAt(3))) == 9)
+                col_2 = col_2 + 1;
             col_3 = 0;
             convertedFirstColor.setImageResource(colorArray[col_1]);
             convertedSecondColor.setImageResource(colorArray[col_2]);
